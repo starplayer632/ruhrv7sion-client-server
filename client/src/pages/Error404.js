@@ -8,6 +8,8 @@ function error404() {
             height:'700px',
         }}>
 			<h1>ERROR 404 Page not found</h1>
+			<br/>
+			<Button href="/">Back to home?</Button>
 		</Container>
 	)
 }

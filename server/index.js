@@ -76,6 +76,7 @@ app.get('/api/quote', async (req, res) => {
     }
 })
 
+//Login Backend validation
 app.post('/api/quote', async (req, res) => {
 	const token = req.headers['x-access-token']
 

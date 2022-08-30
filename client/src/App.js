@@ -2,9 +2,6 @@ import React from 'react'
 import { BrowserRouter, Route, Link, Routes} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
-
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Error404 from './pages/Error404'
@@ -15,7 +12,9 @@ import Footer from './components/Footer.js';
 
 const App = () => {
 	return (
-		<div className="App">
+		<div className="App" style={{
+			backgroundColor:'#f5f5f5',
+		}}>
 			
 			<BrowserRouter>
 				<Header />
