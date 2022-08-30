@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import {Container, Form, Button} from 'react-bootstrap';
 
 function Login() {
 	const [email, setEmail] = useState('')
@@ -33,26 +34,35 @@ function Login() {
 	}
 
 	return (
-		<div>
+		<Container style={{
+            backgroundColor:'#f5f5f5',
+            height:'700px',
+
+        }}>
+			
 			<h1>Login</h1>
-			<form onSubmit={loginUser}>
-				<input
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-					type="email"
-					placeholder="Email"
-				/>
-				<br />
-				<input
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-					type="password"
-					placeholder="Password"
-				/>
-				<br />
-				<input type="submit" value="Login" />
-			</form>
-		</div>
+			<br/>
+			<Form onSubmit={loginUser}>
+
+				<Form.Group className="mb-3" controlId="formBasicEmail">
+					<Form.Label>Email address</Form.Label>
+					<Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+				</Form.Group>
+
+				<Form.Group className="mb-3" controlId="formBasicPassword">
+					<Form.Label>Password</Form.Label>
+					<Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+				</Form.Group>
+				<Button variant="primary" type="submit" value="Login">
+					Login
+				</Button>
+			</Form>
+			<br/>
+			<h3>Want to register?</h3>
+			<Button href="/register">
+				Register now
+			</Button>
+		</Container>
 	)
 }
 

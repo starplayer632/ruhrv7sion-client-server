@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import { useNavigate  } from 'react-router-dom'
+import {Container, Form, Button} from 'react-bootstrap';
 
 function Register() {
   const navigate = useNavigate();
@@ -33,9 +34,35 @@ function Register() {
 	}
 
   return (
-    <div>
-      <h1>Register</h1>
-			<form onSubmit={registerUser}>
+	<Container style={{
+		backgroundColor:'#f5f5f5',
+		height:'700px',
+	}}>
+		<h1>Register</h1>
+			<br/>
+			<Form onSubmit={registerUser}>
+				<Form.Group className="mb-3" controlId="formBasicName">
+					<Form.Label>Name</Form.Label>
+					<Form.Control type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
+				</Form.Group>
+				<Form.Group className="mb-3" controlId="formBasicEmail">
+					<Form.Label>Email address</Form.Label>
+					<Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+				</Form.Group>
+
+				<Form.Group className="mb-3" controlId="formBasicPassword">
+					<Form.Label>Password</Form.Label>
+					<Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+				</Form.Group>
+				<Button variant="primary" type="submit" value="Register">
+					Register
+				</Button>
+			</Form>
+		<br/>
+		
+			
+			
+			{/*<form onSubmit={registerUser}>
 				<input
 					value={name}
 					onChange={(e) => setName(e.target.value)}
@@ -58,9 +85,9 @@ function Register() {
 				/>
 				<br />
 				<input type="submit" value="Register" />
-			</form>
+</form>*/}
 
-    </div>
+    </Container>
   );
 }
 
