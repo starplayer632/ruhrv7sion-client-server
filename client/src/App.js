@@ -19,13 +19,6 @@ const App = () => {
 			
 			<BrowserRouter>
 				<Header />
-				
-				<nav>
-					<Link to="/Register">Register</Link>
-					<Link to="/login">login</Link>
-					<Link to="/">Home</Link>
-					<br/>
-          		</nav>
 				<Routes>
 					<Route path="/" exact element={<Home />} />
 					<Route path="/login" exact element={<Login />} />
