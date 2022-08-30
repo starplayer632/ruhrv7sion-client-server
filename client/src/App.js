@@ -1,65 +1,36 @@
-import './App.css';
-import {useState} from 'react'
+import React from 'react'
+import { BrowserRouter, Route, Link, Routes} from 'react-router-dom'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Error404 from './pages/Error404'
+import Dashboard from './pages/Dashboard'
+import Home from './pages/Home'
 
-function App() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  async function registerUser(event) {
-		event.preventDefault()
-
-    //Send as Json
-    
-		const response = await fetch('http://localhost:1337/api/register', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				name,
-				email,
-				password,
-			}),
-		})
-
-		const data = await response.json()
-    console.log(data)
-		/*if (data.status === 'ok') {
-			history.push('/login')
-		}*/
-	}
-
-  return (
-    <div>
-      <h1>Register</h1>
-			<form onSubmit={registerUser}>
-				<input
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-					type="text"
-					placeholder="Name"
-				/>
-				<br />
-				<input
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-					type="email"
-					placeholder="Email"
-				/>
-				<br />
-				<input
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-					type="password"
-					placeholder="Password"
-				/>
-				<br />
-				<input type="submit" value="Register" />
-			</form>
-
-    </div>
-  );
+const App = () => {
+	return (
+		<div className="App">
+			
+			<BrowserRouter>
+				<nav>
+					<Link to="/Register">Register</Link>
+					<Link to="/login">login</Link>
+					<Link to="/">Home</Link>
+					<br/>
+          		</nav>
+				<Routes>
+					<Route path="/" exact element={<Home />} />
+					<Route path="/login" exact element={<Login />} />
+					<Route path="/dashboard" exact element={<Dashboard />} />
+					<Route path="/register" exact element={<Register />} />
+					<Route path="*" exact element={<Error404 />} />
+				</Routes>
+			
+			</BrowserRouter>
+			
+				
+			
+		</div>
+	)
 }
 
-export default App;
+export default App
