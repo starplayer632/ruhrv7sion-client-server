@@ -29,6 +29,14 @@ app.post('/api/register', async (req, res) => {
 	}
 })
 
+app.post('/api/jobs/jobdatapack', async (req, res) => {
+	console.log(req.body)
+	try {
+		res.json({ status: 'ok', ids:'1,2,5,7' }) //if everything works
+	} catch (err) {
+		res.json({ status: 'error', error: 'ERROR' })
+	}
+})
 
 //POST login
 app.post('/api/login', async (req, res) => {

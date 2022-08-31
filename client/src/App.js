@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
+import Jobs from './pages/Jobs.js';
 
 const App = () => {
 	return (
@@ -21,6 +22,7 @@ const App = () => {
 				<Routes>
 					<Route path="/" exact element={<Home />} />
 					<Route path="/login" exact element={<Login />} />
+					<Route path="/jobs" exact element={<Jobs />} />
 					<Route path="/dashboard" exact element={<Dashboard />} />
 					<Route path="/register" exact element={<Register />} />
 					<Route path="*" exact element={<Error404 />} />
