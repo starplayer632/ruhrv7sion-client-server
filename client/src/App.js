@@ -10,6 +10,7 @@ import Home from './pages/Home'
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import Jobs from './pages/Jobs.js';
+import NewJobOffer from './pages/NewJobOffer.js';
 
 const App = () => {
 	return (
@@ -25,6 +26,7 @@ const App = () => {
 					<Route path="/jobs" exact element={<Jobs />} />
 					<Route path="/dashboard" exact element={<Dashboard />} />
 					<Route path="/register" exact element={<Register />} />
+					<Route path="/jobs/newJobOffer" exact element={<NewJobOffer />} />
 					<Route path="*" exact element={<Error404 />} />
 				</Routes>
 				

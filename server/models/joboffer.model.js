@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 
-const Jobs = new mongoose.Schema(
+const JobOffer = new mongoose.Schema(
 	{
-		id: { type: Number, required: true, unique: true },//unique id
+		jobofferid: { type: Number, required: true, unique: true },//unique id
+		email: { type: String, required: true},
 		title: { type: String, required: true }, 
         company: { type: String, required: true }, 
 		money: { type: String, required: true },
@@ -11,10 +12,11 @@ const Jobs = new mongoose.Schema(
         textFacts: { type: String, required: true },
         textCooperation: { type: String, required: true },
         textYourBring: { type: String, required: true },
+		date: { type: String, required: true },
 	},
-	{ collection: 'jobs-data' }
+	{ collection: 'joboffer-data' }
 )
 
-const model = mongoose.model('JobsData', User)
+const model = mongoose.model('JobOfferData', JobOffer)
 
 module.exports = model

@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors') //Just for dev not neede in production
 const mongoose = require('mongoose') //MongoDB tool
 const User = require('./models/user.model')
+const JobOffer = require('./models/joboffer.model')
 const jwt = require('jsonwebtoken') //Json token tool
 const bcrypt = require('bcryptjs') //Hashing Algorythm secure password
 
@@ -11,6 +12,7 @@ app.use(cors()) //browser sickness for dev
 app.use(express.json()) //so body is recogniced as json
 
 mongoose.connect('mongodb://localhost:2701/ruhrv7sion-client-server')
+const db = mongoose.connection;
 
 //POST register
 app.post('/api/register', async (req, res) => {
@@ -103,6 +105,38 @@ app.post('/api/quote', async (req, res) => {
 	}
 })
 
+
+app.post('/api/jobs/newjoboffer', async (req, res) => {
+	console.log(req.body)
+	try {
+		await JobOffer.create({
+			jobofferid: req.body.jobofferid,
+			email: req.body.email,
+			title: req.body.title,
+			company: req.body.company,
+			money: req.body.money,
+			time: req.body.time,
+			city: req.body.city,
+			textFacts: req.body.textFacts,
+			textCooperation: req.body.textCooperation,
+			textYourBring: req.body.textYourBring,
+			date: req.body.date,
+		})
+		res.json({ status: 'ok' }) //if everything works
+	} catch (err) {
+		res.json({ status: 'error', error: {err} })
+	}
+})
+
+
+//Test
+app.get('/jobnumber', (req, res) => {
+	const joblist = JobOffer.find({ '_id': 1 }) //FAIL
+	console.log(joblist)
+    res.send("<h1>done</h1>")
+})
+
+
 //Test
 app.get('/hello', (req, res) => {
     res.send('hello world')
@@ -113,3 +147,4 @@ app.get('/hello', (req, res) => {
 app.listen(1337, () => {
     console.log('Server started on port 1337')
 })
+
