@@ -12,11 +12,11 @@ const JobOffer = new mongoose.Schema(
         textFacts: { type: String, required: true },
         textCooperation: { type: String, required: true },
         textYourBring: { type: String, required: true },
-		date: { type: String, required: true },
+		createdAt: { type: Date, immuteable: true, default: () => Date.now(), },
 	},
 	{ collection: 'joboffer-data' }
 )
 
-const model = mongoose.model('JobOfferData', JobOffer)
+const JobOfferData = mongoose.model('JobOfferData', JobOffer)
 
-module.exports = model
+module.exports = JobOfferData

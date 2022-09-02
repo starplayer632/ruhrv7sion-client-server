@@ -11,8 +11,9 @@ const bcrypt = require('bcryptjs') //Hashing Algorythm secure password
 app.use(cors()) //browser sickness for dev
 app.use(express.json()) //so body is recogniced as json
 
-mongoose.connect('mongodb://localhost:2701/ruhrv7sion-client-server')
-const db = mongoose.connection;
+mongoose.connect('mongodb://localhost:2701/ruhrv7sion-client-server', () => {
+	console.log("mongodb connected")
+})
 
 //POST register
 app.post('/api/register', async (req, res) => {
@@ -120,7 +121,6 @@ app.post('/api/jobs/newjoboffer', async (req, res) => {
 			textFacts: req.body.textFacts,
 			textCooperation: req.body.textCooperation,
 			textYourBring: req.body.textYourBring,
-			date: req.body.date,
 		})
 		res.json({ status: 'ok' }) //if everything works
 	} catch (err) {
@@ -129,12 +129,57 @@ app.post('/api/jobs/newjoboffer', async (req, res) => {
 })
 
 
+async function doJobs() {
+	try{
+		const docs = await JobOffer.where("jobofferid")
+			.gt("0")
+			.select("jobofferid")
+			.select("createdAt")
+			.limit(100)
+		console.log(docs)
+		res.send("<h1>Hallo</h1>")
+	} catch (e){
+		console.log(e.message)
+	}
+
+}
+
 //Test
 app.get('/jobnumber', (req, res) => {
-	const joblist = JobOffer.find({ '_id': 1 }) //FAIL
-	console.log(joblist)
-    res.send("<h1>done</h1>")
+	doJobs()
+	res.send("<h2>Done</h2>")
 })
+
+
+
+
+app.get('/jobnew', async (req, res) => {
+	try{
+		const docs = await JobOffer.find()
+			.limit(10)
+			.sort({createdAt:-1});
+		console.log(docs)
+		res.json(docs)
+	} catch (e){
+		console.log(e.message)
+		res.send(e.message)
+	}
+})
+
+app.post('/api/jobs/joboffersnew', async (req, res) => {
+	try{
+		const docs = await JobOffer.find()
+			.limit(10)
+			.sort({createdAt:-1});
+		console.log(docs)
+		res.json(docs)
+	} catch (e){
+		console.log(e.message)
+		res.send(e.message)
+	}
+})
+
+
 
 
 //Test
