@@ -167,10 +167,12 @@ app.get('/jobnew', async (req, res) => {
 })
 
 app.post('/api/jobs/joboffersnew', async (req, res) => {
+	console.log("/api/jobs/joboffersnew abgerufen")
 	try{
 		const docs = await JobOffer.find()
 			.limit(10)
 			.sort({createdAt:-1});
+		console.log("This will be send")
 		console.log(docs)
 		res.json(docs)
 	} catch (e){

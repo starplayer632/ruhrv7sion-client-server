@@ -4,6 +4,8 @@ import {Dropdown , Container, Button, Row, Col} from 'react-bootstrap';
 
 
 function JobsSearchBar() {
+
+
     return (
         <Container style={{
             width:'100%',

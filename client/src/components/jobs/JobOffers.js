@@ -9,7 +9,7 @@ function JobOffers() {
 
     async function getJobDataPack(){
         //event.preventDefault()
-
+/**
         const response = await fetch('http://localhost:1337/api/jobs/jobdatapack', {
             method: 'POST',
             headers: {
@@ -28,10 +28,30 @@ function JobOffers() {
         }
         
 
-        console.log(data)
+        console.log(data)*/
+        
     }
-    return (
 
+    async function getJobOffers(){
+        const response = await fetch('http://localhost:1337/api/jobs/joboffersnew', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                
+            }),
+        })
+    
+        const data = await response.json()
+        return data
+    }
+
+    const Jobs =  getJobOffers();
+    var mandrill_events = JSON.parse(Jobs[0]);
+var result = Jobs[0];
+
+    return (
         <Container style={{
             width:'100%'
         }}>
@@ -41,6 +61,7 @@ function JobOffers() {
                 <Col xs={4} style={{
                     borderRight:'3px solid gray',
                 }}>
+                    
                     <JobOffersMin title="Praktikum in HR" time="20" money="13" city="Bochum" company="Leato GmbH"/>
                     <JobOffersMin title="WerkstudentIn im Bereich Marketing" time="10" money="12" city="Bottrop" company="ThisIsFine AG"/>
                     <JobOffersMin title="WerkstudentIn in HR" time="18" money="16" city="Mülheim an der Ruhr" company="ITCool Gbr"/>
@@ -55,7 +76,7 @@ function JobOffers() {
                 }}>
                     <JobOffersFull title="Praktikum in HR" id="1"/>
                 </Col>
-                <Button onClick={getJobDataPack}>Click me</Button>
+                <Button onClick="alert('Hi')">Click me</Button>
             </Row>
         </Container>
     );

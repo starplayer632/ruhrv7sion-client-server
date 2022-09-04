@@ -5,7 +5,6 @@ import JobOffers from '../components/jobs/JobOffers'
 
 
 
-
 function Jobs() {
     async function getJobOffers(){
         const response = await fetch('http://localhost:1337/api/jobs/joboffersnew', {
@@ -21,6 +20,7 @@ function Jobs() {
         const data = await response.json()
         return data
     }
+
 
     //const dataset = getJobOffers();
 
@@ -47,6 +47,13 @@ function Jobs() {
                 }}>
                 </div>
            </Row>
+           <br/>
+           <Button onClick={getJobOffers}>WRITE HERE</Button>
+           <br/>
+           <br/>
+           <br/>
+           <br/>
+           <br/>
            <br/>
         </Container>
 	)
