@@ -1,36 +1,11 @@
-import {Dropdown , Container, Button, Row, Col} from 'react-bootstrap'
+import {Container, Row, Col} from 'react-bootstrap'
 import JobOffersMin from './JobOffersMin'
 import JobOffersFull from './JobOffersFull'
-
+import React, { useState } from 'react';
 
 
 function JobOffers() {
-    //const JobDataPack = 0
 
-    async function getJobDataPack(){
-        //event.preventDefault()
-/**
-        const response = await fetch('http://localhost:1337/api/jobs/jobdatapack', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                status: 'ReqJobDataPack',
-            }),
-        })
-
-        const data = await response.json()
-        if (data.status = 'ok'){
-            alert(data.ids)
-        }else{
-            alert(data.error)
-        }
-        
-
-        console.log(data)*/
-        
-    }
 
     async function getJobOffers(){
         const response = await fetch('http://localhost:1337/api/jobs/joboffersnew', {
@@ -42,15 +17,46 @@ function JobOffers() {
                 
             }),
         })
-    
-        const data = await response.json()
-        return data
+        //const data = await response.json()
+        return response.json() 
     }
 
-    const Jobs =  getJobOffers();
-    var mandrill_events = JSON.parse(Jobs[0]);
-var result = Jobs[0];
+    const JobsRAW =  getJobOffers();
+    const list = [];
+    //const Jobs = JSON.parse(JobsRAW);
+    console.log("JobsRAW created:")
+    console.log(JobsRAW)
+    /*JobsRAW.resolve('Success').then(
+        (value) => {
+          console.log(value); // "Success"
+          list.push(value);
+        },
+        (reason) => {
+          // not called
+        },
+      );
+    console.log("Länge: "+list.length)*/
 
+    if(Array.isArray(JobsRAW)){
+        console.log("JobsRAW IS array")
+    }else{
+        console.log("JobsRAW NO array")
+    }
+    const data = [];
+
+
+    /*console.log('start resolve')
+    let i = 0;
+    Promise.resolve(JobsRAW).then(value=>{
+        console.log('value:',value)
+        data[i]=value;
+        i=i+1;
+        console.log('asdsad')
+        }) 
+    console.log(data[0])    
+    console.log('end resolve')*/
+    //console.log("length is: "+JobsRAW.length)
+   
     return (
         <Container style={{
             width:'100%'
@@ -76,8 +82,12 @@ var result = Jobs[0];
                 }}>
                     <JobOffersFull title="Praktikum in HR" id="1"/>
                 </Col>
-                <Button onClick="alert('Hi')">Click me</Button>
             </Row>
+            <br/>
+            <br/>
+            <div>
+                
+            </div>
         </Container>
     );
 }
