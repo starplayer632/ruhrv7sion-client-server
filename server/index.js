@@ -7,9 +7,27 @@ const JobOffer = require('./models/joboffer.model')
 const jwt = require('jsonwebtoken') //Json token tool
 const bcrypt = require('bcryptjs') //Hashing Algorythm secure password
 
-//Middleware
+const dotenv = require('dotenv');
+
+dotenv.config({path: '.env-local'});
+
+
+
+
+/** 
+ * Middleware
+*/
 app.use(cors()) //browser sickness for dev
 app.use(express.json()) //so body is recogniced as json
+app.use(express.urlencoded({extended:false}));
+
+/**
+ * Routes
+ */
+const user_studentsRouter= require("./routes/user_student");
+app.use('/api/users/students/', user_studentsRouter);
+
+
 
 mongoose.connect('mongodb://localhost:2701/ruhrv7sion-client-server', () => {
 	console.log("mongodb connected")
