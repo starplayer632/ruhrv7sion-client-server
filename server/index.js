@@ -4,26 +4,10 @@ const cors = require('cors') //Just for dev not neede in production
 const dotenv = require('dotenv');
 dotenv.config({path: '.env-local'});
 const jwt = require('jsonwebtoken')
+const pool = require('./helpers/database');
 
 const PORT = process.env.PORT || '1337';
-/**
- * Testing
- */
 
-const posts = [
-	{
-	  username: 'test123@test.com',
-	  title: 'Post 1'
-	},
-	{
-	  username: 'Jim',
-	  title: 'Post 2'
-	}
-]
-
-app.get('/posts', authenticateToken, (req, res) => {
-	res.json(posts.filter(post => post.username === req.user.studentemail))
-})
 
 function authenticateToken(req, res, next) {
 	const authHeader = req.headers['authorization']
@@ -66,6 +50,33 @@ app.get('/hello', (req, res) => {
     res.send('hello world')
 })
 
+/**
+ * Testing
+ */
+
+ const posts = [
+	{
+	  username: 'test123@test.com',
+	  title: 'My test quote for test123'
+	},
+	{
+	  username: 'Jim',
+	  title: 'Post 2'
+	}
+]
+
+app.get('/getID', authenticateToken, async (req, res) => {
+	let rows
+	try {
+        const sqlQuery = 'SELECT studentid FROM user_students WHERE studentemail=?';
+        rows = await pool.query(sqlQuery, req.user.studentemail);
+        //res.status(200).json(rows);
+    } catch (error) {
+        //res.status(400).send(error.message)
+    }
+
+	res.json(rows)
+})
 
 //start listening to requests
 app.listen(PORT, () => {

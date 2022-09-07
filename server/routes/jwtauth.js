@@ -16,16 +16,27 @@ async function studentlogin(studentemail, password){
             return await bcrypt.compare(password,rows[0].password)
         }  
     } catch (error) {
-        res.status(400).send(error.message)
+        //res.status(400).send(error.message)
     }
 }
 
+router.post('/tokenvalid', (req, res) => {
+    const refreshToken = req.body.token
+    if (refreshToken == null) return res.json({ 'status': 'error' })
+    if (!refreshTokens.includes(refreshToken)) return res.json({ 'status': 'error' })
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+      if (err) return res.json({ 'status': 'error' })
+      //const accessToken = generateAccessToken({ studentemail: user.studentemail })
+      res.json({ 'status': 'ok' })
+    })
+})
+
 router.post('/token', (req, res) => {
     const refreshToken = req.body.token
-    if (refreshToken == null) return res.sendStatus(401)
-    if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
+    if (refreshToken == null) return res.json({ 'status': 'error' })
+    if (!refreshTokens.includes(refreshToken)) return res.json({ 'status': 'error' })
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-      if (err) return res.sendStatus(403)
+      if (err) return res.json({ 'status': 'error' })
       const accessToken = generateAccessToken({ studentemail: user.studentemail })
       res.json({ accessToken: accessToken })
     })
