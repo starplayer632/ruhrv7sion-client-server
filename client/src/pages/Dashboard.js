@@ -5,27 +5,28 @@ import {Container, Form, Button} from 'react-bootstrap';
 
 const Dashboard = () => {
     const navigate = useNavigate()
-    const [quote, setQuote] = useState('')
+    const [post, setQuote] = useState('')
     const [tempQuote, setTempQuote] = useState('')
 
 
     async function populateQuote(){
+		const auth = 'Bearer '+localStorage.getItem('accessToken')
 		const req = await fetch('http://localhost:1337/api/quote', {
 			headers: {
-				'x-access-token': localStorage.getItem('token'),
+				'Authorization': auth,
 			},
 		})
 
 		const data = await req.json()
 		if (data.status === 'ok') {
-			setQuote(data.quote)
+			setQuote(data.post)
 		} else {
 			alert(data.error)
 		}
 	}
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('accessToken')
         if (token){
             const user = jwt.decode(token)
             if(!user){
@@ -70,7 +71,7 @@ const Dashboard = () => {
             backgroundColor:'#f5f5f5',
             height:'700px',
         }}>
-			<h1>Your quote: {quote || 'No quote found'}</h1>
+			<h1>Your post: {post || 'No post found'}</h1>
 			<form onSubmit={updateQuote}>
 				<input
 					type="text"

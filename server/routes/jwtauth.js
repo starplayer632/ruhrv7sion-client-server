@@ -46,7 +46,7 @@ router.post('/login', (req, res) => {
         const accessToken = generateAccessToken(user)
         const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
         refreshTokens.push(refreshToken)
-        res.json({ accessToken: accessToken, refreshToken: refreshToken })
+        res.json({ status: 'ok', accessToken: accessToken, refreshToken: refreshToken })
     }else{
         res.json({ status: "error", error: "ERROR" })
     }

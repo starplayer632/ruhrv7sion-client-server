@@ -57,6 +57,9 @@ app.use('/api/mongodb/', mongoDBRouter);
 const jwtauth= require("./routes/jwtauth");
 app.use('/api/jwtauth/', jwtauth);
 
+app.get('/quote', authenticateToken, (req, res) => {
+	res.json(posts.filter(post => post.username === req.user.studentemail))
+})
 
 //Test Hello World
 app.get('/hello', (req, res) => {

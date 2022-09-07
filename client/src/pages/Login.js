@@ -3,27 +3,26 @@ import { useState } from 'react'
 import {Container, Form, Button} from 'react-bootstrap';
 
 function Login() {
-	const [email, setEmail] = useState('')
+	const [studentemail, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
 	async function loginUser(event) {
 		event.preventDefault()
 
-		const response = await fetch('http://localhost:1337/api/login', {
+		const response = await fetch('http://localhost:1337/api/jwtauth/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				email,
+				studentemail,
 				password,
 			}),
 		})
 
-		const data = await response.json()
-
-		if (data.user) {
-			localStorage.setItem('token', data.user)
+		const data = await response.json() //status, accessToken, updateToken 
+		if (data.status=="ok") {
+			localStorage.setItem('accessToken', data.accessToken)
 			alert('Login successful')
 			window.location.href = '/dashboard'
 		} else {
@@ -46,7 +45,7 @@ function Login() {
 
 				<Form.Group className="mb-3" controlId="formBasicEmail">
 					<Form.Label>Email address</Form.Label>
-					<Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+					<Form.Control type="email" placeholder="Enter email" value={studentemail} onChange={(e) => setEmail(e.target.value)}/>
 				</Form.Group>
 
 				<Form.Group className="mb-3" controlId="formBasicPassword">
