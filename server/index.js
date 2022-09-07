@@ -12,7 +12,7 @@ const PORT = process.env.PORT || '1337';
 
 const posts = [
 	{
-	  username: 'Kyle',
+	  username: 'test123@test.com',
 	  title: 'Post 1'
 	},
 	{
@@ -22,7 +22,7 @@ const posts = [
 ]
 
 app.get('/posts', authenticateToken, (req, res) => {
-	res.json(posts.filter(post => post.username === req.user.name))
+	res.json(posts.filter(post => post.username === req.user.studentemail))
 })
 
 function authenticateToken(req, res, next) {
@@ -49,7 +49,7 @@ app.use(express.urlencoded({extended:false})); //no extations
  * Routes
  */
 const user_studentsRouter= require("./routes/user_student");
-app.use('/api/users/students/', user_studentsRouter);
+app.use('/api/users/', user_studentsRouter);
 
 const mongoDBRouter= require("./routes/mongodb_routes");
 app.use('/api/mongodb/', mongoDBRouter);

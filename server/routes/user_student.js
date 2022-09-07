@@ -32,7 +32,7 @@ router.post('/register', async function(req,res) {
         console.log("ERROR")
     }
 })
-
+/** /api/jwtauth/login
 router.post('/login', async function(req,res) {
     try {
         const {studentid,password} = req.body;
@@ -49,7 +49,7 @@ router.post('/login', async function(req,res) {
     } catch (error) {
         res.status(400).send(error.message)
     }
-})
+})*/
 
 module.exports = router;
 
