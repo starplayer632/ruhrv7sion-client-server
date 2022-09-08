@@ -1,6 +1,7 @@
 import {Container, Button} from 'react-bootstrap';
-import logoWhite from "../img/logo.png";
-import SkylineCut from "../img/skylinecut.png";
+import logoWhite from "../assets/img/logo.png";
+import SkylineCut from "../assets/img/skylinecut.png";
+
 
 function Footer() {
     return (

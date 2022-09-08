@@ -5,8 +5,8 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //import pages
-import Login from './pages/Auth/Login'
-import Register from './pages/Register'
+import Login from './pages/auth/Login'
+import Register from './pages/auth/Register'
 import Error404 from './pages/Error404'
 import Dashboard from './pages/Dashboard'
 import Home from './pages/studentpage/LandingStudent'

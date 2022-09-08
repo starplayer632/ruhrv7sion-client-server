@@ -1,7 +1,5 @@
 import {Container, Button} from 'react-bootstrap';
-import logoWhite from "../img/logo.png";
-import SkylineCut from "../img/skylinecut.png";
-import pictureLandingStartup from "../img/pictureLandingStartup.png";
+import pictureLandingStartup from "../assets/img/pictureLandingStartup.png";
 import SearchBarSmall from "./SearchBarSmall.js";
 
 
