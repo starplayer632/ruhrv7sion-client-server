@@ -7,7 +7,7 @@
 */
 @font-face {
   font-family: "Asap_Variable";
-  src: url("./assets/fonts/Asap-VariableFont_wght.tff");
+  src: url("./assets/fonts/Asap-VariableFont_wght.ttf");
 }
 
 /**
@@ -15,7 +15,7 @@
 */
 body {
     margin: 0;
-    font-family: Asap_Variable, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: 'Asap_Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;

@@ -1,7 +1,4 @@
 import {Container, Form, Button, Row, Col} from 'react-bootstrap';
-import logoWhite from "../img/logo.png";
-import SkylineCut from "../img/skylinecut.png";
-import LandingStartup1 from "../img/LandingStartup1.jpg";
 
 
 function SearchBarSmall() {

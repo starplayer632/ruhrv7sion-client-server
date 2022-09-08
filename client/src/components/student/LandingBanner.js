@@ -1,5 +1,5 @@
 import {Container, Button} from 'react-bootstrap';
-import pictureLandingStartup from "../assets/img/pictureLandingStartup.png";
+import pictureLandingStartup from "../../assets/img/pictureLandingStartup.png";
 import SearchBarSmall from "./SearchBarSmall.js";
 
 
