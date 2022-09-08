@@ -16,7 +16,7 @@ function authenticateToken(req, res, next) {
   
 	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
 	  console.log(err)
-	  if (err) return res.sendStatus(403)
+	  if (err) return res.sendStatus(403).json({"status":"error"})
 	  req.user = user
 	  next()
 	})
@@ -35,8 +35,9 @@ app.use(express.urlencoded({extended:false})); //no extations
 const user_studentsRouter= require("./routes/user_student");
 app.use('/api/users/', user_studentsRouter);
 
-const mongoDBRouter= require("./routes/mongodb_routes");
-app.use('/api/mongodb/', mongoDBRouter);
+//MongoDB not needed now
+//const mongoDBRouter= require("./routes/mongodb_routes");
+//app.use('/api/mongodb/', mongoDBRouter);
 
 const jwtauth= require("./routes/jwtauth");
 app.use('/api/jwtauth/', jwtauth);
@@ -77,6 +78,8 @@ app.get('/getID', authenticateToken, async (req, res) => {
 
 	res.json(rows)
 })
+
+
 
 //start listening to requests
 app.listen(PORT, () => {

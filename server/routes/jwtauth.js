@@ -20,6 +20,39 @@ async function studentlogin(studentemail, password){
     }
 }
 
+router.get('/isValid2', (req, res) => {
+    console.log("is Valid2 started")
+
+	const token = req.token
+    console.log("token: "+token)
+	if (token == null) return res.json({"status":"error"})
+    
+	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+	    console.log("Error "+err)
+        console.log("inside jwt verify")
+	    if (err) return res.json({"status":"error"})
+	    //req.user = user
+        res.json({"status":"ok", "user": user})
+	})
+})
+
+
+router.post('/isValid', (req, res) => {
+    console.log("is Valid started")
+	const authHeader = req.headers['authorization']
+	const token = authHeader && authHeader.split(' ')[1]
+    console.log("token: "+token)
+	if (token == null) return res.sendStatus(401).json({"status":"error"})
+    
+	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+	    console.log("Error "+err)
+        console.log("inside jwt verify")
+	    if (err) return res.sendStatus(403).json({"status":"error"})
+	    //req.user = user
+        res.json({"status":"ok", "user": user})
+	})
+})
+
 router.post('/tokenvalid', (req, res) => {
     const refreshToken = req.body.token
     if (refreshToken == null) return res.json({ 'status': 'error' })

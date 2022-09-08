@@ -13,6 +13,16 @@ import Jobs from './pages/Jobs.js';
 import NewJobOffer from './pages/NewJobOffer.js';
 
 const App = () => {
+	
+	function hasJWT() {
+		let flag = false;
+  
+		//check user has JWT token
+		localStorage.getItem("token") ? flag=true : flag=false
+	   
+		return flag
+	}
+
 	return (
 		<div className="App" style={{
 			backgroundColor:'#f5f5f5',

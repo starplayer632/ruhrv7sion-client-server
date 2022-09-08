@@ -4,6 +4,7 @@ const pool = require('../helpers/database');
 const bcrypt = require('bcrypt');
 
 
+
 router.get('/:id', async function(req,res){
     try {
         const sqlQuery = 'SELECT studentid, studentemail, password, created_at FROM user_students WHERE studentid=?';
@@ -32,6 +33,9 @@ router.post('/register', async function(req,res) {
         console.log("ERROR")
     }
 })
+
+
+
 /** /api/jwtauth/login
 router.post('/login', async function(req,res) {
     try {

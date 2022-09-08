@@ -10,25 +10,29 @@ const Dashboard = () => {
     const [tempQuote, setTempQuote] = useState('')
 
 	
-	async function tokenIsValid() {
-		const auth = localStorage.getItem('refreshToken')
-		const response = await fetch('http://localhost:1337/api/jwtauth/tokenvalid', {
-			method: 'POST',
+	async function tokenIsValid(accessToken) {
+		console.log("started tokenIsValid")
+		const auth = 'Bearer ' + accessToken
+		const response = await fetch('http://localhost:1337/api/jwtauth/isValid2', {
+			method: 'GET',
 			headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                "token": auth,
-            }),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				'token': accessToken
+			})
 		})
-
-		const data = await response.json() //status, accessToken, updateToken 
-		alert("data.status: "+data.status)
-		if (data.status=="error") {
-			return false
-		}else{
-			return true
-		}
+		//const data = response
+		try{
+			const data = response.json() //status, accessToken, updateToken 
+			return data
+			if (data.status=="ok") return true
+		}catch{
+			//console.log("ERROR CATCH")
+			//console.log(err)
+			const error = {"status":"error"}
+			return error
+		}	
 	}
 
     async function populateQuote(){
@@ -37,7 +41,6 @@ const Dashboard = () => {
 			method: 'GET',	
 			headers: {
 				'Authorization': auth,
-				
 			},
 
 		})
@@ -63,7 +66,7 @@ const Dashboard = () => {
 			},
 
 		})
-
+		alert("req: "+req)
 		const data = await req.json()
 		setStudentid(data[0].studentid)
 		//console.log("DataTitle: "+data[0].studentid)
@@ -76,21 +79,23 @@ const Dashboard = () => {
 	}
 
 
-    useEffect(() => {
+    useEffect( () => {
         const accessToken = localStorage.getItem('accessToken')
         if (accessToken){
             const user = jwt.decode(accessToken)
 			console.log(jwt.decode(accessToken))
             if(!user){
                 localStorage.removeItem('accessToken')
+				alert("!user drinnen")
                 navigate('/login')
             }else{
-				populateID()
-				populateQuote()
-				/**const valid = tokenIsValid();
-				if(valid==true){
+				//populateID()
+				//populateQuote()
+				//alert("accessToken: "+accessToken)
+				
+				/**if(valid){
 					alert('Need to login NONONONONONO')
-					window.location.href = '/login'
+					//window.location.href = '/login'
 				}else{
 					populateID()
 					populateQuote()
@@ -121,8 +126,8 @@ const Dashboard = () => {
 			alert(data.error)
 		}
 	}
-
-
+	
+	
 
 
 
