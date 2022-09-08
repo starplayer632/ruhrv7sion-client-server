@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
-const cors = require('cors') //Just for dev not neede in production
+const cors = require('cors') //Just for dev not needed in production
+const corsOptions = require('./config/corsOptions.js'); //cors Config file
 const dotenv = require('dotenv');
 dotenv.config({path: '.env-local'});
 const jwt = require('jsonwebtoken')
@@ -25,15 +26,19 @@ function authenticateToken(req, res, next) {
 /** 
  * Middleware
 */
-app.use(cors()) //browser sickness for dev
+app.use(cors(corsOptions));// Cross Origin Resource Sharing
 app.use(express.json()) //so body is recogniced as json
-app.use(express.urlencoded({extended:false})); //no extations
+app.use(express.urlencoded({extended:false})); // built-in middleware to handle urlencoded form data
 
 /**
  * Routes
  */
+app.use('/students', require('./routes/api/students')); 
 const user_studentsRouter= require("./routes/user_student");
 app.use('/api/users/', user_studentsRouter);
+
+app.use('/register', require('./routes/register'));
+app.use('/auth', require('./routes/auth'));
 
 //MongoDB not needed now
 //const mongoDBRouter= require("./routes/mongodb_routes");
@@ -50,6 +55,24 @@ app.get('/quote', authenticateToken, (req, res) => {
 app.get('/hello', (req, res) => {
     res.send('hello world')
 })
+
+/**
+ * 
+ * app.all('*', (req, res) => {
+    res.status(404);
+    if (req.accepts('html')) {
+        res.sendFile(path.join(__dirname, 'views', '404.html'));
+    } else if (req.accepts('json')) {
+        res.json({ "error": "404 Not Found" });
+    } else {
+        res.type('txt').send("404 Not Found");
+    }
+});
+ * 
+ * 
+ */
+
+
 
 /**
  * Testing
