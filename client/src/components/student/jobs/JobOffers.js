@@ -26,16 +26,6 @@ function JobOffers() {
     //const Jobs = JSON.parse(JobsRAW);
     console.log("JobsRAW created:")
     console.log(JobsRAW)
-    /*JobsRAW.resolve('Success').then(
-        (value) => {
-          console.log(value); // "Success"
-          list.push(value);
-        },
-        (reason) => {
-          // not called
-        },
-      );
-    console.log("Länge: "+list.length)*/
 
     if(Array.isArray(JobsRAW)){
         console.log("JobsRAW IS array")
@@ -43,19 +33,6 @@ function JobOffers() {
         console.log("JobsRAW NO array")
     }
     const data = [];
-
-
-    /*console.log('start resolve')
-    let i = 0;
-    Promise.resolve(JobsRAW).then(value=>{
-        console.log('value:',value)
-        data[i]=value;
-        i=i+1;
-        console.log('asdsad')
-        }) 
-    console.log(data[0])    
-    console.log('end resolve')*/
-    //console.log("length is: "+JobsRAW.length)
    
     return (
         <Container style={{

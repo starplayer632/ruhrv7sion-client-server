@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, Row, Button} from 'react-bootstrap'
-import JobsSearchBar from '../components/jobs/JobsSearchBar'
-import JobOffers from '../components/jobs/JobOffers'
+import JobsSearchBar from '../components/student/jobs/JobsSearchBar'
+import JobOffers from '../components/student/jobs/JobOffers'
 
 
 
@@ -31,8 +31,6 @@ function Jobs() {
                 }}>
                 </div>
            </Row>
-           <br/>
-           <Button onClick="">WRITE HERE</Button>
            <br/>
            <br/>
            <br/>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, Form, Button} from 'react-bootstrap';
 
-function error404() {
+const Error404 = () => {
 	return (
 		<Container style={{
             backgroundColor:'#f5f5f5',
@@ -14,4 +14,4 @@ function error404() {
 	)
 }
 
-export default error404
+export default Error404

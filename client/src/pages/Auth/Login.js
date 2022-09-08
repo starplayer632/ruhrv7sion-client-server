@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import {Container, Form, Button} from 'react-bootstrap';
 
-function Login() {
+const Login = () => {
 	const [studentemail, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
