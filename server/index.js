@@ -3,11 +3,12 @@ const app = express()
 const cors = require('cors') //Just for dev not needed in production
 const corsOptions = require('./config/corsOptions.js'); //cors Config file
 const dotenv = require('dotenv');
-dotenv.config({path: '.env-local'});
+dotenv.config();
 const jwt = require('jsonwebtoken')
 const pool = require('./helpers/database');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
+const credentials = require('./middleware/credentials');
 
 const PORT = process.env.PORT || '1337';
 
@@ -28,6 +29,7 @@ function authenticateToken(req, res, next) {
 /** 
  * Middleware
 */
+app.use(credentials); //Handle options credentials check - before CORS! and fetch cookies credentials requirement
 app.use(cors(corsOptions));// Cross Origin Resource Sharing
 app.use(express.json()) //so body is recogniced as json
 app.use(express.urlencoded({extended:false})); // built-in middleware to handle urlencoded form data
@@ -39,10 +41,11 @@ app.use(cookieParser());//middleware for cookies
 const user_studentsRouter= require("./routes/user_student");
 app.use('/api/users/', user_studentsRouter);
 
+app.use('/logout', require('./routes/logout'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
-app.use('/logout', require('./routes/logout'));
+
 
 //MongoDB not needed now
 //const mongoDBRouter= require("./routes/mongodb_routes");

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv');
-dotenv.config({path: '.env-local'});
+dotenv.config();
 const pool = require('../helpers/database');
 const bcrypt = require('bcrypt');
 
