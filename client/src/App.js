@@ -5,8 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //import pages
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 import Error404 from "./pages/Error404";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/studentpage/LandingStudent";
@@ -28,7 +28,7 @@ const App = () => {
   }
 
   return (
-    <div
+    <main
       className="App"
       style={{
         backgroundColor: "#f5f5f5",
@@ -43,7 +43,7 @@ const App = () => {
           <Route path="./pages/Auth/Login" exact element={<Login />} />
           <Route path="/jobs" exact element={<Jobs />} />
           <Route path="/dashboard" exact element={<Dashboard />} />
-          <Route path="./pages/Auth/Register" exact element={<Register />} />
+          <Route path="/register" exact element={<Register />} />
           <Route path="/jobs/newJobOffer" exact element={<NewJobOffer />} />
 
           <Route path="*" exact element={<Error404 />} />
@@ -51,7 +51,7 @@ const App = () => {
 
         <Footer />
       </BrowserRouter>
-    </div>
+    </main>
   );
 };
 
