@@ -3,7 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv');
 dotenv.config();
-const pool = require('../helpers/database');
+const pool = require('./helpers/database');
 const bcrypt = require('bcrypt');
 
 let refreshTokens = []

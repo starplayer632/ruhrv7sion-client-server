@@ -1,30 +1,22 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express')
 const app = express()
 const cors = require('cors') //Just for dev not needed in production
 const corsOptions = require('./config/corsOptions.js'); //cors Config file
-const dotenv = require('dotenv');
-dotenv.config();
 const jwt = require('jsonwebtoken')
-const pool = require('./helpers/database');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
+const mongoose = require('mongoose');
+const connectDB = require('./config/dbConn');
 
 const PORT = process.env.PORT || '1337';
 
-
-function authenticateToken(req, res, next) {
-	const authHeader = req.headers['authorization']
-	const token = authHeader && authHeader.split(' ')[1]
-	if (token == null) return res.sendStatus(401)
-  
-	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-	  console.log(err)
-	  if (err) return res.sendStatus(403).json({"status":"error"})
-	  req.user = user
-	  next()
-	})
-}
+/**
+ * Connect to MongoDB
+ */
+connectDB();
 
 /** 
  * Middleware
@@ -38,7 +30,7 @@ app.use(cookieParser());//middleware for cookies
  * Routes
  */
 
-const user_studentsRouter= require("./routes/user_student");
+const user_studentsRouter= require("./SQL Scripts and Data/user_student");
 app.use('/api/users/', user_studentsRouter);
 
 app.use('/logout', require('./routes/logout'));
@@ -51,12 +43,13 @@ app.use('/auth', require('./routes/auth'));
 //const mongoDBRouter= require("./routes/mongodb_routes");
 //app.use('/api/mongodb/', mongoDBRouter);
 
-const jwtauth= require("./routes/jwtauth");
+/*
+const jwtauth= require("./SQL Scripts and Data/jwtauth");
 app.use('/api/jwtauth/', jwtauth);
 
 app.get('/quote', authenticateToken, (req, res) => {
 	res.json(posts.filter(post => post.username === req.user.studentemail))
-})
+})*/
 
 //Test Hello World
 app.get('/hello', (req, res) => {
@@ -84,7 +77,7 @@ app.get('/hello', (req, res) => {
 /**
  * Testing
  */
-
+/*
  const posts = [
 	{
 	  username: 'test123@test.com',
@@ -107,7 +100,7 @@ app.get('/getID', authenticateToken, async (req, res) => {
     }
 
 	res.json(rows)
-})
+})*/
 
 //SHOULD BE LAST CAUSE VERIFY
 app.use(verifyJWT) //from here everthing uses this middleware
@@ -115,8 +108,8 @@ app.use('/students', require('./routes/api/students'));
 
 
 
-//start listening to requests
-app.listen(PORT, () => {
-    console.log(`Listening for requests on port ${PORT}`)
-})
-
+//start listening to requests BUT Mongoose needs to work
+mongoose.connection.once('open', () => {
+    console.log('Connected to MongoDB');
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
