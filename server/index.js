@@ -6,6 +6,8 @@ const dotenv = require('dotenv');
 dotenv.config({path: '.env-local'});
 const jwt = require('jsonwebtoken')
 const pool = require('./helpers/database');
+const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || '1337';
 
@@ -29,16 +31,18 @@ function authenticateToken(req, res, next) {
 app.use(cors(corsOptions));// Cross Origin Resource Sharing
 app.use(express.json()) //so body is recogniced as json
 app.use(express.urlencoded({extended:false})); // built-in middleware to handle urlencoded form data
-
+app.use(cookieParser());//middleware for cookies
 /**
  * Routes
  */
-app.use('/students', require('./routes/api/students')); 
+
 const user_studentsRouter= require("./routes/user_student");
 app.use('/api/users/', user_studentsRouter);
 
+app.use('/refresh', require('./routes/refresh'));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
+app.use('/logout', require('./routes/logout'));
 
 //MongoDB not needed now
 //const mongoDBRouter= require("./routes/mongodb_routes");
@@ -101,6 +105,10 @@ app.get('/getID', authenticateToken, async (req, res) => {
 
 	res.json(rows)
 })
+
+//SHOULD BE LAST CAUSE VERIFY
+app.use(verifyJWT) //from here everthing uses this middleware
+app.use('/students', require('./routes/api/students')); 
 
 
 
