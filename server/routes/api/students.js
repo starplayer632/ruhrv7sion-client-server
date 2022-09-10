@@ -10,7 +10,7 @@ router.route('/')
     .get(studentsController.getAllstudents)
     .post(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor),studentsController.createNewstudents)
     .put(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor),studentsController.updatestudents)
-    .delete(studentsController.deletestudents);
+    .delete(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor),studentsController.deletestudents);
 
 router.route('/:id')
     .get(studentsController.getstudents);

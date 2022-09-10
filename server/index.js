@@ -105,7 +105,7 @@ app.get('/getID', authenticateToken, async (req, res) => {
 //SHOULD BE LAST CAUSE VERIFY
 app.use(verifyJWT) //from here everthing uses this middleware
 app.use('/students', require('./routes/api/students')); 
-
+app.use('/users', require('./routes/api/users'));
 
 
 //start listening to requests BUT Mongoose needs to work
