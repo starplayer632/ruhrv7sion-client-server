@@ -1,9 +1,4 @@
-const usersDB = {
-    users: require('../models/users.json'),
-    setUsers: function (data) { this.users = data }
-}
-const fsPromises = require('fs').promises;
-const path = require('path');
+const User = require('../model/User');
 
 const handleLogout = async (req, res) => {
     // On client, also delete the accessToken
@@ -13,7 +8,7 @@ const handleLogout = async (req, res) => {
     const refreshToken = cookies.jwt;
 
     // Is refreshToken in db?
-    const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
+    const foundUser = await User.findOne({ refreshToken }).exec();
     if (!foundUser) {
        // console.log("!foundUser: clearCookie");
         res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true }); //delete cookie //JUST PRODCUTION!!! uses https!!!
@@ -22,14 +17,10 @@ const handleLogout = async (req, res) => {
         
     }
 
-    // Delete refreshToken in db
-    const otherUsers = usersDB.users.filter(person => person.refreshToken !== foundUser.refreshToken);
-    const currentUser = { ...foundUser, refreshToken: '' };
-    usersDB.setUsers([...otherUsers, currentUser]);
-    await fsPromises.writeFile(
-        path.join(__dirname, '..', 'models', 'users.json'),
-        JSON.stringify(usersDB.users)
-    );
+     // Delete refreshToken in db
+     foundUser.refreshToken = '';
+     const result = await foundUser.save();
+     console.log(result);
     //console.log(" Delete refreshToken in db: clearCookie");
     res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true }); //JUST PRODCUTION!!! uses https!!!
     //res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
