@@ -1,20 +1,27 @@
 import React from 'react'
 import {Container} from 'react-bootstrap';
 import Logi from '../../components/Login';
+import Header_Student from '../../components/headers/Header_Student';
+import Footer from '../../components/Footer';
 
 const Login = () => {
 
 	return(
-		<Container>
+		<div>
+			<Header_Student/>
+			<br />
+			<br />
+			<br />
+			<br />
 			<Logi />
 			<br />
 			<br />
 			<br />
 			<br />
 			<br />
-		</Container>
-
+			<Footer/>
+		</div>
 	)
 }
 
-export default Login
+export default Login;

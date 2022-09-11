@@ -1,8 +1,8 @@
 import {Container, Navbar, Nav, Button, NavDropdown} from 'react-bootstrap';
-import logoWhite from "../assets/img/logo.png";
-import iconLoginW from "../assets/img/iconLoginW.png";
+import logoWhite from "../../assets/img/logo.png";
+import iconLoginW from "../../assets/img/iconLoginW.png";
 
-function Header() {
+const Header_Student = () => {
     return (
       <Navbar sticky="top" expand="lg" variant="light" style={{
         backgroundColor: '#010837',
@@ -152,6 +152,6 @@ function Header() {
         </Container>
       </Navbar>
     );
-  }
+}
 
-export default Header;
+export default Header_Student;

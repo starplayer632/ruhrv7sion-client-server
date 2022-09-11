@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-
+import Header_Student from '../../components/headers/Header_Student';
+import Footer from '../../components/Footer';
+import {Container} from 'react-bootstrap';
 import axios from '../../api/axios';
 const LOGIN_URL = '/auth';
 
@@ -69,64 +71,75 @@ const Login = () => {
     }, [persist])
 
     return (
-
-        <section style={{
-            backgroundColor:'#f5f5f5',
-            width: '100%',
-            maxWidth: '420px',
-            minHeight: '400px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
-            padding: '1rem',
-        }}>
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Sign In</h1>
-            <form onSubmit={handleSubmit} style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-evenly',
-                        flexGrow: 1,
-                        paddingBottom: '1rem',
+        <div>
+            <Header_Student/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <Container style={{
+                backgroundColor:'#f5f5f5',
+                width: '100%',
+                maxWidth: '420px',
+                minHeight: '400px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+                padding: '1rem',
             }}>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setUser(e.target.value)}
-                    value={user}
-                    required
-                />
-
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    onChange={(e) => setPwd(e.target.value)}
-                    value={pwd}
-                    required
-                />
-                <button>Sign In</button>
-                <div className="persistCheck">
+                <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                <h1>Sign In</h1>
+                <form onSubmit={handleSubmit} style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-evenly',
+                            flexGrow: 1,
+                            paddingBottom: '1rem',
+                }}>
+                    <label htmlFor="username">Username:</label>
                     <input
-                        type="checkbox"
-                        id="persist"
-                        onChange={togglePersist}
-                        checked={persist}
+                        type="text"
+                        id="username"
+                        ref={userRef}
+                        autoComplete="off"
+                        onChange={(e) => setUser(e.target.value)}
+                        value={user}
+                        required
                     />
-                    <label htmlFor="persist">Trust This Device</label>
-                </div>
-            </form>
-            <p>
-                Need an Account?<br />
-                <span className="line">
-                    <Link to="/register">Sign Up</Link>
-                </span>
-            </p>
-        </section>
 
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        onChange={(e) => setPwd(e.target.value)}
+                        value={pwd}
+                        required
+                    />
+                    <br/>
+                    <button>Sign In</button>
+                    <div className="persistCheck">
+                        <input
+                            type="checkbox"
+                            id="persist"
+                            onChange={togglePersist}
+                            checked={persist}
+                        />
+                        <label htmlFor="persist"> Trust This Device</label>
+                    </div>
+                </form>
+                <p>
+                    Need an Account?<br />
+                    <span className="line">
+                        <Link to="/register">Sign Up</Link>
+                    </span>
+                </p>
+            </Container>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <Footer/>
+        </div>
     )
 }
 

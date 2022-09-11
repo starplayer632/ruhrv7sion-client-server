@@ -22,7 +22,7 @@ import Login from "./pages/auth/Login";
 
 import LandingStudent from "./pages/studentpage/LandingStudent";
 //TUT
-import Login from "./pages/TUT/Login";
+import Login from "./pages/auth/Login";
 import Unauthorized from "./pages/auth/Unauthorized";
 import Error404 from "./pages/Error404";
 import Register from "./pages/auth/Register";
