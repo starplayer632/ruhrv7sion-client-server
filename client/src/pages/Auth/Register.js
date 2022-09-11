@@ -94,6 +94,11 @@ function Register() {
   return(
 	<Container>
 		<Reg />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
 	</Container>
   );
 }

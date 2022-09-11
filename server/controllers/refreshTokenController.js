@@ -6,8 +6,8 @@ const handleRefreshToken = async (req, res) => {
     if (!cookies?.jwt) return res.sendStatus(401);
     const refreshToken = cookies.jwt;
     // CHROME res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
-    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
-
+   // res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
+   res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
     const foundUser = await User.findOne({ refreshToken }).exec();
 
     // Detected refresh token reuse!
@@ -66,7 +66,8 @@ const handleRefreshToken = async (req, res) => {
 
             // Creates Secure Cookie with refresh token
             //CHROME res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
-            res.cookie('jwt', newRefreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+            //res.cookie('jwt', newRefreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+            res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
             res.json({ roles, accessToken })
         }
     );
