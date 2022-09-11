@@ -1,8 +1,18 @@
 import {Container, Navbar, Nav, Button, NavDropdown} from 'react-bootstrap';
 import logoWhite from "../../assets/img/logo.png";
 import iconLoginW from "../../assets/img/iconLoginW.png";
+import useLogout from "../../hooks/useLogout";
+import { useNavigate } from "react-router-dom";
 
 function Header_Company_Login() {
+    const navigate = useNavigate();
+    const logout = useLogout();
+    
+    const signOut = async () => {
+      await logout();
+      navigate('/');
+    }
+
     return (
       <Navbar sticky="top" expand="lg" variant="light" style={{
         backgroundColor: '#010837',
@@ -117,7 +127,7 @@ function Header_Company_Login() {
                         }}/>
                   </div>
                   
-                    <Nav.Link href="/business/logout" eventKey="link-2" style={{color:'white'}}>Logout</Nav.Link>
+                    <Nav.Link onClick={signOut} eventKey="link-2" style={{color:'white'}}>Logout</Nav.Link>
                   
                 </div>
               </Nav.Item>

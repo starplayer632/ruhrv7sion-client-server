@@ -1,5 +1,4 @@
 import React from 'react'
-import {Container} from 'react-bootstrap';
 import Logi from '../../components/Login';
 import Header_Student from '../../components/headers/Header_Student';
 import Footer from '../../components/Footer';
@@ -22,6 +21,6 @@ const Login = () => {
 			<Footer/>
 		</div>
 	)
-}
+};
 
-export default Login;
+export default Login

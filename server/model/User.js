@@ -12,7 +12,9 @@ const userSchema = new Schema({
             default: 2001
         },
         Editor: Number,
-        Admin: Number
+        Admin: Number,
+        StudentUser: Number,
+        CompanyUser: Number
     },
     password: {
         type: String,

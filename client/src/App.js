@@ -21,6 +21,7 @@ import Login from "./pages/auth/Login";
 */
 
 import LandingStudent from "./pages/studentpage/LandingStudent";
+import ProfilStudent from "./pages/studentpage/ProfilStudent";
 //TUT
 import Login from "./pages/auth/Login";
 import Unauthorized from "./pages/auth/Unauthorized";
@@ -34,12 +35,7 @@ import Editor from './pages/TUT/Editor';
 import Admin from './pages/TUT/Admin';
 import Home from './pages/TUT/Home';
 import Layout from './pages/TUT/Layout';
-
-const ROLES = {
-  'User': 2001,
-  'Editor': 1984,
-  'Admin': 5150
-}
+import ROLES from './context/roles_list';
 
 //App as const -> as a function
 const App = () => {
@@ -58,6 +54,10 @@ const App = () => {
           <Route element={<PersistLogin />}>
             <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
               <Route path="/" element={<Home />} />
+            </Route>
+
+            <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.StudentUser]} />}>
+              <Route path="profil" element={<ProfilStudent />} />
             </Route>
 
             <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>

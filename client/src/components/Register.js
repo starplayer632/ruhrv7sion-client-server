@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../api/axios';
+import {Container} from 'react-bootstrap';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -84,20 +85,7 @@ const Register = () => {
     }
 
     return (
-        <>
-            {success ? (
-                <section style={{
-                    backgroundColor:'#f5f5f5',
-                    height:'700px',
-                    width:'800px'
-                }}>
-                    <h1>Success!</h1>
-                    <p>
-                        <a href="#">Sign In</a>
-                    </p>
-                </section>
-            ) : (
-                <section style={{
+                <Container style={{
                     backgroundColor:'#f5f5f5',
                     width: '100%',
                     maxWidth: '420px',
@@ -196,10 +184,8 @@ const Register = () => {
                             <a href="/login">Sign In</a>
                         </span>
                     </p>
-                </section>
-            )}
-        </>
-    )
+                </Container>
+            )
 }
 
 export default Register

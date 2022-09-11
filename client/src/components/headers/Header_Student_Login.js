@@ -1,8 +1,18 @@
 import {Container, Navbar, Nav, Button, NavDropdown} from 'react-bootstrap';
 import logoWhite from "../../assets/img/logo.png";
 import iconLoginW from "../../assets/img/iconLoginW.png";
+import useLogout from "../../hooks/useLogout";
+import { useNavigate } from "react-router-dom";
 
 const Header_Student_Login = () => {
+    const navigate = useNavigate();
+    const logout = useLogout();
+
+    const signOut = async () => {
+      await logout();
+      navigate('/');
+    }
+
     return (
       <Navbar sticky="top" expand="lg" variant="light" style={{
         backgroundColor: '#010837',
@@ -12,10 +22,10 @@ const Header_Student_Login = () => {
 
           <Navbar.Brand href="/">
           <div class="d-flex flex-row"style={{
-                  position:'absolute',
-                  left:'0px',
-                  top:'0px',
-              }}>
+            position:'absolute',
+            left:'0px',
+            top:'0px',
+          }}>
               <div class="p-2" style={{
                   paddingLeft:'0px',
                   paddingLeft:'100%', 
@@ -101,6 +111,12 @@ const Header_Student_Login = () => {
                 <Nav.Link href="/unternehmen" eventKey="link-1" style={{color:'white'}}>Unternehmen</Nav.Link>
               </Nav.Item>
               <Nav.Item>
+                <Nav.Link href="/matches" eventKey="link-1" style={{color:'white'}}>Matches</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/profil" eventKey="link-1" style={{color:'white'}}>Profil</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
@@ -117,7 +133,7 @@ const Header_Student_Login = () => {
                         }}/>
                   </div>
                   
-                    <Nav.Link href="/logout" eventKey="link-2" style={{color:'white'}}>Logout</Nav.Link>
+                    <Nav.Link onClick={signOut} eventKey="link-2" style={{color:'white'}}>Logout</Nav.Link>
                   
                 </div>
               </Nav.Item>

@@ -1,7 +1,8 @@
 import {useState} from 'react'
 import { useNavigate  } from 'react-router-dom'
 import Reg from '../../components/Register';
-import {Container, Form, Button} from 'react-bootstrap';
+import Header_Student from '../../components/headers/Header_Student';
+import Footer from '../../components/Footer';
 
 function Register() {
 /*  const navigate = useNavigate();
@@ -92,14 +93,20 @@ function Register() {
   );*/
 
   return(
-	<Container>
+	<div>
+		<Header_Student/>
+		<br />
+		<br />
+		<br />
+		<br />
 		<Reg />
 		<br />
 		<br />
 		<br />
 		<br />
 		<br />
-	</Container>
+		<Footer/>
+	</div>
   );
 }
 

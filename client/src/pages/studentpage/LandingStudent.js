@@ -1,6 +1,6 @@
 import React from 'react'
 import LandingBanner from '../../components/student/LandingBanner';
-import Header from '../../components/Header';
+import Header_Student from '../../components/headers/Header_Student';
 import Footer from '../../components/Footer';
 
 
@@ -9,7 +9,7 @@ const LandingStudent = () => {
 		<div style={{
 			backgroundColor:'#f5f5f5',
 		}}>
-			<Header/>
+			<Header_Student/>
 			<LandingBanner />
 			<div style={{
 				backgroundColor:'#f5f5f5',
