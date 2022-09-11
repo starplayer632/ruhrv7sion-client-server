@@ -70,10 +70,25 @@ const Login = () => {
 
     return (
 
-        <section>
+        <section style={{
+            backgroundColor:'#f5f5f5',
+            width: '100%',
+            maxWidth: '420px',
+            minHeight: '400px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-start',
+            padding: '1rem',
+        }}>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Sign In</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-evenly',
+                        flexGrow: 1,
+                        paddingBottom: '1rem',
+            }}>
                 <label htmlFor="username">Username:</label>
                 <input
                     type="text"
