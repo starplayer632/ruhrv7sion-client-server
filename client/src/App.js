@@ -19,7 +19,7 @@ import NewJobOffer from "./pages/NewJobOffer.js";
 import Unauthorized from "./pages/auth/Unauthorized";
 import Login from "./pages/auth/Login";
 */
-
+import Jobs from "./pages/Jobs.js";
 import LandingStudent from "./pages/studentpage/LandingStudent";
 import ProfilStudent from "./pages/studentpage/ProfilStudent";
 //TUT
@@ -49,6 +49,7 @@ const App = () => {
           <Route path="linkpage" element={<LinkPage />} />
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="home" element={<LandingStudent />} />
+          <Route path="jobs" element={<Jobs />} />
 
           {/* we want to protect these routes */}
           <Route element={<PersistLogin />}>
@@ -56,7 +57,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
             </Route>
 
-            <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.StudentUser]} />}>
+            <Route element={<RequireAuth allowedRoles={[ROLES.StudentUser, ROLES.Admin]} />}>
               <Route path="profil" element={<ProfilStudent />} />
             </Route>
 
