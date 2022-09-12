@@ -19,6 +19,7 @@ const Login = () => {
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
+    //useEffect is bullshit
     useEffect(() => {
         userRef.current.focus();
     }, [])
