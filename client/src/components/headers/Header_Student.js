@@ -117,7 +117,7 @@ const Header_Student = () => {
                         }}/>
                   </div>
                   
-                    <Nav.Link href="/login" eventKey="link-2" style={{color:'white'}}>Anmelden</Nav.Link>
+                    <Nav.Link href="/login" eventKey="link-2" style={{color:'white'}}>Login</Nav.Link>
                   
                 </div>
               </Nav.Item>
@@ -145,7 +145,7 @@ const Header_Student = () => {
                   width:'200px',
                   position:'absolute',
 
-                }}>Für Unternehmen</Button>
+                }}>For Company Users</Button>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>

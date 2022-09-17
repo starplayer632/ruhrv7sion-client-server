@@ -102,19 +102,19 @@ const Header_Student_Login = () => {
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/jobs" style={{color:'white'}}>Jobs</Nav.Link>
+                <Nav.Link href="/login/jobs" style={{color:'white'}}>Jobs</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/unternehmen" eventKey="link-1" style={{color:'white'}}>Unternehmen</Nav.Link>
+                <Nav.Link href="/login/unternehmen" eventKey="link-1" style={{color:'white'}}>Unternehmen</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/matches" eventKey="link-1" style={{color:'white'}}>Matches</Nav.Link>
+                <Nav.Link href="/login/matches" eventKey="link-1" style={{color:'white'}}>Matches</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/profil" eventKey="link-1" style={{color:'white'}}>Profil</Nav.Link>
+                <Nav.Link href="/login/profile" eventKey="link-1" style={{color:'white'}}>Profile</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
@@ -161,7 +161,7 @@ const Header_Student_Login = () => {
                   width:'200px',
                   position:'absolute',
 
-                }}>Für Unternehmen</Button>
+                }}>For Companpy Users</Button>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>

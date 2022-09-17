@@ -86,19 +86,10 @@ function Header_Company() {
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <Nav.Item>
-                <Nav.Link href="/" style={{color:'white'}}>Home</Nav.Link>
+                <Nav.Link href="/business/" style={{color:'white'}}>Home</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/jobs" style={{color:'white'}}>Jobs</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/unternehmen" eventKey="link-1" style={{color:'white'}}>Unternehmen</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
@@ -117,7 +108,7 @@ function Header_Company() {
                         }}/>
                   </div>
                   
-                    <Nav.Link href="/business/login" eventKey="link-2" style={{color:'white'}}>Anmelden</Nav.Link>
+                    <Nav.Link href="/business/login" eventKey="link-2" style={{color:'white'}}>Company Login</Nav.Link>
                   
                 </div>
               </Nav.Item>
@@ -138,14 +129,14 @@ function Header_Company() {
                 <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
               </NavDropdown>*/}
               <Nav.Item>
-                <Button href="business/" style={{
+                <Button href="/" style={{
                   backgroundColor:'#ff5b2b',
                   borderRadius: '15px 0px 0px 15px',
                   padding:'10px',
                   width:'200px',
                   position:'absolute',
 
-                }}>Für Studierende</Button>
+                }}>For Students</Button>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>

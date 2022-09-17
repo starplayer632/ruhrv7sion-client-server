@@ -96,19 +96,25 @@ function Header_Company_Login() {
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <Nav.Item>
-                <Nav.Link href="/" style={{color:'white'}}>Home</Nav.Link>
+                <Nav.Link href="/business/dashboard" style={{color:'white'}}>Dashboard</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/jobs" style={{color:'white'}}>Jobs</Nav.Link>
+                <Nav.Link href="/business/jobeditor" style={{color:'white'}}>Jobs Editor</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/unternehmen" eventKey="link-1" style={{color:'white'}}>Unternehmen</Nav.Link>
+                <Nav.Link href="/business/funneleditor" eventKey="link-1" style={{color:'white'}}>FunnelEditor</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/business/profile" eventKey="link-1" style={{color:'white'}}>My Profile</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
@@ -148,14 +154,14 @@ function Header_Company_Login() {
                 <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
               </NavDropdown>*/}
               <Nav.Item>
-                <Button href="business/" style={{
+                <Button href="/" style={{
                   backgroundColor:'#ff5b2b',
                   borderRadius: '15px 0px 0px 15px',
                   padding:'10px',
                   width:'200px',
                   position:'absolute',
 
-                }}>Für Studierende</Button>
+                }}>For Students</Button>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>

@@ -22,6 +22,7 @@ import Login from "./pages/auth/Login";
 import Jobs from "./pages/Jobs.js";
 import LandingStudent from "./pages/studentpage/LandingStudent";
 import ProfilStudent from "./pages/studentpage/ProfilStudent";
+import LegalTerms from "./pages/legalterms/legalterms.js";
 //TUT
 import Login from "./pages/auth/Login";
 import Unauthorized from "./pages/auth/Unauthorized";
@@ -36,6 +37,7 @@ import Admin from './pages/TUT/Admin';
 import Home from './pages/TUT/Home';
 import Layout from './pages/TUT/Layout';
 import ROLES from './context/roles_list';
+import businesslanding from './pages/companypage/LandingCompany';
 
 //App as const -> as a function
 const App = () => {
@@ -50,6 +52,9 @@ const App = () => {
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="home" element={<LandingStudent />} />
           <Route path="jobs" element={<Jobs />} />
+          <Route path="business/" element={<businesslanding />} />
+          <Route path="business/login" element={<businesslanding />} />
+          <Route path="legalterms" element={<LegalTerms />} />
 
           {/* we want to protect these routes */}
           <Route element={<PersistLogin />}>
