@@ -96,25 +96,31 @@ function Header_Company_Login() {
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <Nav.Item>
-                <Nav.Link href="/business/dashboard" style={{color:'white'}}>Dashboard</Nav.Link>
+                <Nav.Link href="dashboard" style={{color:'white'}}>Dashboard</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/business/jobeditor" style={{color:'white'}}>Jobs Editor</Nav.Link>
+                <Nav.Link href="matches" style={{color:'white'}}>Matches</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/business/funneleditor" eventKey="link-1" style={{color:'white'}}>FunnelEditor</Nav.Link>
+                <Nav.Link href="editorjobs" style={{color:'white'}}>Jobs Editor</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/business/profile" eventKey="link-1" style={{color:'white'}}>My Profile</Nav.Link>
+                <Nav.Link href="editorfunnel" eventKey="link-1" style={{color:'white'}}>FunnelEditor</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="profile" eventKey="link-1" style={{color:'white'}}>My Profile</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>

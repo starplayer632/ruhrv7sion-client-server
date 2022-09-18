@@ -80,8 +80,9 @@ const LoginCompanies = (typ) => {
             justifyContent: 'flex-start',
             padding: '1rem',
         }}>
+            <h1>Company User Login</h1>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Sign In</h1>
+            <h3>Sign In</h3>
             <form onSubmit={handleSubmit} style={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -117,13 +118,13 @@ const LoginCompanies = (typ) => {
                         onChange={togglePersist}
                         checked={persist}
                     />
-                    <label htmlFor="persist"> Trust This Device</label>
+                    <label htmlFor="persist"> Trust This Device and save login session for 24 hours</label>
                 </div>
             </form>
             <p>
                 Need an Account?<br />
                 <span className="line">
-                    <Link to="/register">Sign Up</Link>
+                    Write to our email and ask for an business account!
                 </span>
             </p>
         </Container>

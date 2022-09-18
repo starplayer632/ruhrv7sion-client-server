@@ -1,18 +1,18 @@
 import React from 'react';
-import Header_Company_Login from '../../../components/headers/Header_Company_Login';
+import Header_Student_Login from '../../../components/headers/Header_Student_Login';
 import Footer from '../../../components/Footer';
 import {Container, Form, Button} from 'react-bootstrap';
 
-const Profile = () => {
+const StudentMatches = () => {
 	
 	return (
 		<div style={{
 			backgroundColor:'#f5f5f5',
 		}}>
-			<Header_Company_Login />
+			<Header_Student_Login/>
 			<br/>
 			<Container>
-				<h1>Your company profile</h1>
+				<h1>Matches:</h1>
 				<br/>
 				<Form>
 					<Form.Group className="mb-3" controlId="formBasicEmail">
@@ -45,4 +45,4 @@ const Profile = () => {
 	)
 }
 
-export default Profile
+export default StudentMatches

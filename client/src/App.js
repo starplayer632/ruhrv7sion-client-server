@@ -31,6 +31,12 @@ import LoginCompany from "./pages/auth/LoginCompany";
 import Unauthorized from "./pages/auth/Unauthorized";
 import Error404 from "./pages/Error404";
 import Register from "./pages/auth/Register";
+import StudentMatches from "./pages/studentpage/login/StudentMatches.js";
+import Dashboard from "./pages/companypage/login/Dashboard.js";
+import EditorFunnel from "./pages/companypage/login/EditorFunnel.js";
+import EditorJobs from "./pages/companypage/login/EditorJobs.js";
+import MatchesCompany from "./pages/companypage/login/Matches.js";
+import ProfileCompany from "./pages/companypage/login/Profile.js";
 
 //TUT
 import LinkPage from './pages/TUT/LinkPage';
@@ -51,26 +57,37 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* public routes */}
+          <Route path="/" element={<Home />} />
           <Route path="login" element={<LoginStudent />} />
           <Route path="register" element={<Register />} />
           <Route path="linkpage" element={<LinkPage />} />
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="home" element={<LandingStudent />} />
           <Route path="jobs" element={<Jobs />} />
-          <Route path="business/" element={<LandingCompany />} />
-          <Route path="business/login" element={<LoginCompany />} />
+          
           <Route path="legalterms" element={<LegalTerms />} />
           <Route path="companies" element={<ComingSoon />} />
-          <Route path="/" element={<Home />} />
+          
+          <Route path="business/" element={<LandingCompany />} />
+          <Route path="business/login" element={<LoginCompany />} />
 
           {/* we want to protect these routes */}
           <Route element={<PersistLogin />}>
 
             <Route element={<RequireAuth allowedRoles={[ROLES.StudentUser, ROLES.Admin]} />}>
-              <Route path="profil" element={<ProfilStudent />} />
+              <Route path="login/profile" element={<ProfilStudent />} />
+              <Route path="login/matches" element={<StudentMatches />} />
+            </Route>
+            
+            <Route element={<RequireAuth allowedRoles={[ROLES.CompanyUser, ROLES.Admin]} />}>
+              <Route path="business/profile" element={<ProfileCompany />} />
+              <Route path="business/matches" element={<MatchesCompany />} />
+              <Route path="business/dashboard" element={<Dashboard />} />
+              <Route path="business/editorfunnel" element={<EditorFunnel />} />
+              <Route path="business/editorjobs" element={<EditorJobs />} />
             </Route>
 
-            <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
+            {/**<Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
               <Route path="editor" element={<Editor />} />
             </Route>
 
@@ -80,7 +97,7 @@ const App = () => {
 
             <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]} />}>
               <Route path="lounge" element={<Lounge />} />
-            </Route>
+            </Route>*/}
           </Route>
 
           {/* catch all */}
