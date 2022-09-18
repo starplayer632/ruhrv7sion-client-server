@@ -5,12 +5,12 @@ import {Container} from 'react-bootstrap';
 import axios from '../api/axios';
 const LOGIN_URL = '/auth';
 
-const Login = (typ) => {
+const LoginCompanies = (typ) => {
     const { setAuth, persist, setPersist } = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/business/dashboard";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -130,4 +130,4 @@ const Login = (typ) => {
     )
 }
 
-export default Login
+export default LoginCompanies

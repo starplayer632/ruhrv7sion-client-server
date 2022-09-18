@@ -26,11 +26,13 @@ import LegalTerms from "./pages/legalterms/legalterms.js";
 import Home from "./pages/studentpage/LandingStudent";
 import ComingSoon from "./pages/ComingSoon.js";
 import LandingCompany from './pages/companypage/LandingCompany';
-//TUT
-import Login from "./pages/auth/Login";
+import LoginStudent from "./pages/auth/LoginStudent";
+import LoginCompany from "./pages/auth/LoginCompany";
 import Unauthorized from "./pages/auth/Unauthorized";
 import Error404 from "./pages/Error404";
 import Register from "./pages/auth/Register";
+
+//TUT
 import LinkPage from './pages/TUT/LinkPage';
 import RequireAuth from './pages/TUT/RequireAuth';
 import PersistLogin from "./pages/TUT/PersistLogin";
@@ -49,14 +51,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* public routes */}
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={<LoginStudent />} />
           <Route path="register" element={<Register />} />
           <Route path="linkpage" element={<LinkPage />} />
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="home" element={<LandingStudent />} />
           <Route path="jobs" element={<Jobs />} />
           <Route path="business/" element={<LandingCompany />} />
-          <Route path="business/login" element={<Login />} />
+          <Route path="business/login" element={<LoginCompany />} />
           <Route path="legalterms" element={<LegalTerms />} />
           <Route path="companies" element={<ComingSoon />} />
           <Route path="/" element={<Home />} />

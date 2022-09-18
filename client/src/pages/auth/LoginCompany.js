@@ -1,13 +1,13 @@
 import React from 'react'
-import Logi from '../../components/Login';
-import Header_Student from '../../components/headers/Header_Student';
+import Logi from '../../components/LoginCompanies';
+import Header_Company from '../../components/headers/Header_Company';
 import Footer from '../../components/Footer';
 
-const Login = () => {
-
+const LoginCompany = () => {
+	
 	return(
 		<div>
-			<Header_Student/>
+			<Header_Company/>
 			<br />
 			<br />
 			<br />
@@ -23,4 +23,4 @@ const Login = () => {
 	)
 };
 
-export default Login
+export default LoginCompany
