@@ -1,7 +1,15 @@
 import React from "react";
 import ContactData from "../../components/company/contactData";
+import Button from "react-bootstrap/Button";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import FunnelEditor from "./FunnelEditor";
 
-export default function main() {
+export default function Main() {
+  const navigate = useNavigate();
+  const navigateToFunnelEditor = () => {
+    // 👇️ navigate to /contacts
+    navigate("/funnelEditor");
+  };
   return (
     <>
       <div
@@ -59,6 +67,9 @@ export default function main() {
           Contact Info
         </h3>
         <ContactData />
+        <Button onClick={navigateToFunnelEditor} variant="warning">
+          Funnel Editor
+        </Button>{" "}
       </div>
     </>
   );

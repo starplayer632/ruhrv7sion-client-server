@@ -15,6 +15,7 @@ import Footer from "./components/Footer.js";
 import Jobs from "./pages/Jobs.js";
 import NewJobOffer from "./pages/NewJobOffer.js";
 import CompanyPage from "./pages/companypage/CompanyPage.js";
+import FunnelEditor from "./pages/companypage/FunnelEditor";
 
 //App as const -> as a function
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="./pages/Auth/Register" exact element={<Register />} />
           <Route path="/jobs/newJobOffer" exact element={<NewJobOffer />} />
           <Route path="/unternehmen" exact element={<CompanyPage />} />
+          <Route path="/funnelEditor" exact element={<FunnelEditor />} />
           <Route path="*" exact element={<Error404 />} />
         </Routes>
 
