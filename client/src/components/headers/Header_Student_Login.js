@@ -108,7 +108,7 @@ const Header_Student_Login = () => {
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/login/unternehmen" eventKey="link-1" style={{color:'white'}}>Unternehmen</Nav.Link>
+                <Nav.Link href="/login/companies" eventKey="link-1" style={{color:'white'}}>Companies</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/login/matches" eventKey="link-1" style={{color:'white'}}>Matches</Nav.Link>

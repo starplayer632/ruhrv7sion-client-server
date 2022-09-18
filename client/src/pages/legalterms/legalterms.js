@@ -1,6 +1,6 @@
 import React from 'react';
-import Header_Student_Login from '../../../components/headers/Header_Student_Login';
-import Footer from '../../../components/Footer';
+import Header_Student from '../../components/headers/Header_Student';
+import Footer from '../../components/Footer';
 import {Container, Form, Button} from 'react-bootstrap';
 
 const LegalTerms = () => {
@@ -9,7 +9,7 @@ const LegalTerms = () => {
 		<div style={{
 			backgroundColor:'#f5f5f5',
 		}}>
-			<Header_Student_Login/>
+			<Header_Student/>
 			<br/>
 			<Container>
 				<h1>Your profile</h1>

@@ -19,10 +19,13 @@ import NewJobOffer from "./pages/NewJobOffer.js";
 import Unauthorized from "./pages/auth/Unauthorized";
 import Login from "./pages/auth/Login";
 */
-import Jobs from "./pages/Jobs.js";
+import Jobs from "./pages/studentpage/Jobs.js";
 import LandingStudent from "./pages/studentpage/LandingStudent";
-import ProfilStudent from "./pages/studentpage/ProfilStudent";
+import ProfilStudent from "./pages/studentpage/login/ProfilStudent";
 import LegalTerms from "./pages/legalterms/legalterms.js";
+import Home from "./pages/studentpage/LandingStudent";
+import ComingSoon from "./pages/ComingSoon.js";
+import LandingCompany from './pages/companypage/LandingCompany';
 //TUT
 import Login from "./pages/auth/Login";
 import Unauthorized from "./pages/auth/Unauthorized";
@@ -34,10 +37,10 @@ import PersistLogin from "./pages/TUT/PersistLogin";
 import Lounge from './pages/TUT/Lounge';
 import Editor from './pages/TUT/Editor';
 import Admin from './pages/TUT/Admin';
-import Home from './pages/TUT/Home';
+//import Home from './pages/TUT/Home';
 import Layout from './pages/TUT/Layout';
 import ROLES from './context/roles_list';
-import businesslanding from './pages/companypage/LandingCompany';
+
 
 //App as const -> as a function
 const App = () => {
@@ -52,15 +55,14 @@ const App = () => {
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="home" element={<LandingStudent />} />
           <Route path="jobs" element={<Jobs />} />
-          <Route path="business/" element={<businesslanding />} />
-          <Route path="business/login" element={<businesslanding />} />
+          <Route path="business/" element={<LandingCompany />} />
+          <Route path="business/login" element={<Login />} />
           <Route path="legalterms" element={<LegalTerms />} />
+          <Route path="companies" element={<ComingSoon />} />
+          <Route path="/" element={<Home />} />
 
           {/* we want to protect these routes */}
           <Route element={<PersistLogin />}>
-            <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-              <Route path="/" element={<Home />} />
-            </Route>
 
             <Route element={<RequireAuth allowedRoles={[ROLES.StudentUser, ROLES.Admin]} />}>
               <Route path="profil" element={<ProfilStudent />} />

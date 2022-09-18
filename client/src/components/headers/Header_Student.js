@@ -98,7 +98,7 @@ const Header_Student = () => {
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/unternehmen" eventKey="link-1" style={{color:'white'}}>Unternehmen</Nav.Link>
+                <Nav.Link href="/companies" eventKey="link-1" style={{color:'white'}}>Companies</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>

@@ -1,17 +1,7 @@
-/**
- * FROM MARIUSZ just imported
-
-import React from "react";
-
-export default function LandingPage() {
-  return <div>LandingPage</div>;
-}
- */
-
 import React from 'react'
 import {Container, Row, Button} from 'react-bootstrap'
-import Header_Company from '../../components/headers/Header_Company'
-import Footer from '../../components/Footer'
+import Header_Student from '../components/headers/Header_Student'
+import Footer from '../components/Footer'
 
 
 
@@ -24,7 +14,7 @@ function ComingSoon() {
         <div style={{
 			backgroundColor:'#f5f5f5',
 		}}>
-			<Header_Company />
+			<Header_Student/>
 			<Container style={{
             backgroundColor:'#f5f5f5',
             minHeight:'1015px',

@@ -5,7 +5,7 @@ import {Container} from 'react-bootstrap';
 import axios from '../api/axios';
 const LOGIN_URL = '/auth';
 
-const Login = () => {
+const Login = (typ) => {
     const { setAuth, persist, setPersist } = useAuth();
 
     const navigate = useNavigate();
