@@ -2,9 +2,12 @@ import React from 'react';
 import Header_Student_Login from '../../../components/headers/Header_Student_Login';
 import Footer from '../../../components/Footer';
 import {Container, Form, Button} from 'react-bootstrap';
+import { axiosPrivate } from "../../../api/axios";
+import getUsername from '../../../hooks/getUsername';
+import Cookies from 'js-cookie';
 
 const ProfilStudent = () => {
-	
+
 	return (
 		<div style={{
 			backgroundColor:'#f5f5f5',
@@ -13,6 +16,8 @@ const ProfilStudent = () => {
 			<br/>
 			<Container>
 				<h1>Your profile</h1>
+				<br/>
+				<h3>Username: {alert(Cookies.get('username'))}</h3>
 				<br/>
 				<Form>
 					<Form.Group className="mb-3" controlId="formBasicEmail">
