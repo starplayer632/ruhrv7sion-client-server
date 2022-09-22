@@ -2,11 +2,11 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import QuestionLIst from "../questionTypesEditor/QuestionLIst";
 
-export default function yesNoQuestion({ list, setList }) {
+export default function yesNoQuestion({ setList }) {
   const addYesNoQ = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    setList([...list, { type: "YesNo", id: Math.random() * 100 }]);
+    setList((list) => [...list, { type: "YesNo", id: Math.random() * 100 }]);
   };
   return (
     <>

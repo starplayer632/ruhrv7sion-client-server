@@ -16,9 +16,6 @@ export default function QuestionLIst({ questions, questionsO }) {
             <SliderQuestion />
           )
         )}
-        {questionsO.map((question) => (
-          <OpenQuestion />
-        ))}
       </ul>
     </div>
   );

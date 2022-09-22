@@ -75,6 +75,18 @@ export default function Main() {
   );
 }
 
+const trapez = {
+  width: 200,
+  height: 0,
+  borderBottomWidth: 100,
+  borderBottomColor: "red",
+  borderLeftWidth: 50,
+  borderLeftColor: "transparent",
+  borderRightWidth: 50,
+  borderRightColor: "transparent",
+  borderStyle: "solid",
+};
+
 const container = {
   display: "flex",
   textAlign: "center",

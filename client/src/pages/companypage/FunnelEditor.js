@@ -6,7 +6,7 @@ import SliderQuestion from "../../components/company/questionTypesLegend/sliderQ
 
 export default function () {
   const [list, setList] = useState([]);
-  const [listO, setListO] = useState([]);
+  const [listO, setListO] = useState({});
   console.log(list);
   return (
     <div style={container}>
@@ -15,9 +15,9 @@ export default function () {
         <div style={wrapper}>
           <h3 style={{ marginTop: "30px" }}>Elements </h3>
         </div>
-        <YesNoQuestion list={list} setList={setList} />
-        <OpenQuestion list={listO} setList={setListO} />
-        <SliderQuestion />
+        <YesNoQuestion setList={setList} />
+        <OpenQuestion setList={setList} />
+        <SliderQuestion setList={setList} />
       </div>
     </div>
   );

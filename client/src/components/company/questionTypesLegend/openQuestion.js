@@ -1,11 +1,10 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 
-export default function openQuestion(listO, setListO) {
+export default function openQuestion({ setList }) {
   const addOpenQ = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    setListO([...listO, { type: "open", id: Math.random() * 100 }]);
+    setList((list) => [...list, { type: "open", id: Math.random() * 100 }]);
   };
   return (
     <>

@@ -3,11 +3,11 @@ import Button from "react-bootstrap/Button";
 import QuestionLIst from "../questionTypesEditor/QuestionLIst";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
-export default function sliderQuestion({ setList }) {
-  const addSliderQ = (e) => {
+export default function yesNoQuestion({ list, setList }) {
+  const addYesNoQ = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    setList((list) => [...list, { type: "slider", id: Math.random() * 100 }]);
+    setList([...list, { id: Math.random() * 100 }]);
   };
   return (
     <>
@@ -31,7 +31,7 @@ export default function sliderQuestion({ setList }) {
           <Button
             style={{ marginTop: "35px" }}
             variant="primary"
-            onClick={addSliderQ}
+            onClick={addYesNoQ}
           >
             Add
           </Button>
