@@ -108,6 +108,8 @@ app.use('/students', require('./routes/api/students'));
 app.use('/users', require('./routes/api/users'));
 
 
+
+
 //start listening to requests BUT Mongoose needs to work
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB');

@@ -77,6 +77,7 @@ const App = () => {
             <Route element={<RequireAuth allowedRoles={[ROLES.StudentUser, ROLES.Admin]} />}>
               <Route path="login/profile" element={<ProfilStudent />} />
               <Route path="login/matches" element={<StudentMatches />} />
+              <Route path="login/" element={<StudentMatches />} />
             </Route>
             
             <Route element={<RequireAuth allowedRoles={[ROLES.CompanyUser, ROLES.Admin]} />}>

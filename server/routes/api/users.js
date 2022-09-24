@@ -10,5 +10,6 @@ router.route('/')
 
 router.route('/:id')
     .get(verifyRoles(ROLES_LIST.Admin), usersController.getUser);
+router.route('/username').get(verifyRoles(ROLES_LIST.StudentUser), usersController.getUser);
 
 module.exports = router;
