@@ -37,6 +37,8 @@ app.use('/logout', require('./routes/logout'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
+app.use('/funnels', require('./routes/api/funnels'));
+
 
 
 //MongoDB not needed now

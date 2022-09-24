@@ -37,7 +37,9 @@ import EditorFunnel from "./pages/companypage/login/EditorFunnel.js";
 import EditorJobs from "./pages/companypage/login/EditorJobs.js";
 import MatchesCompany from "./pages/companypage/login/Matches.js";
 import ProfileCompany from "./pages/companypage/login/Profile.js";
-
+import SeeAllFunnelConfigs from "./pages/companypage/login/SeeAllFunnelConfigs.js";
+import ROLES from './context/roles_list';
+import CreateNewFunnel from "./pages/companypage/login/CreateNewFunnel.js";
 //TUT
 import LinkPage from './pages/TUT/LinkPage';
 import RequireAuth from './pages/TUT/RequireAuth';
@@ -47,7 +49,7 @@ import Editor from './pages/TUT/Editor';
 import Admin from './pages/TUT/Admin';
 //import Home from './pages/TUT/Home';
 import Layout from './pages/TUT/Layout';
-import ROLES from './context/roles_list';
+
 
 
 //App as const -> as a function
@@ -86,6 +88,8 @@ const App = () => {
               <Route path="business/dashboard" element={<Dashboard />} />
               <Route path="business/editorfunnel" element={<EditorFunnel />} />
               <Route path="business/editorjobs" element={<EditorJobs />} />
+              <Route path="business/createnewfunnel" element={<CreateNewFunnel />} />
+              <Route path="business/seeallfunnelconfigs" element={<SeeAllFunnelConfigs />} />
             </Route>
 
             {/**<Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
