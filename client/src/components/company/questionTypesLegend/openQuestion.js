@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import { TextField } from "@mui/material";
 
 export default function openQuestion({ setList }) {
   const addOpenQ = (e) => {
@@ -12,7 +13,17 @@ export default function openQuestion({ setList }) {
         <h6 style={{ paddingTop: "15px" }}> Type 2: Open question </h6>
         <div>Tell us something about yourself</div>
         <div style={labelContainer}>
-          <input type="text" />
+          <TextField
+            id="outlined-basic"
+            label="Type in your answer"
+            variant="outlined"
+            multiline
+            rows="1"
+            style={{
+              backgroundColor: "white",
+              width: "82%",
+            }}
+          />
         </div>
         <Button variant="primary" onClick={addOpenQ}>
           Add
@@ -26,7 +37,7 @@ const format = {
   width: "350px",
   backgroundColor: "lightBlue",
   position: "relative",
-  height: "189px",
+  height: "199px",
   marginTop: "98px",
   textAlign: "center",
   margin: "0",
@@ -38,7 +49,7 @@ const format = {
 const labelContainer = {
   display: "flex",
   justifyContent: "space-around",
-  padding: "20px",
+  padding: "10px",
 };
 
 const labelStyle = {

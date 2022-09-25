@@ -3,34 +3,66 @@ import QuestionLIst from "../../components/company/questionTypesEditor/QuestionL
 import YesNoQuestion from "../../components/company/questionTypesLegend/yesNoQuestion";
 import OpenQuestion from "../../components/company/questionTypesLegend/openQuestion";
 import SliderQuestion from "../../components/company/questionTypesLegend/sliderQuestion";
+import Button from "react-bootstrap/Button";
+import "../../index.css";
 
 export default function () {
   const [list, setList] = useState([]);
-  const [listO, setListO] = useState({});
+
   console.log(list);
   return (
-    <div style={container}>
-      <QuestionLIst questions={list} questionsO={listO} />
-      <div style={elements}>
-        <div style={wrapper}>
-          <h3 style={{ marginTop: "30px" }}>Elements </h3>
+    <>
+      <div style={container}>
+        <div style={{ width: "120%" }}>
+          <h1
+            style={{
+              margin: "0 auto",
+              width: "90%",
+              borderBottom: "2px solid grey",
+              paddingBottom: "20px",
+              marginBottom: "10px",
+            }}
+          >
+            Funnel Editor
+          </h1>
+          <QuestionLIst questions={list} setList={setList} />
         </div>
-        <YesNoQuestion setList={setList} />
-        <OpenQuestion setList={setList} />
-        <SliderQuestion setList={setList} />
+        <div style={elements}>
+          <div style={wrapper}>
+            <h3 style={{ marginTop: "7px" }}>Elements </h3>
+          </div>
+          <YesNoQuestion setList={setList} />
+          <OpenQuestion setList={setList} />
+          <SliderQuestion setList={setList} />
+        </div>
       </div>
-    </div>
+      <div style={{ height: "300px", margin: "0 auto", width: "48%" }}>
+        <Button style={list.length !== 0 ? show : hide} variant="primary">
+          Submit
+        </Button>{" "}
+      </div>
+    </>
   );
 }
 
+const show = {
+  display: "block",
+};
+
+const hide = {
+  display: "none",
+};
+
 const container = {
   width: "70%",
-  justifyContent: "space-around",
+  justifyContent: "center",
   position: "center",
   margin: "0",
   margin: "auto",
-  height: "130vh",
+  minHeight: "50vh",
   display: "flex",
+  paddingBottom: "50px",
+  marginTop: "60px",
 };
 
 const elements = {
@@ -38,12 +70,13 @@ const elements = {
   marginTop: "100px",
   color: " ",
   backgroundColor: "lightGrey",
-  height: "700px",
+  height: "760px",
   width: "400px",
   borderRadius: "25px",
   marginLeft: "auto",
   marginRight: "0",
-  paddingBottom: "30px",
+  paddingBottom: "180px",
+  padding: " 30px 30px",
 };
 
 const wrapper = {

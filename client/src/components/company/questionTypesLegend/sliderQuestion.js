@@ -13,7 +13,16 @@ export default function sliderQuestion({ setList }) {
     <>
       <div style={format}>
         <h6 style={{ paddingTop: "15px" }}> Type 3: Range question </h6>
-        <div>How would you estimate your current react skill level</div>
+        <div
+          style={{
+            width: "80%",
+            margin: "0",
+            margin: "auto",
+            paddingBottom: "10px",
+          }}
+        >
+          How would you estimate your current react skill level
+        </div>
         <Slider
           aria-label="Temperature"
           style={{ width: "250px", margin: "0", margin: "auto" }}
@@ -46,7 +55,7 @@ const format = {
   width: "350px",
   backgroundColor: "lightBlue",
   position: "relative",
-  height: "200px",
+  height: "210px",
   marginTop: "98px",
   textAlign: "center",
   margin: "0",
