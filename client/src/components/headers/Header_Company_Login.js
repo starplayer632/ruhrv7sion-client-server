@@ -20,7 +20,7 @@ function Header_Company_Login() {
       }}>
         <Container>
 
-          <Navbar.Brand href="/">
+          <Navbar.Brand href="/business/dashboard">
           <div class="d-flex flex-row"style={{
                   position:'absolute',
                   left:'0px',
@@ -96,32 +96,35 @@ function Header_Company_Login() {
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <Nav.Item>
-                <Nav.Link href="dashboard" style={{color:'white'}}>Dashboard</Nav.Link>
+                <Nav.Link href="/business/dashboard" style={{color:'white'}}>Dashboard</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="matches" style={{color:'white'}}>Matches</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="editorjobs" style={{color:'white'}}>Jobs Editor</Nav.Link>
-              </Nav.Item>
+              <NavDropdown id="dropdownmenue" title="Matches"  style={{color:'white'}}>
+                <NavDropdown.Item href="/business/matches">My Matches</NavDropdown.Item>
+                <NavDropdown.Item href="/business/matches/newestmatch">Newest Match</NavDropdown.Item>
+              </NavDropdown>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="editorfunnel" eventKey="link-1" style={{color:'white'}}>FunnelEditor</Nav.Link>
-              </Nav.Item>
+              <NavDropdown id="dropdownmenue" title="Jobs"  style={{color:'white'}}>
+                <NavDropdown.Item href="/business/jobs">My job offers</NavDropdown.Item>
+                <NavDropdown.Item href="/business/jobs/createnewoffer">Create new job offer</NavDropdown.Item>
+              </NavDropdown>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
-              <NavDropdown title="Settings"  style={{color:'white'}}>
-                <NavDropdown.Item href="profile">My Profile</NavDropdown.Item>
-                <NavDropdown.Item href="companycard">Company Card</NavDropdown.Item>
+              <NavDropdown id="dropdownmenue" title="Funnels"  style={{color:'white'}}>
+                <NavDropdown.Item href="/business/funnels">My Funnels</NavDropdown.Item>
+                <NavDropdown.Item href="/business/funnels/createnewfunnel">Create new Funnel</NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Item>
+                <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
+              </Nav.Item>
+              <NavDropdown id="dropdownmenue" title="Settings"  style={{color:'white'}}>
+                <NavDropdown.Item href="/business/profile">My Profile</NavDropdown.Item>
+                <NavDropdown.Item href="/business/companycard">Company Card</NavDropdown.Item>
               </NavDropdown>
               {/**id="nav-dropdown"
                * <Nav.Item>

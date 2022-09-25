@@ -15,7 +15,7 @@ router.route('/')
 router.route('/:id')
     .get(funnelsController.getFunnelById);
     //.post(funnelsController.setFunnelById);
-router.route('/getallfunnelconfigs')
-    .post(funnelsController.getAllfunnelconfigs);
+router.route('/getallfunnelconfigs/:companyuser')
+    .get(funnelsController.getAllfunnelconfigs);
 
 module.exports = router;

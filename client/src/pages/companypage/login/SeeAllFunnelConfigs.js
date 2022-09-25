@@ -2,32 +2,35 @@ import React from 'react';
 import Header_Company_Login from '../../../components/headers/Header_Company_Login';
 import Footer from '../../../components/Footer';
 import Cookies from 'js-cookie';
-import {Container, Form, Button} from 'react-bootstrap';
+import {Container, Form, Button, Table} from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
-const FUNNEL_URL = '/funnels/getallfunnelconfigs';
+const FUNNELCONFIGS_URL = '/funnels/getallfunnelconfigs/';
 
 
 const SeeAllFunnelConfigs = () => {
-    let firstload = true;
-    const { setAuth } = useAuth();
     
-    let list;
-    useEffect(async () => {
-        if (!firstload){
-            const user = Cookies.get('username');
+    const { setAuth } = useAuth();
+    const [list, setList] = useState('');
+    const [table, setTable] = useState([]);
+
+    async function getallfunnelconfigs(){
+        const user = Cookies.get('username');
             console.log("companyuser: "+user);
+            const URL = FUNNELCONFIGS_URL+user;
             try {
-                const response = await axios.post(FUNNEL_URL,
-                    JSON.stringify({user}),
-                    {
-                        headers: { 'Content-Type': 'application/json' },
-                        withCredentials: true
-                    }
-                );
-                console.log(JSON.stringify(response?.data));
-                list=response?.data;
+                const response = await axios.get(URL).then(function (response) {
+                    console.log(JSON.stringify(response?.data));
+                    response?.data.forEach(element => {
+                        console.log("---");
+                        console.log(element);
+                        console.log("---");
+                        setTable(table => [...table, element]);
+                    });
+                    return response?.data;
+                });
+                
                 //console.log(JSON.stringify(response));
             } catch (err) {
             /* if (!err?.response) {
@@ -42,9 +45,15 @@ const SeeAllFunnelConfigs = () => {
                 //errRef.current.focus();
                 // <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             }
-        }else{
-            firstload=false;
+    }
+
+    let secload = false;
+    useEffect(() => {
+        if (secload){
+            getallfunnelconfigs();
+            
         }
+        secload=true;
     }, [])
 
 
@@ -58,8 +67,12 @@ const SeeAllFunnelConfigs = () => {
 			<Container>
 				<br/>
 				<h1>All Funnels:</h1>
-                {list}
 				<br/>
+                {JSON.stringify(table[0].funnelname)}
+                <br/>
+                {table.forEach(element => {
+                    
+                })}
 			</Container>
 			<br/>
 			<div style={{

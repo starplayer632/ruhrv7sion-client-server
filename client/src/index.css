@@ -10,6 +10,16 @@
   src: url("./assets/fonts/Asap-VariableFont_wght.ttf") format("truetype");
 }
 
+:root{
+  --bs-navbar-color: #ffffff !important;
+  --bs-navbar-active-color: #ffffff !important;
+}
+#dropdownmenue{
+  color:#ffffff !important;
+}
+
+
+
 /**
 * Main Font is Asap_Variable / Others were there before
 */

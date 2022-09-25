@@ -10,7 +10,7 @@ const LoginStudents = (typ) => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/login/home";
 
     const userRef = useRef();
     const errRef = useRef();

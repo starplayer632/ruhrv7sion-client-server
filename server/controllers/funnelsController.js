@@ -60,14 +60,14 @@ const getFunnelById = async (req, res) => {
 }
 
 const getAllfunnelconfigs = async (req, res) => {
-    if (!req?.body?.user) { //if (!req?.body?.questions || !req?.body?.funnelname || !req?.body?.companyuser) {
+    if (!req?.params?.companyuser) { //if (!req?.body?.questions || !req?.body?.funnelname || !req?.body?.companyuser) {
         return res.status(400).json({ 'message': 'companyuser are required' });
     }
-    const companyuser = req.body.user;
+    const companyuser = req.params.companyuser;
     try {
         const funnelconfigs = await FunnelConfig.find({companyuser});
 
-        res.status(201).json(funnelconfigs);
+        res.json(funnelconfigs);
     } catch (err) {
         console.error(err);
     }

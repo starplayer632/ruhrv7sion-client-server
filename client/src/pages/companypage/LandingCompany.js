@@ -32,10 +32,10 @@ function ComingSoon() {
                 <br/>
                 <br/>
                 <br/>
-                <h1>Coming Soon!</h1>        
+                <h1>Landing Companypage</h1>        
                 <br/>
                 <br/>
-                <Button href="/">Back Home?</Button>
+                <Button href="/">Back to main page?</Button>
                 <br/>
                 <br/>
             </Container>

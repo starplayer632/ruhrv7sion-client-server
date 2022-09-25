@@ -98,7 +98,7 @@ const Header_Student = () => {
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/companies" eventKey="link-1" style={{color:'white'}}>Companies</Nav.Link>
+                <Nav.Link href="/zukunftsregister" eventKey="link-1" style={{color:'white'}}>Zukunftsregister</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
@@ -117,7 +117,7 @@ const Header_Student = () => {
                         }}/>
                   </div>
                   
-                    <Nav.Link href="/login" eventKey="link-2" style={{color:'white'}}>Login</Nav.Link>
+                    <Nav.Link href="/login/home" eventKey="link-2" style={{color:'white'}}>Login</Nav.Link>
                   
                 </div>
               </Nav.Item>

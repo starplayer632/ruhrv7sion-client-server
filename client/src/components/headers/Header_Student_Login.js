@@ -20,7 +20,7 @@ const Header_Student_Login = () => {
       }}>
         <Container>
 
-          <Navbar.Brand href="/">
+          <Navbar.Brand href="/login/home">
           <div class="d-flex flex-row"style={{
             position:'absolute',
             left:'0px',
@@ -96,7 +96,7 @@ const Header_Student_Login = () => {
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <Nav.Item>
-                <Nav.Link href="/" style={{color:'white'}}>Home</Nav.Link>
+                <Nav.Link href="/login/home" style={{color:'white'}}>Home</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
@@ -108,10 +108,16 @@ const Header_Student_Login = () => {
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/login/companies" eventKey="link-1" style={{color:'white'}}>Companies</Nav.Link>
+                <Nav.Link href="/login/zukunftsregister" eventKey="link-1" style={{color:'white'}}>Zukunftsregister</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/login/matches" eventKey="link-1" style={{color:'white'}}>Matches</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/login/profile" eventKey="link-1" style={{color:'white'}}>Profile</Nav.Link>

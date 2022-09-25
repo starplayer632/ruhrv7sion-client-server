@@ -29,7 +29,7 @@ import LandingCompany from './pages/companypage/LandingCompany';
 import LoginStudent from "./pages/auth/LoginStudent";
 import LoginCompany from "./pages/auth/LoginCompany";
 import Unauthorized from "./pages/auth/Unauthorized";
-import Error404 from "./pages/Error404";
+import Error404 from "./pages/errorpages/Error404";
 import Register from "./pages/auth/Register";
 import StudentMatches from "./pages/studentpage/login/StudentMatches.js";
 import Dashboard from "./pages/companypage/login/Dashboard.js";
@@ -41,6 +41,12 @@ import SeeAllFunnelConfigs from "./pages/companypage/login/SeeAllFunnelConfigs.j
 import ROLES from './context/roles_list';
 import CreateNewFunnel from "./pages/companypage/login/CreateNewFunnel.js";
 import CompanyCard from "./pages/companypage/login/CompanyCard.js";
+import LandingStudentLogin from "./pages/studentpage/login/LandingStudentLogin";
+import Zukunftsregister from "./pages/studentpage/Zukunftsregister.js";
+import ZukunftsregisterLogin from "./pages/studentpage/login/ZukunftsregisterLogin.js";
+import JobsLogin from "./pages/studentpage/login/JobsLogin.js";
+import CompanyJobs from "./pages/companypage/login/CompanyJobs.js";
+import CompanyFunnels from "./pages/companypage/login/CompanyFunnels.js";
 //TUT
 import LinkPage from './pages/TUT/LinkPage';
 import RequireAuth from './pages/TUT/RequireAuth';
@@ -68,7 +74,7 @@ const App = () => {
           <Route path="jobs" element={<Jobs />} />
           <Route path="jobs/:jobsid" element={<ComingSoon />} />
           <Route path="legalterms" element={<LegalTerms />} />
-          <Route path="zukunftsregister" element={<ComingSoon />} />
+          <Route path="zukunftsregister" element={<Zukunftsregister />} />
           <Route path="zukunftsregister/:companyuser" element={<ComingSoon />} /> 
           
           {/* Layer 0: public student auth */}
@@ -90,22 +96,28 @@ const App = () => {
           <Route element={<PersistLogin />}>
             {/** You need to logged in as STUDENT or ADMIN in order ro access*/}
             <Route element={<RequireAuth allowedRoles={[ROLES.StudentUser, ROLES.Admin]} />}>
-              <Route path="login/profile" element={<ProfilStudent />} />
+              <Route path="login/home" element={<LandingStudentLogin />} />
               <Route path="login/matches" element={<StudentMatches />} />
+              <Route path="login/jobs" element={<JobsLogin />} />
               <Route path="login/matches/:fullmatch" element={<ComingSoon />} />
-              <Route path="login/" element={<ComingSoon />} />
               <Route path="login/legalterms" element={<ComingSoon />} />
-              <Route path="login/zukunftsregister" element={<ComingSoon />} />
+              <Route path="login/zukunftsregister" element={<ZukunftsregisterLogin />} />
               <Route path="login/zukunftsregister/:companyuser" element={<ComingSoon />} />
+              <Route path="login/profile" element={<ProfilStudent />} />
             </Route>
             {/** You need to logged in as COMPANY or ADMIN in order ro access*/}
             <Route element={<RequireAuth allowedRoles={[ROLES.CompanyUser, ROLES.Admin]} />}>
               <Route path="business/profile" element={<ProfileCompany />} />
               <Route path="business/matches" element={<MatchesCompany />} />
+              <Route path="business/matches/newestmatch" element={<MatchesCompany />} />
               <Route path="business/dashboard" element={<Dashboard />} />
               <Route path="business/editorfunnel" element={<EditorFunnel />} />
-              <Route path="business/editorjobs" element={<EditorJobs />} />
-              <Route path="business/createnewfunnel" element={<CreateNewFunnel />} />
+              <Route path="business/jobs" element={<CompanyJobs />} />
+              <Route path="business/jobs/:jobsid" element={<EditorJobs />} />
+              <Route path="business/jobs/createnewoffer" element={<CompanyJobs />} />
+              <Route path="business/funnels" element={<CompanyFunnels />} />
+              <Route path="business/funnels/editor/:funnelname" element={<CompanyFunnels />} />
+              <Route path="business/funnels/createnewfunnel" element={<CreateNewFunnel />} />
               <Route path="business/seeallfunnelconfigs" element={<SeeAllFunnelConfigs />} />
               <Route path="business/companycard" element={<CompanyCard />} />
             </Route>

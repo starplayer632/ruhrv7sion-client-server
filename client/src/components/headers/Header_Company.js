@@ -10,7 +10,7 @@ function Header_Company() {
       }}>
         <Container>
 
-          <Navbar.Brand href="/">
+          <Navbar.Brand href="/business/">
           <div class="d-flex flex-row"style={{
                   position:'absolute',
                   left:'0px',
@@ -87,9 +87,6 @@ function Header_Company() {
             <Nav>
               <Nav.Item>
                 <Nav.Link href="/business/" style={{color:'white'}}>Home</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
