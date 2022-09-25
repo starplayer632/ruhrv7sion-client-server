@@ -40,6 +40,7 @@ import ProfileCompany from "./pages/companypage/login/Profile.js";
 import SeeAllFunnelConfigs from "./pages/companypage/login/SeeAllFunnelConfigs.js";
 import ROLES from './context/roles_list';
 import CreateNewFunnel from "./pages/companypage/login/CreateNewFunnel.js";
+import CompanyCard from "./pages/companypage/login/CompanyCard.js";
 //TUT
 import LinkPage from './pages/TUT/LinkPage';
 import RequireAuth from './pages/TUT/RequireAuth';
@@ -58,30 +59,46 @@ const App = () => {
   return (
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* public routes */}
+          {/** 
+          * Layer 0: public studentpage 
+          * Layer 1: public full sights after the Layer 1 --> Params are there but the pages needs to be edited
+          */}
           <Route path="/" element={<Home />} />
-          <Route path="login" element={<LoginStudent />} />
-          <Route path="register" element={<Register />} />
-          <Route path="linkpage" element={<LinkPage />} />
-          <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="home" element={<LandingStudent />} />
           <Route path="jobs" element={<Jobs />} />
-          
+          <Route path="jobs/:jobsid" element={<ComingSoon />} />
           <Route path="legalterms" element={<LegalTerms />} />
-          <Route path="companies" element={<ComingSoon />} />
+          <Route path="zukunftsregister" element={<ComingSoon />} />
+          <Route path="zukunftsregister/:companyuser" element={<ComingSoon />} /> 
           
+          {/* Layer 0: public student auth */}
+          <Route path="login" element={<LoginStudent />} />
+          <Route path="register" element={<Register />} />
+          <Route path="unauthorized" element={<Unauthorized />} />
+          <Route path="linkpage" element={<LinkPage />} />
+
+          {/* Layer 1 (business/): public business */}
           <Route path="business/" element={<LandingCompany />} />
           <Route path="business/login" element={<LoginCompany />} />
+          <Route path="business/register" element={<ComingSoon/>} />
 
-          {/* we want to protect these routes */}
+          {/** 
+          * !we want to protect these routes! 
+          * Layer 1 (login/): Studentpage login (StudnetHub) routes where you need to be logged in
+          * Layer 1 (business/): Companypage login (CompanyHub) routes where you need to be logged in
+          */}
           <Route element={<PersistLogin />}>
-
+            {/** You need to logged in as STUDENT or ADMIN in order ro access*/}
             <Route element={<RequireAuth allowedRoles={[ROLES.StudentUser, ROLES.Admin]} />}>
               <Route path="login/profile" element={<ProfilStudent />} />
               <Route path="login/matches" element={<StudentMatches />} />
-              <Route path="login/" element={<StudentMatches />} />
+              <Route path="login/matches/:fullmatch" element={<ComingSoon />} />
+              <Route path="login/" element={<ComingSoon />} />
+              <Route path="login/legalterms" element={<ComingSoon />} />
+              <Route path="login/zukunftsregister" element={<ComingSoon />} />
+              <Route path="login/zukunftsregister/:companyuser" element={<ComingSoon />} />
             </Route>
-            
+            {/** You need to logged in as COMPANY or ADMIN in order ro access*/}
             <Route element={<RequireAuth allowedRoles={[ROLES.CompanyUser, ROLES.Admin]} />}>
               <Route path="business/profile" element={<ProfileCompany />} />
               <Route path="business/matches" element={<MatchesCompany />} />
@@ -90,22 +107,11 @@ const App = () => {
               <Route path="business/editorjobs" element={<EditorJobs />} />
               <Route path="business/createnewfunnel" element={<CreateNewFunnel />} />
               <Route path="business/seeallfunnelconfigs" element={<SeeAllFunnelConfigs />} />
+              <Route path="business/companycard" element={<CompanyCard />} />
             </Route>
-
-            {/**<Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
-              <Route path="editor" element={<Editor />} />
-            </Route>
-
-            <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-              <Route path="admin" element={<Admin />} />
-            </Route>
-
-            <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]} />}>
-              <Route path="lounge" element={<Lounge />} />
-            </Route>*/}
           </Route>
 
-          {/* catch all */}
+          {/* catch all / everything else --> ERROR404 */}
           <Route path="*" element={<Error404 />} />
         </Route>
     </Routes>
@@ -116,25 +122,3 @@ const App = () => {
 };
 
 export default App;
-/**
- *  {/**
-      {/** Routing wihtout ROLES
-      <BrowserRouter>
-        {/** For now Header and Footer will stay the same until ROLES and Persistent User Login Authentication with JWT Tokens is been solved
-        <Header />
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="./pages/Auth/Login" exact element={<Login />} />
-          <Route path="/jobs" exact element={<Jobs />} />
-          <Route path="/dashboard" exact element={<Dashboard />} />
-          <Route path="/register" exact element={<Register />} />
-          <Route path="/jobs/newJobOffer" exact element={<NewJobOffer />} />
-          <Route path="/login" exact element={<Login />} />
-          <Route path="*" exact element={<Error404 />} />
-        </Routes>
-
-        <Footer />
-      </BrowserRouter>
- * 
- * 
- */

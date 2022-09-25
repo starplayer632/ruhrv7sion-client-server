@@ -1,4 +1,4 @@
-const FunnelConfig = require('../model/FunnelConfigs');
+const FunnelConfig = require('../model/FunnelConfig');
 
 const getAllstudents = async (req, res) => {
     const students = await Student.find();

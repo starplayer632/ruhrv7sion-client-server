@@ -119,9 +119,14 @@ function Header_Company_Login() {
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+              <NavDropdown title="Settings"  style={{color:'white'}}>
+                <NavDropdown.Item href="profile">My Profile</NavDropdown.Item>
+                <NavDropdown.Item href="companycard">Company Card</NavDropdown.Item>
+              </NavDropdown>
+              {/**id="nav-dropdown"
+               * <Nav.Item>
                 <Nav.Link href="profile" eventKey="link-1" style={{color:'white'}}>My Profile</Nav.Link>
-              </Nav.Item>
+            </Nav.Item>*/}
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
