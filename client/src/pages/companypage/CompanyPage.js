@@ -2,7 +2,11 @@ import React from "react";
 import ContactData from "../../components/company/contactData";
 import Button from "react-bootstrap/Button";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FunnelEditor from "./FunnelEditor";
+import img from "../../images/zeche.JPG";
+import { TiStopwatch } from "react-icons/ti";
+import { borderRight } from "@mui/system";
 
 export default function Main() {
   const navigate = useNavigate();
@@ -19,7 +23,7 @@ export default function Main() {
           position: "center",
           margin: "0",
           margin: "auto",
-          height: "130vh",
+          minHeight: "180vh",
         }}
       >
         <div
@@ -39,25 +43,106 @@ export default function Main() {
           <p> Value Proposition </p>
           <p> Product Benefit description</p>
         </div>
-        <div style={container}>
-          <div style={SellingPointsStyle}>
-            {" "}
-            <div style={sentence}>Speed up your recruitment process!</div>{" "}
-            <button style={button}>
-              Learn more about our recruitment flow
-            </button>
-          </div>
-          <div style={SellingPointsStyle}>
-            <div style={sentence}>Find the right employees!</div>
-            <button style={button}>Learn more about our matching system</button>
-          </div>
-          <div style={SellingPointsStyle}>
-            <div style={sentence}>
-              Improve the performance of your job advertisments!
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div style={trapez2}>Deine beste Wahl</div>
+        <div
+          style={{
+            display: "flex",
+            textAlign: "center",
+            margin: "0",
+            margin: "auto",
+            justifyContent: "space-around",
+            marginTop: "40px",
+          }}
+        >
+          <div style={trapez}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <FavoriteBorderIcon
+                style={{
+                  fontSize: "150px",
+                  color: "FF5B2B",
+                  marginTop: "30px",
+                }}
+              />
             </div>
-            <button style={button}>Learn more about our dashboard</button>
+            <div
+              style={{
+                display: "flex",
+                height: "600px",
+                width: "100%",
+                flexDirection: "column",
+              }}
+            >
+              <h3 style={header}>Matching </h3>
+              <div style={sentence}>
+                RUHRV7SION Matching lässt Dich jeder Wissen, wer sich für Deine
+                Anzeige interessiert. Und wie gut Kandidat/innen zu Deinen
+                Kriterien passen{" "}
+              </div>
+            </div>
+          </div>
+          <div style={squere}>
+            <img src={img} style={{ marginTop: "20px" }} />
+            <div
+              style={{
+                display: "flex",
+                height: "600px",
+                width: "100%",
+                flexDirection: "column",
+                marginTop: "5px",
+              }}
+            >
+              <h3 style={header2}>Power ausm Pott</h3>
+              <div style={sentence2}>
+                Auf RUHRV7SION sind lauter Studierende aus dem Ruhrgebiet
+                unterwegs. Deine Job angebote treffen also genau die richtige
+                Zielgruppe.
+              </div>
+            </div>
+          </div>
+          <div style={squere}>
+            <TiStopwatch
+              style={{
+                fontSize: "150px",
+                color: "FF5B2B",
+                marginTop: "18px",
+                marginBottom: "8px",
+              }}
+            />
+            <div
+              style={{
+                display: "flex",
+                height: "600px",
+                width: "100%",
+                flexDirection: "column",
+                marginTop: "5px",
+              }}
+            >
+              <h3 style={header2}>Schnell und Easy</h3>
+              <div style={sentence2}>
+                Deine Anzeigen sind schnell und einfach erstellt. Und die ersten
+                Kandidat/innen melden sich sogar noch schneller.
+              </div>
+            </div>
           </div>
         </div>
+        {/*
+        <div style={container}>
+          <div style={SellingPointsStyle}>
+            <button style={button}>Starte Durch</button>
+          </div>
+          <div style={SellingPointsStyle}>
+            <button style={button}> Starte Durch</button>
+          </div>
+          <div style={SellingPointsStyle}>
+            <button style={button}>Starte Durch</button>
+          </div>
+        </div>
+         */}
         <h3
           style={{
             marginTop: "50px",
@@ -75,18 +160,41 @@ export default function Main() {
   );
 }
 
-const trapez = {
-  width: 200,
-  height: 0,
-  borderBottomWidth: 100,
-  borderBottomColor: "red",
-  borderLeftWidth: 50,
-  borderLeftColor: "transparent",
-  borderRightWidth: 50,
-  borderRightColor: "transparent",
-  borderStyle: "solid",
+const trapez2 = {
+  borderTop: "50px solid #FF5B2B",
+  borderRight: "40px solid transparent",
+  height: "0",
+  width: "35%",
+  textAlign: "center",
 };
 
+const squere = {
+  width: "40%",
+  height: "380px",
+  backgroundColor: "white",
+  borderBottom: "solid 2px #010837",
+};
+const trapez = {
+  alignItems: "center",
+  borderBottom: "380px solid #010837",
+  borderRight: "160px solid transparent",
+  height: "0",
+  width: "50%",
+  backgroundColor: "white",
+};
+
+const header = {
+  color: "white",
+  textAlign: "center",
+  float: "left",
+  margin: "0 auto",
+  width: "100%",
+  height: "30px",
+};
+
+const header2 = {
+  color: "#010837",
+};
 const container = {
   display: "flex",
   textAlign: "center",
@@ -120,10 +228,24 @@ const button = {
   marginTop: "90px",
 };
 
-const sentence = {
-  textAlign: "center",
-  marginTop: "40px",
+const sentence2 = {
+  color: "#010837",
+  float: "left",
+  clear: "left",
+  margin: "0 auto",
+  textAlign: "left",
   height: "20%",
-  width: "80%",
-  marginLeft: "25px",
+  width: "74%",
+  marginTop: "5px",
+};
+const sentence = {
+  color: "white",
+  float: "left",
+  clear: "left",
+  margin: "0 auto",
+  textAlign: "left",
+  height: "20%",
+  width: "85%",
+  marginTop: "17px",
+  marginLeft: "3em",
 };

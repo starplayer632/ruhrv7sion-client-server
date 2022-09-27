@@ -36,7 +36,7 @@ export default function () {
           <SliderQuestion setList={setList} />
         </div>
       </div>
-      <div style={{ height: "300px", margin: "0 auto", width: "48%" }}>
+      <div style={{ height: "300px", margin: "0 auto", width: "46%" }}>
         <Button style={list.length !== 0 ? show : hide} variant="primary">
           Submit
         </Button>{" "}
