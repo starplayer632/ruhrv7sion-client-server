@@ -1,9 +1,11 @@
 import {useState} from 'react'
 import { useNavigate  } from 'react-router-dom'
-import {Container, Form, Button} from 'react-bootstrap';
+import Reg from '../../components/Register';
+import Header_Student from '../../components/headers/Header_Student';
+import Footer from '../../components/Footer';
 
 function Register() {
-  const navigate = useNavigate();
+/*  const navigate = useNavigate();
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -85,9 +87,26 @@ function Register() {
 				/>
 				<br />
 				<input type="submit" value="Register" />
-</form>*/}
+</form>}
 
     </Container>
+  );*/
+
+  return(
+	<div>
+		<Header_Student/>
+		<br />
+		<br />
+		<br />
+		<br />
+		<Reg />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<Footer/>
+	</div>
   );
 }
 

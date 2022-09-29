@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../helpers/database');
+const pool = require('./helpers/database');
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model')
-const JobOffer = require('../models/joboffer.model')
+const JobOffer = require('./joboffer.model')
 const jwt = require('jsonwebtoken') //Json token tool
 const mongoose = require('mongoose') //MongoDB tool
 
