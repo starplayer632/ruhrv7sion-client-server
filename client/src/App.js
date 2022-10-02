@@ -27,7 +27,7 @@ import ProfilStudent from "./pages/studentpage/login/ProfilStudent";
 import LegalTerms from "./pages/legalterms/legalterms.js";
 import Home from "./pages/studentpage/LandingStudent";
 import ComingSoon from "./pages/ComingSoon.js";
-import LandingCompany from "./pages/companypage/LandingCompany";
+import LandingCompany from "./pages/companypage/CompanyPage";
 import LoginStudent from "./pages/auth/LoginStudent";
 import LoginCompany from "./pages/auth/LoginCompany";
 import Unauthorized from "./pages/auth/Unauthorized";
@@ -35,7 +35,7 @@ import Error404 from "./pages/errorpages/Error404";
 import Register from "./pages/auth/Register";
 import StudentMatches from "./pages/studentpage/login/StudentMatches.js";
 import Dashboard from "./pages/companypage/login/Dashboard.js";
-import EditorFunnel from "./pages/companypage/login/EditorFunnel.js";
+import EditorFunnel from "./pages/companypage/login/FunnelEditor.js";
 import EditorJobs from "./pages/companypage/login/EditorJobs.js";
 import MatchesCompany from "./pages/companypage/login/Matches.js";
 import ProfileCompany from "./pages/companypage/login/Profile.js";
@@ -126,7 +126,7 @@ const App = () => {
               element={<MatchesCompany />}
             />
             <Route path="business/dashboard" element={<Dashboard />} />
-            <Route path="business/editorfunnel" element={<EditorFunnel />} />
+            <Route path="/FunnelEditor" element={<EditorFunnel />} />
             <Route path="business/jobs" element={<CompanyJobs />} />
             <Route path="business/jobs/:jobsid" element={<EditorJobs />} />
             <Route

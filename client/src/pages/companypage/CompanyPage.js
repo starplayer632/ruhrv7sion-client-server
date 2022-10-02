@@ -3,19 +3,21 @@ import ContactData from "../../components/company/contactData";
 import Button from "react-bootstrap/Button";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FunnelEditor from "./FunnelEditor";
+import FunnelEditor from "./login/FunnelEditor";
 import img from "../../images/zeche.JPG";
 import { TiStopwatch } from "react-icons/ti";
 import { borderRight } from "@mui/system";
+import Header_Company from "../../components/headers/Header_Company";
+import Footer from "../../components/Footer";
 
 export default function Main() {
   const navigate = useNavigate();
   const navigateToFunnelEditor = () => {
-    // 👇️ navigate to /contacts
-    navigate("/funnelEditor");
+    navigate("/FunnelEditor");
   };
   return (
     <>
+      <Header_Company />
       <div
         style={{
           width: "70%",
@@ -48,7 +50,27 @@ export default function Main() {
         <br />
         <br />
         <br />
-        <div style={trapez2}>Deine beste Wahl</div>
+        <h3
+          style={{ marginBottom: "-41px", color: "white", marginLeft: "10px" }}
+        >
+          Deine beste Wahl{" "}
+        </h3>
+        <div style={trapez2}>
+          <div
+            style={{
+              display: "flex",
+              height: "600px",
+              width: "100%",
+              flexDirection: "column",
+              marginBottom: "40px",
+            }}
+          >
+            <span>
+              {" "}
+              <h3 style={header3}>Deine beste Wahl </h3>
+            </span>
+          </div>
+        </div>
         <div
           style={{
             display: "flex",
@@ -156,16 +178,29 @@ export default function Main() {
           Funnel Editor
         </Button>{" "}
       </div>
+      <Footer />
     </>
   );
 }
 
+const header3 = {
+  color: "white",
+  textAlign: "center",
+  float: "left",
+  margin: "0 auto",
+  width: "100%",
+  height: "50px",
+  position: "absolute",
+  marginBottom: "50px",
+};
+
 const trapez2 = {
+  alignItems: "center",
   borderTop: "50px solid #FF5B2B",
   borderRight: "40px solid transparent",
   height: "0",
   width: "35%",
-  textAlign: "center",
+  textAlign: "justify",
 };
 
 const squere = {

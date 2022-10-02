@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import QuestionLIst from "../../components/company/questionTypesEditor/QuestionLIst";
-import YesNoQuestion from "../../components/company/questionTypesLegend/yesNoQuestion";
-import OpenQuestion from "../../components/company/questionTypesLegend/openQuestion";
-import SliderQuestion from "../../components/company/questionTypesLegend/sliderQuestion";
+import QuestionLIst from "../../../components/company/questionTypesEditor/QuestionLIst";
+import YesNoQuestion from "../../../components/company/questionTypesLegend/yesNoQuestion";
+import OpenQuestion from "../../../components/company/questionTypesLegend/openQuestion";
+import SliderQuestion from "../../../components/company/questionTypesLegend/sliderQuestion";
 import Button from "react-bootstrap/Button";
-import "../../index.css";
+import "../../../index.css";
 
 export default function () {
   const [list, setList] = useState([]);
