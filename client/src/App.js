@@ -126,7 +126,7 @@ const App = () => {
               element={<MatchesCompany />}
             />
             <Route path="business/dashboard" element={<Dashboard />} />
-            <Route path="/FunnelEditor" element={<EditorFunnel />} />
+            <Route path="business/funneleditor" element={<EditorFunnel />} />
             <Route path="business/jobs" element={<CompanyJobs />} />
             <Route path="business/jobs/:jobsid" element={<EditorJobs />} />
             <Route
@@ -141,7 +141,7 @@ const App = () => {
             <Route
               path="business/funnels/createnewfunnel"
               element={<CreateNewFunnel />}
-            />
+            />a
             <Route
               path="business/seeallfunnelconfigs"
               element={<SeeAllFunnelConfigs />}
