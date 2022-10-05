@@ -30,8 +30,8 @@ app.use(cookieParser());//middleware for cookies
  * Routes
  */
 
-const user_studentsRouter= require("./SQL Scripts and Data/user_student");
-app.use('/api/users/', user_studentsRouter);
+/*const user_studentsRouter= require("./SQL Scripts and Data/user_student");
+app.use('/api/users/', user_studentsRouter);*/
 
 app.use('/logout', require('./routes/logout'));
 app.use('/refresh', require('./routes/refresh'));
