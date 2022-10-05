@@ -39,6 +39,8 @@ app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
 app.use('/funnels', require('./routes/api/funnels'));
 app.use('/companycards', require('./routes/api/companycards'));
+app.use('/joboffers', require('./routes/api/joboffers'));
+
 
 //MongoDB not needed now
 //const mongoDBRouter= require("./routes/mongodb_routes");
