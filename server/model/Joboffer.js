@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const cardSchema = new Schema({
     companyuser: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     createdat: {
         type: Date,

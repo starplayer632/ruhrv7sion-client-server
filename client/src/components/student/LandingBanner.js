@@ -1,6 +1,5 @@
 import {Container, Button} from 'react-bootstrap';
 import pictureLandingStartup from "../../assets/img/pictureLandingStartup.png";
-import SearchBarSmall from "./SearchBarSmall.js";
 
 
 function LandingBanner() {
@@ -35,22 +34,12 @@ function LandingBanner() {
                     <h4 style={{
                         fontWeight:'bold',
                     }}>Jetzt direkt suchen!</h4>
-                    <SearchBarSmall/>
+                    <Button style={{
+                        fontWeight:'bold',
+                    }} href="/jobs">
+                        zu den Jobs geht es hier
+                    </Button>
                     <br/>
-                    <p>
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#Werkstudent</a> &nbsp; 
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#IT</a> &nbsp; 
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#HomeOffice</a> &nbsp; 
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#MiniJob</a> &nbsp; 
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#Büro</a> &nbsp;
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#Benefits</a> &nbsp;  
-                        <br/>
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#Dortmund</a> &nbsp; 
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#Oberhausen</a> &nbsp; 
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#Mülheim an der Ruhr</a> &nbsp;
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#Duisburg</a> &nbsp;
-                        <a href='' style={{ color:'#666666', textDecoration: 'none',}}>#Essen</a> &nbsp;
-                    </p>
                 </div>
                 <div class="col">
                     <img

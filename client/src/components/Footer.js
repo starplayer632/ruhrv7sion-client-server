@@ -1,6 +1,7 @@
 import {Container, Button} from 'react-bootstrap';
 import logoWhite from "../assets/img/logo.png";
 import SkylineCut from "../assets/img/skylinecut.png";
+import {Row} from "react-bootstrap";
 
 function Footer() {
     return (
@@ -66,20 +67,20 @@ function Footer() {
                         </p>
                     </div>
                 </div>
-                <div class="row">
+                <Row>
                     <div class="col-sm" style={{
                             backgroundColor:'',
                             padding:'10px',
                     }}> 
-                        <h5>Datenschutz</h5>
+                        <h5><a href="/impressum">Datenschutz</a></h5>
                     </div>
                     <div class="col-sm" style={{
                             backgroundColor:'',
                             padding:'10px',
                     }}> 
-                        <h5>Impressum</h5>
+                        <h5><a href="/impressum">Impressum</a></h5>
                     </div>
-                </div>
+                </Row>
                 <div style={{
                     marginLeft:'0px',
                     marginRight:'100%',

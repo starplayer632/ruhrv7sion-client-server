@@ -4,7 +4,7 @@ import Footer from '../../../components/Footer';
 import Cookies from 'js-cookie';
 import {Container, Form, Button} from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import axios from '../../../api/axios';
+import axi from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 const CARDS_URL = '/companycards/';
 const CARDSEXIST_URL = '/companycards/exist/';
@@ -21,36 +21,27 @@ const CompanyCard = () => {
     const [infotext, setInfotext] = useState('');
     const companyuser = Cookies.get('username');
     let isExist = false;
-    let firstload = true;
 
+
+    let firstload = true;
     useEffect(async () => {
-        if (!firstload){
-            try {
-                const URL = CARDSEXIST_URL+companyuser;
-                const response = await axios.get(URL).then(function (response) {
-                    if(response?.data?.exist==="true"){
-                        isExist = true;
-                    }
-                });
-                //console.log(JSON.stringify(response));
-            } catch (err) {
-                console.log(err);
-            }
+        if(!firstload){
+            const URL = '/companycards/'+companyuser;
+            /*axi.get(URL).then(response => {
+                const d = response?.data;
+                //console.log("------------");
+                //console.log(d);
+                //console.log("------------");
+            }); */
         }else{
             firstload=false;
         }
     }, [])
 
 
+/*
     const handleSubmit = async (e) => {
         e.preventDefault();
-        /**console.log("companyuser: "+companyuser);
-        console.log("companyname: "+companyname);
-        console.log("adress: "+adress);
-        console.log("size: "+size);
-        console.log("products: "+products);
-        console.log("visionstatement: "+visionstatement);
-        console.log("infotext: "+adress);*/
         
         try {
             const response = await axios.post(CARDS_URL,
@@ -63,19 +54,9 @@ const CompanyCard = () => {
             console.log(JSON.stringify(response?.data));
             //console.log(JSON.stringify(response));
         } catch (err) {
-           /* if (!err?.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg('Failed');
-            }*/
-            //errRef.current.focus();
-            // <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            console.log(err);
         }
-    }
+    }*/
 
 
 	return (
@@ -84,7 +65,7 @@ const CompanyCard = () => {
 		}}>
 			<Header_Company_Login />
 			<br/>
-			<Container>
+			<Container>{/* 
 				<br/>
 				<h1>Create new funnel:</h1>
                    
@@ -101,6 +82,7 @@ const CompanyCard = () => {
                             id="companyname"
                             onChange={(e) => setCompanyname(e.target.value)}
                             required
+                            placeholder={companyname}
                         /><br/>
                         <label htmlFor="adress">adress:</label>
                         <input
@@ -147,7 +129,7 @@ const CompanyCard = () => {
 
                         <button>Create</button>
                     </form>
-				<br/>
+				<br/>*/}
 			</Container>
 			<br/>
 			<div style={{

@@ -8,24 +8,22 @@ import Footer from '../../components/Footer'
 
 
 function Jobs() {
-  
-
 
 	return (
 
         <div style={{
-			backgroundColor:'#f5f5f5',
+			backgroundColor:'#f5f5f5'
 		}}>
 			<Header_Student/>
 			<Container style={{
-            backgroundColor:'#f5f5f5',
-            minHeight:'1015px',
+                backgroundColor:'#f5f5f5',
+                minHeight:'1015px'
             }}>        
                 <Row style={{
                     marginTop:'50px',
                 }}>
                     <br/>
-                    <JobsSearchBar />
+                    {/*<JobsSearchBar />*/}
                     <div style={{
                         marginTop:'50px',
                     }}>
@@ -42,12 +40,8 @@ function Jobs() {
                 <br/>
                 <br/>
                 <br/>
+                <br/>
             </Container>
-			<div style={{
-				backgroundColor:'#f5f5f5',
-				height:'320px',
-			}}>
-			</div>
 			<Footer/>
 		</div>
 		

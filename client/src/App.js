@@ -72,7 +72,7 @@ const App = () => {
         <Route path="home" element={<LandingStudent />} />
         <Route path="jobs" element={<Jobs />} />
         <Route path="jobs/:jobsid" element={<ComingSoon />} />
-        <Route path="legalterms" element={<LegalTerms />} />
+        <Route path="impressum" element={<LegalTerms />} />
         <Route path="zukunftsregister" element={<Zukunftsregister />} />
         <Route path="zukunftsregister/:companyuser" element={<ComingSoon />} />
 
@@ -102,7 +102,7 @@ const App = () => {
             <Route path="login/matches" element={<StudentMatches />} />
             <Route path="login/jobs" element={<JobsLogin />} />
             <Route path="login/matches/:fullmatch" element={<ComingSoon />} />
-            <Route path="login/legalterms" element={<ComingSoon />} />
+            <Route path="login/impressum" element={<ComingSoon />} />
             <Route
               path="login/zukunftsregister"
               element={<ZukunftsregisterLogin />}
