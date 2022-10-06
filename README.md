@@ -24,7 +24,7 @@ Backend and Frontend
 1. Navigate a terminal to your server folder
 2. Enter the following code: npm run dev
 
-#.env file 
+# .env file 
 1. create .env file in folder named "server"
 2. ask the onwer for the data to insert here
 Sampledata:
