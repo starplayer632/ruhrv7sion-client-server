@@ -56,6 +56,7 @@ import PersistLogin from "./pages/TUT/PersistLogin";
 import Lounge from "./pages/TUT/Lounge";
 import Editor from "./pages/TUT/Editor";
 import Admin from "./pages/TUT/Admin";
+import TEST from "./pages/TUT/Users";
 //import Home from './pages/TUT/Home';
 import Layout from "./pages/TUT/Layout";
 
@@ -69,6 +70,7 @@ const App = () => {
          * Layer 1: public full sights after the Layer 1 --> Params are there but the pages needs to be edited
          */}
         <Route path="/" element={<Home />} />
+        <Route path="/TEST" element={<TEST />} />
         <Route path="home" element={<LandingStudent />} />
         <Route path="jobs" element={<Jobs />} />
         <Route path="jobs/:jobsid" element={<ComingSoon />} />
@@ -126,7 +128,7 @@ const App = () => {
               element={<MatchesCompany />}
             />
             <Route path="business/dashboard" element={<Dashboard />} />
-            <Route path="business/funneleditor" element={<EditorFunnel />} />
+            <Route path="business/editor/funneleditor" element={<EditorFunnel />} />
             <Route path="business/jobs" element={<CompanyJobs />} />
             <Route path="business/jobs/:jobsid" element={<EditorJobs />} />
             <Route

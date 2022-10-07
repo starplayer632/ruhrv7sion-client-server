@@ -41,18 +41,32 @@ const createCompanyCard = async (req, res) => {
     }
 
     try {
-        const result = await CompanyCard.create({
-            companyuser: req.body.companyuser,
-            companyname: req.body.companyname,
-            adress: req.body.adress,
-            size: req.body.size,
-            products: req.body.products,
-            branch: req.body.branch,
-            visionstatement: req.body.visionstatement,
-            infotext: req.body.infotext
-        });
-
-        res.status(201).json(result);
+        const exist = await CompanyCard.findOne({ "companyuser": req.body.companyuser }).exec();
+        if (!exist){
+            const result = await CompanyCard.create({
+                companyuser: req.body.companyuser,
+                companyname: req.body.companyname,
+                adress: req.body.adress,
+                size: req.body.size,
+                products: req.body.products,
+                branch: req.body.branch,
+                visionstatement: req.body.visionstatement,
+                infotext: req.body.infotext
+            });
+    
+            res.status(201).json(result);
+        }else{
+            exist.companyname = req.body.companyname;
+            exist.adress = req.body.adress;
+            exist.size = req.body.size;
+            exist.products = req.body.products;
+            exist.branch = req.body.branch;
+            exist.visionstatement = req.body.visionstatement;
+            exist.infotext= req.body.infotext;
+            await exist.save();
+            res.status(201).json({"status":"ok"});
+        }
+        
     } catch (err) {
         console.error(err);
     }

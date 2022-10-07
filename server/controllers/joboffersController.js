@@ -35,6 +35,16 @@ const getJoboffer = async (req, res) => {
     res.json(job);
 }
 
+const getJobOfferByCompanyuser = async (req, res) => {
+    if (!req?.params?.companyuser) return res.status(400).json({ "message": ' companyuser is required' });
+    const jobs = await Joboffer.find({ "companyuser": req.params.companyuser }).exec();
+    if (!jobs) {
+        return res.status(204).json({ 'message': `joboffers  for companyuser ${req.params.companyuser} not found` });
+    }
+    res.json(jobs);
+}
+
+
 const createJoboffer = async (req, res) => {
     if (!req?.body?.companyuser || !req?.body?.companyname || !req?.body?.type || !req?.body?.title || !req?.body?.city || !req?.body?.timeweekly || !req?.body?.money || !req?.body?.textworktogether || !req?.body?.textexpectations ) { //if (!req?.body?.questions || !req?.body?.funnelname || !req?.body?.companyuser) {
         return res.status(400).json({ 'message': 'everything is required' });
@@ -50,7 +60,8 @@ const createJoboffer = async (req, res) => {
             timeweekly: req.body.timeweekly,
             money: req.body.money,
             textworktogether: req.body.textworktogether,
-            textexpectations: req.body.textexpectations
+            textexpectations: req.body.textexpectations,
+            active:  req.body.active
         });
 
         res.status(201).json(result);
@@ -64,5 +75,6 @@ module.exports = {
     createJoboffer,
     getJoboffer,
     deleteJoboffer,
-    getExist
+    getExist,
+    getJobOfferByCompanyuser
 }

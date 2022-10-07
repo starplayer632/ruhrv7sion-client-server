@@ -2,9 +2,32 @@ import React from 'react';
 import Header_Company_Login from '../../../components/headers/Header_Company_Login';
 import Footer from '../../../components/Footer';
 import {Container, Form, Button} from 'react-bootstrap';
+import Cookies from 'js-cookie';
+import { Navigate } from 'react-router-dom';
+import axi from '../../../api/axios';
+import { useState, useEffect } from 'react';
 
 const Profile = () => {
-	
+	const companyuser = Cookies.get('username');
+	const [list, setList] = useState('');
+
+	let firstload = true;
+    useEffect(async () => {
+        if(firstload==false){
+            const URL = '/users/companyuser';
+            const response = await axi.post(URL,
+                JSON.stringify({companyuser}),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+        }else{
+            firstload=false;
+        }
+    }, [])
+
 	return (
 		<div style={{
 			backgroundColor:'#f5f5f5',
@@ -12,7 +35,9 @@ const Profile = () => {
 			<Header_Company_Login />
 			<br/>
 			<Container>
-				<h1>Your company profile</h1>
+				<h1>Your company profile information</h1>
+				<br/>
+
 				<br/>
 				<Form>
 					<Form.Group className="mb-3" controlId="formBasicEmail">

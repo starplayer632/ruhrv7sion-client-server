@@ -6,8 +6,9 @@ import {Container, Form, Button} from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import axi from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
-const CARDS_URL = '/companycards/';
-const CARDSEXIST_URL = '/companycards/exist/';
+import { getSystemErrorMap } from 'util';
+import { Navigate } from 'react-router-dom';
+
 
 
 const CompanyCard = () => {
@@ -24,39 +25,51 @@ const CompanyCard = () => {
 
 
     let firstload = true;
-    useEffect(async () => {
+    useEffect(() => {
         if(!firstload){
             const URL = '/companycards/'+companyuser;
-            /*axi.get(URL).then(response => {
+            axi.get(URL).then(response => {
                 const d = response?.data;
+                setCompanyname(d.companyname);
+                setAdress(d.adress);
+                setBranch(d.branch);
+                setInfotext(d.infotext);
+                setProducts(d.products);
+                setVisionstatement(d.visionstatement);
+                setSize(d.size);
                 //console.log("------------");
                 //console.log(d);
                 //console.log("------------");
-            }); */
+            }); 
         }else{
             firstload=false;
         }
     }, [])
 
-
-/*
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        let response;
         try {
-            const response = await axios.post(CARDS_URL,
+            const URL = '/companycards';
+            response = await axi.post(URL,
                 JSON.stringify({companyuser, companyname, adress, size, products, visionstatement, infotext, branch }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
-            console.log(JSON.stringify(response?.data));
+            
             //console.log(JSON.stringify(response));
         } catch (err) {
             console.log(err);
         }
-    }*/
+        
+        if(response?.data?.status=="ok"){
+            alert("SUCEES: Data updated!");
+        }
+
+        console.log(JSON.stringify(response?.data));
+    }
 
 
 	return (
@@ -65,10 +78,12 @@ const CompanyCard = () => {
 		}}>
 			<Header_Company_Login />
 			<br/>
-			<Container>{/* 
+			<Container>
 				<br/>
-				<h1>Create new funnel:</h1>
-                   
+				<h1>Here you can change the card information:</h1>
+                <br/>
+                <h4>Note that the current data is prefield in the inputs!</h4>
+                <br/>
                     <form onSubmit={handleSubmit} style={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -82,7 +97,7 @@ const CompanyCard = () => {
                             id="companyname"
                             onChange={(e) => setCompanyname(e.target.value)}
                             required
-                            placeholder={companyname}
+                            defaultValue={companyname}
                         /><br/>
                         <label htmlFor="adress">adress:</label>
                         <input
@@ -90,6 +105,7 @@ const CompanyCard = () => {
                             id="adress"
                             onChange={(e) => setAdress(e.target.value)}
                             required
+                            defaultValue={adress}
                         /><br/>
                         <label htmlFor="size">size:</label>
                         <input
@@ -97,6 +113,7 @@ const CompanyCard = () => {
                             id="size"
                             onChange={(e) => setSize(e.target.value)}
                             required
+                            defaultValue={size}
                         /><br/>
                         <label htmlFor="products">products:</label>
                         <input
@@ -104,6 +121,7 @@ const CompanyCard = () => {
                             id="products"
                             onChange={(e) => setProducts(e.target.value)}
                             required
+                            defaultValue={products}
                         /><br/>
                         <label htmlFor="branch">branch:</label>
                         <input
@@ -111,25 +129,28 @@ const CompanyCard = () => {
                             id="branch"
                             onChange={(e) => setBranch(e.target.value)}
                             required
+                            defaultValue={branch}
                         /><br/>
                         <label htmlFor="visionstatement">visionstatement:</label>
-                        <input
+                        <textarea
                             type="text"
                             id="visionstatement"
                             onChange={(e) => setVisionstatement(e.target.value)}
                             required
+                            defaultValue={visionstatement}
                         /><br/>
                         <label htmlFor="infotext">infotext:</label>
-                        <input
+                        <textarea
                             type="text"
                             id="infotext"
                             onChange={(e) => setInfotext(e.target.value)}
                             required
+                            defaultValue={infotext}
                         /><br/>
 
-                        <button>Create</button>
+                        <button>Update company card now!</button>
                     </form>
-				<br/>*/}
+				<br/>
 			</Container>
 			<br/>
 			<div style={{

@@ -34,9 +34,20 @@ const getUsername = async (req, res) => {
     res.json(user);
 }
 
+const getCompanyUser = async (req, res) => {
+    const cookies = req.cookies;
+    console.log(`cookie available at login: ${JSON.stringify(cookies)}`);
+
+    const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
+    
+    
+    res.json(user);
+}
+
 module.exports = {
     getAllUsers,
     deleteUser,
     getUser,
-    getUsername
+    getUsername,
+    getCompanyUser
 }

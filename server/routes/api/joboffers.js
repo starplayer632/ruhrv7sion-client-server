@@ -10,8 +10,9 @@ router.route('/')
 
 router.route('/:id')
     .get(joboffersController.getJoboffer)
-    .delete(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.CompanyUser), joboffersController.deleteJoboffer);
+    .delete(verifyRoles(ROLES_LIST.Admin), joboffersController.deleteJoboffer);
 
 router.route('/exist/:exist').get(joboffersController.getExist);
+router.route('/user/:companyuser').post(joboffersController.getJobOfferByCompanyuser);
 
 module.exports = router;

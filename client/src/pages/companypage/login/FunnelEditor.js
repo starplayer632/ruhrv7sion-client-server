@@ -9,7 +9,13 @@ import "../../../index.css";
 export default function () {
   const [list, setList] = useState([]);
 
-  console.log(list);
+
+
+  function submitHandler(){
+    console.log(list);
+    console.log(list[0].id);
+  }
+
   return (
     <>
       <div style={container}>
@@ -37,7 +43,7 @@ export default function () {
         </div>
       </div>
       <div style={{ height: "300px", margin: "0 auto", width: "46%" }}>
-        <Button style={list.length !== 0 ? show : hide} variant="primary">
+        <Button style={list.length !== 0 ? show : hide} variant="primary" onClick={submitHandler}>
           Submit
         </Button>{" "}
       </div>

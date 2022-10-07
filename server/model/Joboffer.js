@@ -11,8 +11,17 @@ const cardSchema = new Schema({
         // `Date.now()` returns the current unix timestamp as a number
         default: Date.now
     },
+    updatedat: {
+        type: Date,
+        // `Date.now()` returns the current unix timestamp as a number
+        default: Date.now
+    },
     companyname: {
         type: String,
+        required: true
+    },
+    active: {
+        type: Boolean,
         required: true
     },
     type: {
