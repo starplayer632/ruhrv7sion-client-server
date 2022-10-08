@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var moment = require('moment-timezone');
+var date1 = moment().tz("Europe/Berlin").format();
 
 const funnelSchema = new Schema({
     funnelname: {
@@ -11,13 +13,21 @@ const funnelSchema = new Schema({
         required: true
     },
     createdat: {
-        type: Date,
+        type: String,
         // `Date.now()` returns the current unix timestamp as a number
-        default: Date.now
+        default: date1
     },
-    //ArrayOfArrays
-    questions: [[]]
-    
+    updatedat: {
+        type: String,
+        // `Date.now()` returns the current unix timestamp as a number
+        default: date1
+    },
+    active: {
+        type: Boolean,
+        default: false
+    },
+    //Arrays
+    questions: []
 });
 
 module.exports = mongoose.model('FunnelConfig', funnelSchema);

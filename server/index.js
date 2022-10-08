@@ -37,7 +37,7 @@ app.use('/logout', require('./routes/logout'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
-app.use('/funnels', require('./routes/api/funnels'));
+//app.use('/funnels', require('./routes/api/funnels'));
 app.use('/companycards', require('./routes/api/companycards'));
 app.use('/joboffers', require('./routes/api/joboffers'));
 
@@ -109,7 +109,7 @@ app.get('/getID', authenticateToken, async (req, res) => {
 app.use(verifyJWT) //from here everthing uses this middleware
 app.use('/students', require('./routes/api/students')); 
 app.use('/users', require('./routes/api/users'));
-
+app.use('/funnels', require('./routes/api/funnels'));
 
 
 

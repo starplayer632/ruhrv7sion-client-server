@@ -35,7 +35,6 @@ import Error404 from "./pages/errorpages/Error404";
 import Register from "./pages/auth/Register";
 import StudentMatches from "./pages/studentpage/login/StudentMatches.js";
 import Dashboard from "./pages/companypage/login/Dashboard.js";
-import EditorFunnel from "./pages/companypage/login/FunnelEditor.js";
 import EditorJobs from "./pages/companypage/login/EditorJobs.js";
 import MatchesCompany from "./pages/companypage/login/Matches.js";
 import ProfileCompany from "./pages/companypage/login/Profile.js";
@@ -49,6 +48,7 @@ import ZukunftsregisterLogin from "./pages/studentpage/login/ZukunftsregisterLog
 import JobsLogin from "./pages/studentpage/login/JobsLogin.js";
 import CompanyJobs from "./pages/companypage/login/CompanyJobs.js";
 import CompanyFunnels from "./pages/companypage/login/CompanyFunnels.js";
+import FunnelDashboard from "./pages/companypage/login/FunnelDashboard.js";
 //TUT
 import LinkPage from "./pages/TUT/LinkPage";
 import RequireAuth from "./pages/TUT/RequireAuth";
@@ -110,8 +110,7 @@ const App = () => {
               element={<ZukunftsregisterLogin />}
             />
             <Route
-              path="login/zukunftsregister/:companyuser"
-              element={<ComingSoon />}
+              path="login/zukunftsregister/:companyuser" element={<ComingSoon />}
             />
             <Route path="login/profile" element={<ProfilStudent />} />
           </Route>
@@ -128,26 +127,14 @@ const App = () => {
               element={<MatchesCompany />}
             />
             <Route path="business/dashboard" element={<Dashboard />} />
-            <Route path="business/editor/funneleditor" element={<EditorFunnel />} />
+            <Route path="business/editor/newfunnel" element={<CreateNewFunnel />} />
             <Route path="business/jobs" element={<CompanyJobs />} />
             <Route path="business/jobs/:jobsid" element={<EditorJobs />} />
-            <Route
-              path="business/jobs/createnewoffer"
-              element={<CompanyJobs />}
-            />
-            <Route path="business/funnels" element={<CompanyFunnels />} />
-            <Route
-              path="business/funnels/editor/:funnelname"
-              element={<CompanyFunnels />}
-            />
-            <Route
-              path="business/funnels/createnewfunnel"
-              element={<CreateNewFunnel />}
-            />a
-            <Route
-              path="business/seeallfunnelconfigs"
-              element={<SeeAllFunnelConfigs />}
-            />
+            <Route path="business/jobs/createnewoffer" element={<CompanyJobs />} />
+            <Route path="business/funnels" element={<FunnelDashboard />} />
+            <Route path="business/funnels/editor/:funnelname" element={<CompanyFunnels />} />
+            <Route path="business/funnels/createnewfunnel" element={<CreateNewFunnel />} />
+            <Route path="business/seeallfunnelconfigs" element={<SeeAllFunnelConfigs />} />
             <Route path="business/companycard" element={<CompanyCard />} />
           </Route>
         </Route>

@@ -1,4 +1,6 @@
 const FunnelConfig = require('../model/FunnelConfig');
+const User = require('../model/User');
+var moment = require('moment-timezone');
 
 const getAllstudents = async (req, res) => {
     const students = await Student.find();
@@ -18,7 +20,7 @@ const createfunnelconfig = async (req, res) => {
             questions: req.body.questions
         });
 
-        res.status(201).json(result);
+        res.status(201).json({"status":"ok"});
     } catch (err) {
         console.error(err);
     }
@@ -39,14 +41,22 @@ const updatestudents = async (req, res) => {
 }
 
 const deletefunnelconfig = async (req, res) => {
-    if (!req?.body?.id) return res.status(400).json({ 'message': 'Funnel ID required.' });
+    console.log(req.body)
+    const cookies = req.cookies;
 
-    const funnelconfigs = await FunnelConfig.findOne({ _id: req.body.id }).exec();
-    if (!funnelconfigs) {
-        return res.status(204).json({ "message": `No funnel matches ID ${req.body.id}.` });
+    const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
+    const companyuser = user.username;
+
+    if(companyuser===req?.body?.companyuser){
+        try {
+            const oldFunnel = await FunnelConfig.findOneAndRemove({"_id": req.body._id});
+            res.status(201).json({"status": "deleted"});
+        } catch (err) {
+            console.error(err);
+        }
+    }else{
+        res.status(400).json({ 'status': 'NO ACCESS to this funnel' });
     }
-    const result = await FunnelConfig.deleteOne(); //{ _id: req.body.id }
-    res.json(result);
 }
 
 const getFunnelById = async (req, res) => {
@@ -59,17 +69,46 @@ const getFunnelById = async (req, res) => {
     res.json(funnelconfigs);
 }
 
-const getAllfunnelconfigs = async (req, res) => {
-    if (!req?.params?.companyuser) { //if (!req?.body?.questions || !req?.body?.funnelname || !req?.body?.companyuser) {
-        return res.status(400).json({ 'message': 'companyuser are required' });
-    }
-    const companyuser = req.params.companyuser;
-    try {
-        const funnelconfigs = await FunnelConfig.find({companyuser});
+const getAllfunnelconfigsByCompanyuser = async (req, res) => {
+    const cookies = req.cookies;
 
+    const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
+    const companyuser = user.username;
+
+    try {
+        const funnelconfigs = await FunnelConfig.find({companyuser}).exec();
         res.json(funnelconfigs);
     } catch (err) {
         console.error(err);
+    }    
+}
+
+const updatefunnelconfig = async (req, res) => {
+    const cookies = req.cookies;
+
+    const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
+    const companyuser = user.username;
+
+    if(companyuser===req?.body?.companyuser){
+        try {
+            const oldFunnel = await FunnelConfig.findOne({"_id": req.body._id});
+            oldFunnel.funnelname = req.body.funnelname;
+            oldFunnel.active =  req.body.active;
+            oldFunnel.questions = req.body.questions;
+            oldFunnel.companyuser = companyuser;
+            oldFunnel.updatedat = moment().tz("Europe/Berlin").format();
+
+            const funnel = await FunnelConfig.findOneAndUpdate({"_id": req.body._id}, oldFunnel);
+            
+            //funnel.updatedat = new Date();
+
+
+            res.status(201).json({"status": "ok"});
+        } catch (err) {
+            console.error(err);
+        }
+    }else{
+        res.status(400).json({ 'status': 'NO ACCESS to this funnel' });
     }
 }
 
@@ -77,5 +116,6 @@ module.exports = {
     createfunnelconfig,
     deletefunnelconfig,
     getFunnelById,
-    getAllfunnelconfigs
+    getAllfunnelconfigsByCompanyuser,
+    updatefunnelconfig
 }

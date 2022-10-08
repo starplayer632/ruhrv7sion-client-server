@@ -3,7 +3,7 @@ import ContactData from "../../components/company/contactData";
 import Button from "react-bootstrap/Button";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FunnelEditor from "./login/FunnelEditor";
+import FunnelEditor from "../../components/funnels/CreateFunnel";
 import img from "../../images/zeche.JPG";
 import { TiStopwatch } from "react-icons/ti";
 import { borderRight } from "@mui/system";
