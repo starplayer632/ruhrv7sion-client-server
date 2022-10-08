@@ -17,7 +17,7 @@ export default function yesNoQuestion({ question, list, setList }) {
       <div style={format}>
         <div style={{ paddingTop: "15px" }}>
           <TextField
-            id="outlined-basic"
+            id={question.id+"question"}
             label="Type in the question title"
             variant="outlined"
             multiline

@@ -16,7 +16,7 @@ export default function sliderQuestion({ question, setList, list }) {
     <>
       <div style={format}>
         <TextField
-          id="asic"
+          id={question.id+"question"}
           label="Type in the question title"
           outlined-b
           variant="outlined"
@@ -42,10 +42,10 @@ export default function sliderQuestion({ question, setList, list }) {
         />
         <div style={labelContainer}>
           <span>
-            <input type="text" style={{ width: "50%" }} />
+            <input id={question.id+"min"} type="text" style={{ width: "50%" }} />
           </span>
           <span style={{ marginBottom: "10px" }}>
-            <input type="text" style={{ width: "50%" }} />
+            <input id={question.id+"max"} type="text" style={{ width: "50%" }} />
           </span>
         </div>
         <div style={{ width: "90%", margin: "0 auto" }}>

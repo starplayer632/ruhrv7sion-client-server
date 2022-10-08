@@ -12,8 +12,32 @@ export default function () {
 
 
   function submitHandler(){
-    console.log(list);
+    console.log("list - plain: "+JSON.stringify(list));
+    const liste= JSON.stringify(list);
+    console.log("list - 0 type: "+liste[0].type);
+    console.log("list - length: "+list.length);
+    let funnel = [];
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].type=="YesNo") {
+        const id= list[i].id+"question";
+        funnel[i].type=list[i].type;
+        funnel[i].value=document.getElementById(id).value;
+      }else if(list[i].type=="slider"){
+        const id= list[i].id+"question";
+        const min= list[i].id+"min";
+        const max= list[i].id+"max";
+        funnel[i].type=list[i].type;
+        funnel[i].value=document.getElementById(id).value;
+        funnel[i].min=document.getElementById(min).value;
+        funnel[i].max=document.getElementById(max).value;
+      }else if(list[i].type=="open"){
+        const id= list[i].id+"question";
+        funnel[i].type=list[i].type;
+        funnel[i].value=document.getElementById(id).value;
+      }
+    }
     console.log(list[0].id);
+    console.log("0: value: "+document.getElementById(list[0].id).value);
   }
 
   return (
