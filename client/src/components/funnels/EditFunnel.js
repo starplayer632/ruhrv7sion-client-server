@@ -12,14 +12,67 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 export default function () {
   const [list, setList] = useState([]);
+  const [oldfunnel, setOldfunnel] = useState([]);
   const [funnelname, setFunnelname] = useState([]);
   const companyuser = Cookies.get('username');
   const navigate = useNavigate();
   const effectRan = useRef(false);
   const axiosPrivate = useAxiosPrivate();
-  const location = useLocation();
+  const location = useLocation(); 
+  const funnelid = ((document.URL).split("/"))[6];
 
-  
+
+  useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+    let liste;
+    if(effectRan.current === true){
+        const getFunnel = async () => {
+            try {
+              const URL = '/funnels/'+funnelid;
+              const response = await axiosPrivate.get(URL, {
+                  signal: controller.signal
+              });
+              //setOldfunnel(response?.data);
+              console.log(JSON.stringify(response.data.questions.length));
+              const questions = response.data.questions;
+
+              //console.log("liste.questions length: "+liste);
+
+              for (let i = 0; i < questions.length; i++) {
+                if(questions[i].type==="YesNo"){
+                  console.log("YesNo detected");
+                  //const idnr= Math.random() * 100;
+                  const idnr= 112312;
+                  setList((list) => [...list, { type: "YesNo", id : idnr }]);
+                  console.log("questions[i].question: "+questions[i].question);
+                  //const newid= JSON.stringify(idnr)+"question";
+                  //console.log("newid: "+newid)
+                  //const id= JSON.stringify(list[i].id)+"question";
+                  //console.log(document.getElementById("112312question").value);
+                }
+              }
+
+            } catch (err) {
+                console.error(err);
+                navigate('/login', { state: { from: location }, replace: true });
+            }
+        }
+        
+        getFunnel();
+
+        
+
+    }
+    return () => {
+        isMounted = false;
+        effectRan.current = true;
+        controller.abort();
+    }
+}, [])
+
+
+
   async function submitHandler(){
     //console.log("list - 0 type: "+JSON.stringify(list[0].type));
     //console.log("list - length: "+list.length);
@@ -160,6 +213,3 @@ const wrapper = {
   display: "flex",
   justifyContent: "space-around",
 };
-
-
-

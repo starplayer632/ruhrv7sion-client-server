@@ -49,6 +49,7 @@ import JobsLogin from "./pages/studentpage/login/JobsLogin.js";
 import CompanyJobs from "./pages/companypage/login/CompanyJobs.js";
 import CompanyFunnels from "./pages/companypage/login/CompanyFunnels.js";
 import FunnelDashboard from "./pages/companypage/login/FunnelDashboard.js";
+import EditFunnel from "./components/funnels/EditFunnel";
 //TUT
 import LinkPage from "./pages/TUT/LinkPage";
 import RequireAuth from "./pages/TUT/RequireAuth";
@@ -132,7 +133,7 @@ const App = () => {
             <Route path="business/jobs/:jobsid" element={<EditorJobs />} />
             <Route path="business/jobs/createnewoffer" element={<CompanyJobs />} />
             <Route path="business/funnels" element={<FunnelDashboard />} />
-            <Route path="business/funnels/editor/:funnelname" element={<CompanyFunnels />} />
+            <Route path="business/funnels/editor/:funnelname" element={<EditFunnel />} />
             <Route path="business/funnels/createnewfunnel" element={<CreateNewFunnel />} />
             <Route path="business/seeallfunnelconfigs" element={<SeeAllFunnelConfigs />} />
             <Route path="business/companycard" element={<CompanyCard />} />

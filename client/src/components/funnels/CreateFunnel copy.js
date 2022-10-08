@@ -3,7 +3,7 @@ import QuestionLIst from "../company/questionTypesEditor/QuestionLIst";
 import YesNoQuestion from "../company/questionTypesLegend/yesNoQuestion";
 import OpenQuestion from "../company/questionTypesLegend/openQuestion";
 import SliderQuestion from "../company/questionTypesLegend/sliderQuestion";
-import {Button, Container, Row, Col} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import "../../index.css";
 import Cookies from "js-cookie";
 import { useState, useEffect, useRef } from "react";
@@ -19,7 +19,6 @@ export default function () {
   const axiosPrivate = useAxiosPrivate();
   const location = useLocation();
 
-  
   async function submitHandler(){
     //console.log("list - 0 type: "+JSON.stringify(list[0].type));
     //console.log("list - length: "+list.length);
@@ -54,7 +53,26 @@ export default function () {
       }
       
     }
-
+    //console.log(JSON.stringify(funnel));
+    console.log(JSON.stringify({companyuser, funnelname, questions}));
+   /*try {
+      const response = await axi.post("/funnels",
+          JSON.stringify({companyuser, funnelname, questions}),
+          {
+              headers: { 'Content-Type': 'application/json' },
+              withCredentials: true
+          }
+      );
+      console.log(JSON.stringify(response?.data?.status));
+      if(response?.data?.status==="ok"){
+        alert("SUCCESS!");
+        navigate("/business/funnels");
+      }
+      
+      //console.log(JSON.stringify(response));
+    } catch (err) {
+      console.log(err);
+    }*/
     const controller = new AbortController();
     try {
       const response = await axiosPrivate.post('/funnels', 
@@ -77,48 +95,53 @@ export default function () {
   }
 
   return (
-    <Container>
-      <Row>
-        <h4>
-          <label htmlFor="funnelname">
-            Funnel name:
-            <input
-              type="text"
-              id="funnelname"
-              autoComplete="off"
-              onChange={(e) => setFunnelname(e.target.value)}
-              style={{
-                marginLeft:"20px"
-              }}
-              required
-            />
-          </label>
-        </h4>
-      </Row>
-      <br/>
-      <br/>
-      <Row>
-        <Col sm={8}>
+    <>
+      <div style={container}>
+    
+        
+        <br/>
+        <div style={{ width: "120%" }}>
+          <h4
+            style={{
+              margin: "0 auto",
+              width: "90%",
+              borderBottom: "2px solid grey",
+              paddingBottom: "20px",
+              marginBottom: "10px",
+            }}
+          >
+            <label htmlFor="funnelname">
+              Funnel name:
+              <input
+                type="text"
+                id="funnelname"
+                autoComplete="off"
+                onChange={(e) => setFunnelname(e.target.value)}
+                required
+              />
+
+            
+            </label>
+          </h4>
+          <br/>
+          <br/>
           <QuestionLIst questions={list} setList={setList} />
-        </Col>
-        <Col sm={4}>
-          <div style={elements}>
-            <div style={wrapper}>
-              <h3 style={{ marginTop: "7px" }}>Elements </h3>
-            </div>
-            <YesNoQuestion setList={setList} />
-            <OpenQuestion setList={setList} />
-            <SliderQuestion setList={setList} />
+        </div>
+        <div style={elements}>
+          <div style={wrapper}>
+            <h3 style={{ marginTop: "7px" }}>Elements </h3>
           </div>
-        </Col>
-      </Row>
-      <br/>
-      <Row>
+          <YesNoQuestion setList={setList} />
+          <OpenQuestion setList={setList} />
+          <SliderQuestion setList={setList} />
+        </div>
+      </div>
+      <div style={{ height: "300px", margin: "0 auto", width: "46%" }}>
         <Button style={list.length !== 0 ? show : hide} variant="primary" onClick={submitHandler}>
-          CREATE FUNNEL
-        </Button>
-      </Row>
-    </Container>
+          Submit
+        </Button>{" "}
+      </div>
+    </>
   );
 }
 
@@ -160,6 +183,3 @@ const wrapper = {
   display: "flex",
   justifyContent: "space-around",
 };
-
-
-

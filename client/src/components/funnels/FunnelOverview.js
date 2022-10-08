@@ -73,8 +73,7 @@ const FunnelOverview = () => {
                 });
                 console.log("response.data.status: "+response.data.status);
                 if(response?.data?.status==="ok"){
-                    alert("SUCCESS!");
-                    navigate("/business/funnels");
+                    window.location.reload(false);
                 }
             } catch (err) {
                 console.error(err);
@@ -103,8 +102,7 @@ const FunnelOverview = () => {
                 });
                 console.log("response.data.status: "+response.data.status);
                 if(response?.data?.status==="ok"){
-                    alert("SUCCESS!");
-                    navigate("/business/funnels");
+                    window.location.reload(false);
                 }
             } catch (err) {
                 console.error(err);
@@ -113,6 +111,10 @@ const FunnelOverview = () => {
         }
 
         updateFunnel();
+    }
+
+    function turnEdit(id){
+        navigate('/business/funnels/editor/'+id);
     }
 
     function turnDelete(id) {
@@ -134,7 +136,7 @@ const FunnelOverview = () => {
                     console.log("response.data.status: "+response.data.status);
                     if(response?.data?.status==="deleted"){
                         alert("Funnel deleted");
-                        navigate("/business/funnels");
+                        window.location.reload(false);
                     }
                 } catch (err) {
                     console.error(err);
@@ -189,8 +191,8 @@ const FunnelOverview = () => {
                                     <td>{activelist?.funnelname}</td>
                                     <td>{activelist?.updatedat}</td>
                                     <td>
-                                        <Button onClick={()=>turnOffline(activelist._id)}>Turn offline</Button>
-                                        <Button>View</Button>
+                                        <Button onClick={()=>turnOffline(activelist._id)} style={{marginRight:"20px"}}>Turn offline</Button>
+                                        <Button style={{marginRight:"20px"}}>View</Button>
                                     </td>
                                 </tr>
                             )}
@@ -219,10 +221,10 @@ const FunnelOverview = () => {
                                     <td>{offlinelist?.funnelname}</td>
                                     <td>{offlinelist?.updatedat}</td>
                                     <td>
-                                        <Button onClick={()=>turnActive(offlinelist._id)}>Turn active</Button>
-                                        <Button>Safe View</Button>
-                                        <Button>Edit</Button>
-                                        <Button onClick={()=>turnDelete(offlinelist._id)}>Delete</Button>
+                                        <Button onClick={()=>turnActive(offlinelist._id)} style={{marginRight:"20px"}}>Turn active</Button>
+                                        <Button style={{marginRight:"20px"}}>Safe View</Button>
+                                        <Button onClick={()=>turnEdit(offlinelist._id)} style={{marginRight:"20px"}}>Edit</Button>
+                                        <Button onClick={()=>turnDelete(offlinelist._id)} style={{marginRight:"20px"}}>Delete</Button>
                                     </td>
                                 </tr>
                             )}
