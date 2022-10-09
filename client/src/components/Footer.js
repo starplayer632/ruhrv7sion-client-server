@@ -27,8 +27,8 @@ function Footer() {
                     backgroundColor:'#010837',
                     color:'white',
             }}>
-                <div class="row">
-                    <div class="col-sm" style={{
+                <div className="row">
+                    <div className="col-sm" style={{
                         backgroundColor:'',
                         padding:'10px',
                     }}>
@@ -45,7 +45,7 @@ function Footer() {
                             Lorem Ipsum.
                         </p>
                     </div>
-                    <div class="col-sm" style={{
+                    <div className="col-sm" style={{
                         backgroundColor:'',
                         padding:'10px',
                     }}>
@@ -53,9 +53,9 @@ function Footer() {
                         <p>
                             Wartet auf Dich. Und dank <br/>Ruhrv7sion-Matching kannst Du dir die  <br/> Bewerbung sparen.
                         </p>
-                        <Button type="button" class="btn btn-outline-light">Leg Los!</Button>
+                        <Button type="button" className="btn btn-outline-light">Leg Los!</Button>
                     </div>
-                    <div class="col-sm" style={{
+                    <div className="col-sm" style={{
                         backgroundColor:'',
                         padding:'10px',
                     }}>
@@ -68,13 +68,13 @@ function Footer() {
                     </div>
                 </div>
                 <Row>
-                    <div class="col-sm" style={{
+                    <div className="col-sm" style={{
                             backgroundColor:'',
                             padding:'10px',
                     }}> 
                         <h5><a href="/impressum">Datenschutz</a></h5>
                     </div>
-                    <div class="col-sm" style={{
+                    <div className="col-sm" style={{
                             backgroundColor:'',
                             padding:'10px',
                     }}> 

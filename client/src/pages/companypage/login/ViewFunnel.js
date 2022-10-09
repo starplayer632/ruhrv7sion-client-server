@@ -2,10 +2,10 @@ import React from 'react';
 import Header_Company_Login from '../../../components/headers/Header_Company_Login';
 import Footer from '../../../components/Footer';
 import {Container, Form, Button} from 'react-bootstrap';
-import EditFunnel from '../../../components/funnels/EditFunnel';
+import ShowFunnel from '../../../components/funnels/ShowFunnel';
 
 const EditorFunnel = () => {
-	const funnelid = ((document.URL).split("/"))[6];
+	const funnelid = ((document.URL).split("/"))[5];
 	return (
 		<div style={{
 			backgroundColor:'#f5f5f5',
@@ -14,9 +14,9 @@ const EditorFunnel = () => {
 			<br/>
 			<Container>
 				<br/>
-				<h1>Editor for Funnel with id: {funnelid}</h1>
+				<h1>Show Funnel: {funnelid}</h1>
 				<br/>
-				<EditFunnel />
+				<ShowFunnel />
 			</Container>
 			<br/>
 			<div style={{

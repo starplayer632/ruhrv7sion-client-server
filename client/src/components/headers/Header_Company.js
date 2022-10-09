@@ -11,12 +11,12 @@ function Header_Company() {
         <Container>
 
           <Navbar.Brand href="/business/">
-          <div class="d-flex flex-row"style={{
+          <div className="d-flex flex-row"style={{
                   position:'absolute',
                   left:'0px',
                   top:'0px',
               }}>
-              <div class="p-2" style={{
+              <div className="p-2" style={{
                   paddingLeft:'0px',
                   paddingLeft:'100%', 
                   paddingTop:'10px',
@@ -36,7 +36,7 @@ function Header_Company() {
                 }}
                 />
               </div>
-              <div class="p-2" style={{
+              <div className="p-2" style={{
                   padding:'5px', 
                   paddingLeft:'10px', 
                   paddingRight:'100px', 
@@ -52,7 +52,7 @@ function Header_Company() {
                   zIndex:'2',
               }}>
               </div>
-              <div class="p-2" style={{
+              <div className="p-2" style={{
                   padding:'5px', 
                   paddingLeft:'10px', 
                   paddingRight:'100px', 
@@ -68,7 +68,7 @@ function Header_Company() {
                   zIndex:'1',
               }}>
               </div>
-              <div class="p-2" style={{
+              <div className="p-2" style={{
                   padding:'5px', 
                   paddingLeft:'0px', 
                   paddingRight:'0px', 
@@ -92,8 +92,8 @@ function Header_Company() {
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <div class="d-flex flex-row"> 
-                  <div class="p-2">
+                <div className="d-flex flex-row"> 
+                  <div className="p-2">
                       <img
                           src={iconLoginW}
                           width="auto"

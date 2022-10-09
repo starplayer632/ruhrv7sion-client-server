@@ -49,7 +49,8 @@ import JobsLogin from "./pages/studentpage/login/JobsLogin.js";
 import CompanyJobs from "./pages/companypage/login/CompanyJobs.js";
 import CompanyFunnels from "./pages/companypage/login/CompanyFunnels.js";
 import FunnelDashboard from "./pages/companypage/login/FunnelDashboard.js";
-import EditFunnel from "./components/funnels/EditFunnel";
+import EditorFunnel from "./pages/companypage/login/EditorFunnel.js";
+import ViewFunnel from "./pages/companypage/login/ViewFunnel.js";
 //TUT
 import LinkPage from "./pages/TUT/LinkPage";
 import RequireAuth from "./pages/TUT/RequireAuth";
@@ -123,18 +124,16 @@ const App = () => {
           >
             <Route path="business/profile" element={<ProfileCompany />} />
             <Route path="business/matches" element={<MatchesCompany />} />
-            <Route
-              path="business/matches/newestmatch"
-              element={<MatchesCompany />}
-            />
+            <Route path="business/matches/newestmatch" element={<MatchesCompany />} />
             <Route path="business/dashboard" element={<Dashboard />} />
             <Route path="business/editor/newfunnel" element={<CreateNewFunnel />} />
             <Route path="business/jobs" element={<CompanyJobs />} />
-            <Route path="business/jobs/:jobsid" element={<EditorJobs />} />
+            <Route path="business/jobs/editor/:jobsid" element={<EditorJobs />} />
             <Route path="business/jobs/createnewoffer" element={<CompanyJobs />} />
             <Route path="business/funnels" element={<FunnelDashboard />} />
-            <Route path="business/funnels/editor/:funnelname" element={<EditFunnel />} />
+            <Route path="business/funnels/editor/:funnelid" element={<EditorFunnel />} />
             <Route path="business/funnels/createnewfunnel" element={<CreateNewFunnel />} />
+            <Route path="business/funnels/:funnelid" element={<ViewFunnel />} />
             <Route path="business/seeallfunnelconfigs" element={<SeeAllFunnelConfigs />} />
             <Route path="business/companycard" element={<CompanyCard />} />
           </Route>

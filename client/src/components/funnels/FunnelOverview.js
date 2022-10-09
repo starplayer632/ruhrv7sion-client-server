@@ -152,18 +152,6 @@ const FunnelOverview = () => {
         }
 
     }
-    /*
-    <h2>Funnellist</h2>
-            {funnellist?.length
-                ? (
-                    <ul>
-                        {funnellist.map((funnellist, i) => <li key={i}>{funnellist?.funnelname}</li>)}
-                    </ul>
-                ) : <p>No Funnels to display</p>
-            }
-            <br/>
-            <br/>
-    */
 
     return (
         <Container>

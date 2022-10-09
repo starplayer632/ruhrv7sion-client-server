@@ -11,7 +11,7 @@ const Header_Student = () => {
         <Container>
 
           <Navbar.Brand href="/">
-          <div class="d-flex flex-row"style={{
+          <div className="d-flex flex-row"style={{
                   position:'absolute',
                   left:'0px',
                   top:'0px',
@@ -36,7 +36,7 @@ const Header_Student = () => {
                 }}
                 />
               </div>
-              <div class="p-2" style={{
+              <div className="p-2" style={{
                   padding:'5px', 
                   paddingLeft:'10px', 
                   paddingRight:'100px', 
@@ -52,7 +52,7 @@ const Header_Student = () => {
                   zIndex:'2',
               }}>
               </div>
-              <div class="p-2" style={{
+              <div className="p-2" style={{
                   padding:'5px', 
                   paddingLeft:'10px', 
                   paddingRight:'100px', 
@@ -68,7 +68,7 @@ const Header_Student = () => {
                   zIndex:'1',
               }}>
               </div>
-              <div class="p-2" style={{
+              <div className="p-2" style={{
                   padding:'5px', 
                   paddingLeft:'0px', 
                   paddingRight:'0px', 
@@ -104,8 +104,8 @@ const Header_Student = () => {
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <div class="d-flex flex-row"> 
-                  <div class="p-2">
+                <div className="d-flex flex-row"> 
+                  <div className="p-2">
                       <img
                           src={iconLoginW}
                           width="auto"
