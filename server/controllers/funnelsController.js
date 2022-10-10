@@ -1,12 +1,8 @@
 const FunnelConfig = require('../model/FunnelConfig');
 const User = require('../model/User');
+const FunnelDone = require('../model/FunnelDone');
 var moment = require('moment-timezone');
 
-const getAllstudents = async (req, res) => {
-    const students = await Student.find();
-    if (!students) return res.status(204).json({ 'message': 'No students found.' });
-    res.json(students);
-}
 
 const createfunnelconfig = async (req, res) => {
     if (!req?.body?.questions || !req?.body?.funnelname || !req?.body?.companyuser) { //if (!req?.body?.questions || !req?.body?.funnelname || !req?.body?.companyuser) {
@@ -26,22 +22,8 @@ const createfunnelconfig = async (req, res) => {
     }
 }
 
-const updatestudents = async (req, res) => {
-    if (!req?.body?.id) {
-        return res.status(400).json({ 'message': 'ID parameter is required.' });
-    }
-    const students = await Student.findOne({ _id: req.body.id }).exec();
-    if (!students) {
-        return res.status(204).json({ "message": `No student matches ID ${req.body.id}.` });
-    }
-    if (req.body?.firstname) students.firstname = req.body.firstname;
-    if (req.body?.lastname) students.lastname = req.body.lastname;
-    const result = await students.save();
-    res.json(result);
-}
 
 const deletefunnelconfig = async (req, res) => {
-    console.log(req.body)
     const cookies = req.cookies;
 
     const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
@@ -110,10 +92,51 @@ const updatefunnelconfig = async (req, res) => {
     }
 }
 
+const postFunnelDone = async (req, res) => {
+    if (!req?.body?.answers || !req?.body?.funnelname || !req?.body?.companyuser || !req?.body?.email || !req?.body?.name || !req?.body?.funnelid || !req?.body?.questions) {
+        return res.status(400).json({ 'message': 'answers, funnelname and companyuser are required' });
+    }
+    try {
+        const result = await FunnelDone.create({
+            funnelname: req.body.funnelname,
+            companyuser: req.body.companyuser,
+            funnelid: req.body.funnelid,
+            answers: req.body.answers,
+            questions: req.body.questions,
+            email: req.body.email,
+            name: req.body.name
+        });
+        res.status(201).json({"status":"ok"});
+    } catch (err) {
+        console.error(err);
+    }    
+}
+
+const getFunnelActive = async (req, res) => {
+    if (!req?.params?.id) {
+        return res.status(400).json({ 'message': 'valid funnel id required' });
+    }
+    try {
+        const funnel = await FunnelConfig.findOne({"_id": req.params.id});
+        if(funnel.active===true){
+            res.status(201).json({"status":"active"});
+        }else{
+            res.status(201).json({"status":"offline"});
+        }
+    } catch (err) {
+        console.error(err);
+    }    
+}
+
+
+
+
 module.exports = {
     createfunnelconfig,
     deletefunnelconfig,
     getFunnelById,
     getAllfunnelconfigsByCompanyuser,
-    updatefunnelconfig
+    updatefunnelconfig,
+    postFunnelDone,
+    getFunnelActive
 }

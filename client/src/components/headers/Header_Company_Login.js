@@ -103,7 +103,7 @@ function Header_Company_Login() {
               </Nav.Item>
               <NavDropdown id="dropdownmenue" title="Matches"  style={{color:'white'}}>
                 <NavDropdown.Item href="/business/matches">My Matches</NavDropdown.Item>
-                <NavDropdown.Item href="/business/matches/newestmatch">Newest Match</NavDropdown.Item>
+                <NavDropdown.Item href="/business/matches">Newest Match</NavDropdown.Item>
               </NavDropdown>
               <Nav.Item>
                 <Nav.Link eventKey="link-1" style={{color:'white', width:'50px'}}></Nav.Link>

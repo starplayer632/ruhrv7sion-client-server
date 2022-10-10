@@ -11,19 +11,38 @@ import ShowSlider from "./showfunnel/ShowSlider";
 const ShowFunnel = () => {
     const [funnel1, setFunnel1]=  useState([]);
     const [q, setQ]=  useState([]);
-    //const companyuser = Cookies.get('username');
     const navigate = useNavigate();
     const effectRan = useRef(false);
     const axiosPrivate = useAxiosPrivate();
     const location = useLocation(); 
-    const funnelid = ((document.URL).split("/"))[5];
-
+    const funnelid = ((document.URL).split("/"))[4];
+    const [active2, setActive2]=  useState(false);
     let funnel;
     
     useEffect(() => {
         let isMounted = true;
+        let active = false;
         const controller = new AbortController();
         if(effectRan.current === true){
+            const getFunnelActiv = async () => {
+                try {
+                  const URL = '/funnels/active/'+funnelid;
+                  const response = await axiosPrivate.get(URL, {
+                      signal: controller.signal
+                  });
+                  console.log("re: "+response.data.status);
+                  const re = response.data.status;
+                  if(re === "active"){
+                    active = true;
+                    setActive2(true);
+                  }else{
+                    active = false;
+                  }
+                }catch (err) {
+                  console.error(err);
+                }
+            }
+
             const getFunnel = async () => {
                 try {
                   const URL = '/funnels/'+funnelid;
@@ -35,14 +54,28 @@ const ShowFunnel = () => {
                   console.log("funnel: "+JSON.stringify(funnel));*/
                   setFunnel1(funnel);
                   setQ(funnel.questions);
-                  //companyuser = funnel.companyuser;
                 }catch (err) {
                   console.error(err);
-                  navigate('/business/login', { state: { from: location }, replace: true });
                 }
             }
+            getFunnelActiv();
+
+            const timer = setTimeout(() => {
+                console.log('This will run after 0.5 second!')
+                console.log("active: "+active);
+                if(active===true){
+                    getFunnel();
+                    console.log("ACTIVE");
+                }else{
+                    navigate("/");
+                    console.log("OFFLINE");
+                }
+              }, 500);
+            return () => clearTimeout(timer);
+
             
-            getFunnel();    
+           
+                
         }
         
         return () => {
@@ -92,9 +125,9 @@ const ShowFunnel = () => {
         try {
             const funnelname = funnel1.funnelname;
             const companyuser = funnel1.companyuser;
-            const questions = q;
             const email =  document.getElementById("email").value;
             const name =  document.getElementById("name").value;
+            const questions = q;
             const response = await axiosPrivate.post('/funnels/done', 
                 JSON.stringify({email, name, funnelid, companyuser, funnelname, answers, questions  }),{
                 signal: controller.signal
@@ -122,7 +155,8 @@ const ShowFunnel = () => {
                 />
      */
 
-
+    
+    
 
     return (
         <Container>
@@ -187,6 +221,8 @@ const ShowFunnel = () => {
             </ListGroup>
         </Container>
     );
+
+    
 };
 
 export default ShowFunnel;

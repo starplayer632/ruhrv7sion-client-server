@@ -6,7 +6,7 @@ export default function showOpen({question, id}) {
 className="mb-3"
 */
     return (
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group style={{textAlign: "center"}}>
             <h3>
                 {question}
             </h3>

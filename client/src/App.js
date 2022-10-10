@@ -51,6 +51,7 @@ import CompanyFunnels from "./pages/companypage/login/CompanyFunnels.js";
 import FunnelDashboard from "./pages/companypage/login/FunnelDashboard.js";
 import EditorFunnel from "./pages/companypage/login/EditorFunnel.js";
 import ViewFunnel from "./pages/companypage/login/ViewFunnel.js";
+import ViewFunnelPublic from "./pages/studentpage/ViewFunnelPublic";
 //TUT
 import LinkPage from "./pages/TUT/LinkPage";
 import RequireAuth from "./pages/TUT/RequireAuth";
@@ -75,6 +76,7 @@ const App = () => {
         <Route path="/TEST" element={<TEST />} />
         <Route path="home" element={<LandingStudent />} />
         <Route path="jobs" element={<Jobs />} />
+        <Route path="funnels/:funnelid" element={<ViewFunnelPublic />} />
         <Route path="jobs/:jobsid" element={<ComingSoon />} />
         <Route path="impressum" element={<LegalTerms />} />
         <Route path="zukunftsregister" element={<Zukunftsregister />} />

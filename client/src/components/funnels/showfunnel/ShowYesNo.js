@@ -8,7 +8,7 @@ className="mb-3"
     const idyes = id+"yes";
     const idno = id+"no";
     return (
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group style={{textAlign: "center"}}>
             <h3>
                 {question}
             </h3>

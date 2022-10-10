@@ -55,6 +55,11 @@ const FunnelOverview = () => {
         }
     }, [])
 
+    function turnSafeView(id) {
+        navigate(id);
+    }
+
+
     function turnActive(id) {
         console.log("_id to do active: "+id);
         let data;
@@ -111,6 +116,10 @@ const FunnelOverview = () => {
         }
 
         updateFunnel();
+    }
+    
+    function turnShowPublic(id){
+        navigate('/funnels/'+id);
     }
 
     function turnEdit(id){
@@ -180,7 +189,7 @@ const FunnelOverview = () => {
                                     <td>{activelist?.updatedat}</td>
                                     <td>
                                         <Button onClick={()=>turnOffline(activelist._id)} style={{marginRight:"20px"}}>Turn offline</Button>
-                                        <Button style={{marginRight:"20px"}}>View</Button>
+                                        <Button onClick={()=>turnShowPublic(activelist._id)} style={{marginRight:"20px"}}>View</Button>
                                     </td>
                                 </tr>
                             )}
@@ -210,7 +219,7 @@ const FunnelOverview = () => {
                                     <td>{offlinelist?.updatedat}</td>
                                     <td>
                                         <Button onClick={()=>turnActive(offlinelist._id)} style={{marginRight:"20px"}}>Turn active</Button>
-                                        <Button style={{marginRight:"20px"}}>Safe View</Button>
+                                        <Button onClick={()=>turnSafeView(offlinelist._id)} style={{marginRight:"20px"}}>Safe View</Button>
                                         <Button onClick={()=>turnEdit(offlinelist._id)} style={{marginRight:"20px"}}>Edit</Button>
                                         <Button onClick={()=>turnDelete(offlinelist._id)} style={{marginRight:"20px"}}>Delete</Button>
                                     </td>

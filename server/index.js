@@ -42,74 +42,20 @@ app.use('/companycards', require('./routes/api/companycards'));
 app.use('/joboffers', require('./routes/api/joboffers'));
 
 
-//MongoDB not needed now
-//const mongoDBRouter= require("./routes/mongodb_routes");
-//app.use('/api/mongodb/', mongoDBRouter);
-
-/*
-const jwtauth= require("./SQL Scripts and Data/jwtauth");
-app.use('/api/jwtauth/', jwtauth);
-
-app.get('/quote', authenticateToken, (req, res) => {
-	res.json(posts.filter(post => post.username === req.user.studentemail))
-})*/
-
 //Test Hello World
 app.get('/hello', (req, res) => {
     res.send('hello world')
 })
 
-/**
- * 
- * app.all('*', (req, res) => {
-    res.status(404);
-    if (req.accepts('html')) {
-        res.sendFile(path.join(__dirname, 'views', '404.html'));
-    } else if (req.accepts('json')) {
-        res.json({ "error": "404 Not Found" });
-    } else {
-        res.type('txt').send("404 Not Found");
-    }
-});
- * 
- * 
- */
-
-
-
-/**
- * Testing
- */
-/*
- const posts = [
-	{
-	  username: 'test123@test.com',
-	  title: 'My test quote for test123'
-	},
-	{
-	  username: 'Jim',
-	  title: 'Post 2'
-	}
-]
-
-app.get('/getID', authenticateToken, async (req, res) => {
-	let rows
-	try {
-        const sqlQuery = 'SELECT studentid FROM user_students WHERE studentemail=?';
-        rows = await pool.query(sqlQuery, req.user.studentemail);
-        //res.status(200).json(rows);
-    } catch (error) {
-        //res.status(400).send(error.message)
-    }
-
-	res.json(rows)
-})*/
-
-//SHOULD BE LAST CAUSE VERIFY
+//SHOULD BE LAST CAUSE VERIFY OPTIONS
 app.use(verifyJWT) //from here everthing uses this middleware
 app.use('/students', require('./routes/api/students')); 
+app.use('/safe/joboffers', require('./routes/api/safejoboffers'));
 app.use('/users', require('./routes/api/users'));
 app.use('/funnels', require('./routes/api/funnels'));
+app.use('/matches', require('./routes/api/matches'));
+
+
 
 
 

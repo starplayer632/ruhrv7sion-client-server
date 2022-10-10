@@ -1,20 +1,20 @@
 import React from 'react';
-import Header_Company_Login from '../../../components/headers/Header_Company_Login';
-import Footer from '../../../components/Footer';
+import Header_Student from '../../components/headers/Header_Student';
+import Footer from '../../components/Footer';
 import {Container, Form, Button} from 'react-bootstrap';
-import ShowFunnel from '../../../components/funnels/ShowFunnel';
+import ShowFunnelPublic from "../../components/funnels/ShowFunnelPublic";
 
-const EditorFunnel = () => {
+const ViewFunnelPublic = () => {
 	const funnelid = ((document.URL).split("/"))[5];
 	return (
 		<div style={{
 			backgroundColor:'#f5f5f5',
 		}}>
-			<Header_Company_Login />
+			<Header_Student />
 			<br/>
 			<Container>
 				<br/>
-				<ShowFunnel />
+				<ShowFunnelPublic />
 			</Container>
 			<br/>
 			<div style={{
@@ -27,4 +27,4 @@ const EditorFunnel = () => {
 	)
 }
 
-export default EditorFunnel
+export default ViewFunnelPublic

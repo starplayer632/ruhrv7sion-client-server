@@ -9,7 +9,7 @@ router.route('/')
     .post(joboffersController.createJoboffer); //missing ROLES
 router.route('/user').get(joboffersController.getAllJobOfferByCompanyuser);
 router.route('/exist/:exist').get(joboffersController.getExist);
-router.route('/user/:companyuser').get(joboffersController.getJobOfferByCompanyuser);
+router.route('/user/:companyuser').get(verifyRoles(ROLES_LIST.CompanyUser), joboffersController.getJobOfferByCompanyuser);
 router.route('/:id')
     .get(joboffersController.getJoboffer)
     .delete(verifyRoles(ROLES_LIST.CompanyUser), joboffersController.deleteJoboffer);

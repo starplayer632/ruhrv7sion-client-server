@@ -1,4 +1,5 @@
 const Joboffer = require('../model/Joboffer');
+const User = require('../model/User');
 
 const getAllJoboffers = async (req, res) => {
     const jobs = await Joboffer.find();
@@ -28,7 +29,7 @@ const getExist = async (req, res) => {
 
 const getJoboffer = async (req, res) => {
     if (!req?.params?.id) return res.status(400).json({ "message": ' joboffer id required' });
-    const job = await Joboffer.findOne({ "_id": ObjectId(req.params.id) }).exec();
+    const job = await Joboffer.findById(req.params.id).exec();
     if (!job) {
         return res.status(204).json({ 'message': `joboffer id ${req.params.id} not found` });
     }
@@ -42,6 +43,25 @@ const getJobOfferByCompanyuser = async (req, res) => {
         return res.status(204).json({ 'message': `joboffers  for companyuser ${req.params.companyuser} not found` });
     }
     res.json(jobs);
+}
+
+const getAllJobOfferByCompanyuser = async (req, res) => {
+    console.log("getAllJobOfferByCompanyuser triggerd");
+    const cookies = req.cookies;
+
+    const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
+    const companyuser = user.username;
+
+    if(companyuser===req?.body?.companyuser){
+        try {
+            const offers = await Joboffer.find({ companyuser : companyuser }).exec();
+            res.json(offers);
+        } catch (err) {
+            console.error(err);
+        }
+    }else{
+        res.status(400).json({ 'status': 'NO ACCESS to joboffers' });
+    }
 }
 
 
@@ -76,5 +96,6 @@ module.exports = {
     getJoboffer,
     deleteJoboffer,
     getExist,
-    getJobOfferByCompanyuser
+    getJobOfferByCompanyuser,
+    getAllJobOfferByCompanyuser
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import Header_Company_Login from '../../../components/headers/Header_Company_Login';
 import Footer from '../../../components/Footer';
 import {Container, Form, Button} from 'react-bootstrap';
+import MatchesOverview from "../../../components/company/MatchesOverview";
 
 const Matches = () => {
 	
@@ -13,8 +14,9 @@ const Matches = () => {
 			<br/>
 			<Container>
 				<br/>
-				<h1>Macthes</h1>
+				<h1>Matches</h1>
 				<br/>
+				<MatchesOverview />
 			</Container>
 			<br/>
 			<div style={{
