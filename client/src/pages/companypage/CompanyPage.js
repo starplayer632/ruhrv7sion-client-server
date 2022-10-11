@@ -152,19 +152,6 @@ export default function Main() {
             </div>
           </div>
         </div>
-        {/*
-        <div style={container}>
-          <div style={SellingPointsStyle}>
-            <button style={button}>Starte Durch</button>
-          </div>
-          <div style={SellingPointsStyle}>
-            <button style={button}> Starte Durch</button>
-          </div>
-          <div style={SellingPointsStyle}>
-            <button style={button}>Starte Durch</button>
-          </div>
-        </div>
-         */}
         <h3
           style={{
             marginTop: "50px",
@@ -174,9 +161,6 @@ export default function Main() {
           Contact Info
         </h3>
         <ContactData />
-        <Button onClick={navigateToFunnelEditor} variant="warning">
-          Funnel Editor
-        </Button>{" "}
       </div>
       <Footer />
     </>
