@@ -7,16 +7,11 @@ const verifyRoles = require('../../middleware/verifyRoles');
 
 router.route('/')
     .get(verifyRoles(ROLES_LIST.CompanyUser), funnelsController.getAllfunnelconfigsByCompanyuser)
-    //.get(funnelsController.getAllfunnelconfigs)// just for one route
-    //.get(funnelsController.getFunnelById)
     .post(verifyRoles(ROLES_LIST.CompanyUser),funnelsController.createfunnelconfig) //missing ROLES
     .put(verifyRoles(ROLES_LIST.CompanyUser), funnelsController.updatefunnelconfig)
     .delete(verifyRoles(ROLES_LIST.CompanyUser),funnelsController.deletefunnelconfig);
 
 router.route('/:id').get(funnelsController.getFunnelById);
-    //.post(funnelsController.setFunnelById);
-//router.route('/getallfunnelconfigs/:companyuser')
-//    .get(funnelsController.getAllfunnelconfigsByCompanyuser);
 router.route('/getFunnelyByCompany')
     .get(verifyRoles(ROLES_LIST.CompanyUser), funnelsController.getAllfunnelconfigsByCompanyuser);
 router.route('/done').post(funnelsController.postFunnelDone);

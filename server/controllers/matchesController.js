@@ -10,7 +10,7 @@ const getAllMatches = async (req, res) => {
 
     const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
     const companyuser = user.username;
-
+    //Security check is needed
     try {
         const funneldones = await FunnelDone.find({companyuser}).exec();
         res.json(funneldones);

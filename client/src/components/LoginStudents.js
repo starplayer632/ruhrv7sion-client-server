@@ -121,10 +121,12 @@ const LoginStudents = (typ) => {
                 </div>
             </form>
             <p>
-                Need an Account?<br />
-                <span className="line">
-                    <Link to="/register">Sign Up</Link>
-                </span>
+                <h4>
+                    Need an Account?<br />
+                    <span className="line">
+                        <Link to="/register">Sign Up</Link>
+                    </span>
+                </h4>
             </p>
         </Container>
     )

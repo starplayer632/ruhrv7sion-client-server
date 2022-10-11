@@ -4,23 +4,7 @@ import { Route, Routes } from "react-router-dom";
 //loading bootstrap min local
 import "bootstrap/dist/css/bootstrap.min.css";
 
-/** 
-//import pages
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import Error404 from "./pages/Error404";
-import Dashboard from "./pages/Dashboard";
-import Home from "./pages/studentpage/LandingStudent";
-import Header from "./components/Header.js";
-import Footer from "./components/Footer.js";
-import Jobs from "./pages/Jobs.js";
-import NewJobOffer from "./pages/NewJobOffer.js";
 
-import CompanyPage from "./pages/companypage/CompanyPage.js";
-import FunnelEditor from "./pages/companypage/FunnelEditor";
-import Unauthorized from "./pages/auth/Unauthorized";
-import Login from "./pages/auth/Login";
-*/
 import Jobs from "./pages/studentpage/Jobs.js";
 import LandingStudent from "./pages/studentpage/LandingStudent";
 import ProfilStudent from "./pages/studentpage/login/ProfilStudent";
@@ -52,16 +36,9 @@ import EditorFunnel from "./pages/companypage/login/EditorFunnel.js";
 import ViewFunnel from "./pages/companypage/login/ViewFunnel.js";
 import ViewFunnelPublic from "./pages/studentpage/ViewFunnelPublic";
 import CompanyJobsEditor from "./pages/companypage/login/CompanyJobsEditor";
-//TUT
-import LinkPage from "./pages/TUT/LinkPage";
-import RequireAuth from "./pages/TUT/RequireAuth";
-import PersistLogin from "./pages/TUT/PersistLogin";
-import Lounge from "./pages/TUT/Lounge";
-import Editor from "./pages/TUT/Editor";
-import Admin from "./pages/TUT/Admin";
-import TEST from "./pages/TUT/Users";
-//import Home from './pages/TUT/Home';
-import Layout from "./pages/TUT/Layout";
+import RequireAuth from "./context/RequireAuth";
+import PersistLogin from "./context/PersistLogin";
+import Layout from "./context/Layout";
 
 //App as const -> as a function
 const App = () => {
@@ -73,7 +50,6 @@ const App = () => {
          * Layer 1: public full sights after the Layer 1 --> Params are there but the pages needs to be edited
          */}
         <Route path="/" element={<Home />} />
-        <Route path="/TEST" element={<TEST />} />
         <Route path="home" element={<LandingStudent />} />
         <Route path="jobs" element={<Jobs />} />
         <Route path="funnels/:funnelid" element={<ViewFunnelPublic />} />
@@ -86,7 +62,6 @@ const App = () => {
         <Route path="login" element={<LoginStudent />} />
         <Route path="register" element={<Register />} />
         <Route path="unauthorized" element={<Unauthorized />} />
-        <Route path="linkpage" element={<LinkPage />} />
 
         {/* Layer 1 (business/): public business */}
         <Route path="business/" element={<LandingCompany />} />

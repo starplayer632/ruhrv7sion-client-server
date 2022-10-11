@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../api/axios';
-import {Container} from 'react-bootstrap';
+import {Container, Col, Row} from 'react-bootstrap';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -54,10 +54,19 @@ const Register = () => {
             setErrMsg("Invalid Entry");
             return;
         }
-        
+        let typeOfUser;
+        if(document.getElementById("typeOfUserStudent").checked===true){
+            typeOfUser = "student";
+        }else if(document.getElementById("typeOfUserCompany").checked===true){
+            typeOfUser = "company";
+        }else{
+            typeOfUser = "student";
+        }
+
+
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ user, pwd }),
+                JSON.stringify({ user, pwd, typeOfUser }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -174,6 +183,23 @@ const Register = () => {
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Must match the first password input field.
                         </p>
+                        <br/>
+                        <Row>
+                            <Col>
+                                <input type="radio" id="typeOfUserStudent" name="typeOfUser" value="student" checked />
+                            </Col>
+                            <Col>
+                                <label for="huey">Student</label>
+                            </Col>
+                            <Col>
+                                <input type="radio" id="typeOfUserCompany" name="typeOfUser" value="company" />
+                            </Col>
+                            <Col>
+                                <label for="huey">Company</label>
+                            </Col>
+                        </Row>
+                        
+                        
                         <br/>
                         <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
                     </form>

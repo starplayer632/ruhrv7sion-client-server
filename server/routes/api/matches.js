@@ -8,14 +8,4 @@ const verifyRoles = require('../../middleware/verifyRoles');
 router.route('/')
     .get(verifyRoles(ROLES_LIST.CompanyUser), matchesController.getAllMatches);
 
-
-/*router.route('/:id').get(funnelsController.getFunnelById);
-    //.post(funnelsController.setFunnelById);
-//router.route('/getallfunnelconfigs/:companyuser')
-//    .get(funnelsController.getAllfunnelconfigsByCompanyuser);
-router.route('/getFunnelyByCompany')
-    .get(verifyRoles(ROLES_LIST.CompanyUser), funnelsController.getAllfunnelconfigsByCompanyuser);
-router.route('/done').post(funnelsController.postFunnelDone);
-router.route('/active/:id').get(funnelsController.getFunnelActive);*/
-
 module.exports = router;

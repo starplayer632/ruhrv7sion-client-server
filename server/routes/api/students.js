@@ -6,7 +6,7 @@ const verifyRoles = require('../../middleware/verifyRoles');
 //const verifyJWT = require('../../middleware/verifyJWT'); // just for one route
 
 router.route('/')
-    //.get(verifyJWT, studentsController.getAllstudents)// just for one route
+    //.get(verifyJWT, studentsController.getAllstudents)// protecion just for one route
     .get(studentsController.getAllstudents)
     .post(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor),studentsController.createNewstudents)
     .put(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor),studentsController.updatestudents)

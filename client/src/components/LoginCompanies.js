@@ -122,10 +122,12 @@ const LoginCompanies = (typ) => {
                 </div>
             </form>
             <p>
-                Need an Account?<br />
-                <span className="line">
-                    Write to our email and ask for an business account!
-                </span>
+                <h4>
+                    Need an Account?<br />
+                    <span className="line">
+                        <Link to="/register">Sign Up</Link>
+                    </span>
+                </h4>
             </p>
         </Container>
     )

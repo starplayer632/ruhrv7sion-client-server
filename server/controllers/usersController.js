@@ -27,7 +27,7 @@ const getUser = async (req, res) => {
 
 const getUsername = async (req, res) => {
     const cookies = req.cookies;
-    console.log(`cookie available at login: ${JSON.stringify(cookies)}`);
+    //console.log(`cookie available at login: ${JSON.stringify(cookies)}`);
     
     const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
     

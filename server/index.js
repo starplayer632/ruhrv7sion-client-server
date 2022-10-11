@@ -30,14 +30,10 @@ app.use(cookieParser());//middleware for cookies
  * Routes
  */
 
-/*const user_studentsRouter= require("./SQL Scripts and Data/user_student");
-app.use('/api/users/', user_studentsRouter);*/
-
 app.use('/logout', require('./routes/logout'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
-//app.use('/funnels', require('./routes/api/funnels'));
 app.use('/companycards', require('./routes/api/companycards'));
 app.use('/joboffers', require('./routes/api/joboffers'));
 
@@ -54,9 +50,6 @@ app.use('/safe/joboffers', require('./routes/api/safejoboffers'));
 app.use('/users', require('./routes/api/users'));
 app.use('/funnels', require('./routes/api/funnels'));
 app.use('/matches', require('./routes/api/matches'));
-
-
-
 
 
 //start listening to requests BUT Mongoose needs to work
