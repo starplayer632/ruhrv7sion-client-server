@@ -1,5 +1,5 @@
 # ruhrv7sion-client-server - structure
-* Famous TechStack: MERN = MongoSB + Express + React + NodeJS
+* Famous TechStack: MERN = MongoDB + Express + React + NodeJS
 * Development = Backend Node.js server + Frontend React server
 * Production = Backend Node.js server + static react files on a webserver
 * MongoDB is running in the web and not localy. For this project to work the .env file is needed in the backend. More about this below.
