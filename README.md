@@ -16,22 +16,24 @@ Backend and Frontend
 4. Repeat 3. for the client folder
 
 
-# Run React server port 3000
+## Run React server port 3000
 1. Navigate a terminal to your client folder
 2. Enter the following code: npm start
 
-# Run Node dev server port 1337
+## Run Node dev server port 1337
 1. Navigate a terminal to your server folder
 2. Enter the following code: npm run dev
 
-# .env file 
+## .env file 
 1. create .env file in folder named "server"
 2. ask the onwer for the data to insert here
 Sampledata:
+```
     PORT=XXX
     ACCESS_TOKEN_SECRET=XXX
     REFRESH_TOKEN_SECRET=XXX
     DATABASE_URI=XXX
+```
 
 
 
