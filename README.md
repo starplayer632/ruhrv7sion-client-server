@@ -24,7 +24,15 @@ If you don't want to work with the repository and "just" want to run it, you can
 3.2 Enter: ``` npm install ```
 4. Repeat step 3. for the client folder
 
+###Steps pictures
+1. After running npm install the node_modules fodler should be created
+<img src="Techlabs/pictures_tutorial/3.png" alt="Missigng Pciture 3">
 
+2. After running npm install the node_modules fodler should be created
+<img src="Techlabs/pictures_tutorial/4.png" alt="Missigng Pciture 4">
+
+3. Do not forget the -env file! 
+<img src="Techlabs/pictures_tutorial/frogot%20env%20file.png" alt="Missigng Pciture frogot%20env%20file">
 
 ## Run React server (port 3000)
 1. Navigate a terminal to your client folder
