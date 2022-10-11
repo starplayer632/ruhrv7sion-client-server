@@ -1,14 +1,13 @@
 # ruhrv7sion-client-server
 Backend and Frontend
-// MERN = Mongo + Express + React + Node
-// Development = Node.js server + React server
-// Production = Node.js server + static react files
-//MongoDB is running on Mongo Website
-//.env file is needed
+* Famous TechStack: MERN = Mongo + Express + React + NodeJS
+* Development = Backend Node.js server + Frontend React server
+* Production = Backend Node.js server + static react files on a webserver
+* MongoDB is running in the web and not localy. For this project to work the .env file is needed in the backend. More about this below.
 
 
 # Installation
-1. Install Node.js + NPM
+1. Install Node.js + NPM ([Short instruction from the documentaion](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm))
 2. Clone Repository using e.g. GitHub Desktop (recommended)
 3. !node_moduels are needed to be installed: 
     3.1 Navigate a terminal to your server folder
