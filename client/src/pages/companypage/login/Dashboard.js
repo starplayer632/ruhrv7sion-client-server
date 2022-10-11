@@ -2,6 +2,7 @@ import React from 'react';
 import Header_Company_Login from '../../../components/headers/Header_Company_Login';
 import Footer from '../../../components/Footer';
 import {Container, Form, Button} from 'react-bootstrap';
+import CompanyDashboard from "../../../components/company/CompanyDashboard";
 
 const Dashboard = () => {
 	
@@ -13,7 +14,7 @@ const Dashboard = () => {
 			<br/>
 			<Container>
 				<br/>
-				<h1>Dashbaord</h1>
+				<CompanyDashboard />
 				<br/>
 			</Container>
 			<br/>

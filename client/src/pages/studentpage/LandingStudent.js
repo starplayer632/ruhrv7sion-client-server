@@ -6,7 +6,8 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import img from "../../images/zeche.JPG";
 import { TiStopwatch } from "react-icons/ti";
 import ContactData from "../../components/company/contactData";
-import {Container} from "react-bootstrap";
+import {Container, Button} from "react-bootstrap";
+import ruhrarea from "../../assets/img/ruhr-area.jpg";
 
 const LandingStudent = () => {
 	return (
@@ -14,13 +15,40 @@ const LandingStudent = () => {
 			backgroundColor:'#f5f5f5',
 		}}>
 			<Header_Student/>
+      <div style={{
+        width:"100%", 
+        height:"800px",
+        position: "relative"
+      }}>
+        <img
+          src={ruhrarea}
+          width="100%"
+          height="100%"
+          style={{
+            objectFit: "cover",
+            objectPosition: "0 60%"
+          }}
+          alt="Landing image"
+        />
+        <Container style={{
+            marginLeft:"50%",
+            position: "abolsute",
+            marginTop: "-500px",
+            color:"white",
+        }}>
+          <h1 style={{
+            textShadow: "0 0 10px black"
+          }}>
+            Ruhrv7sion - <br />
+            Zukunftsregister <br /> 
+            Unternhemen mal anders <br />
+            <Button href="/zukunftsregister">Zum Zukunftsregister</Button>
+          </h1>
+        </Container>
+      </div>
 			<LandingBanner />
-			<div style={{
-				backgroundColor:'#f5f5f5',
-				height:'10px',
-			}}>
-			</div>
-			<Container>
+			<Container style={{backgroundColor: "white"}}>
+      <br/>
 			<h3
           style={{ marginBottom: "-41px", color: "white", marginLeft: "10px" }}
         >
@@ -36,10 +64,7 @@ const LandingStudent = () => {
               marginBottom: "40px",
             }}
           >
-            <span>
-              {" "}
-              <h3 style={header3}>Deine beste Wahl </h3>
-            </span>
+
           </div>
         </div>
         <div
@@ -132,10 +157,9 @@ const LandingStudent = () => {
           Contact Info
         </h3>
         <ContactData />
-		<div style={{
-				backgroundColor:'#f5f5f5',
-				height:'100px',
-		}}></div>
+      <div style={{
+          height:'100px'
+      }}></div>
 		</Container>
 		<Footer/>
 		</div>

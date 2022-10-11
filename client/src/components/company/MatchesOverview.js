@@ -8,16 +8,15 @@ import MatchAccordionItem from "./MatchAccordionItem";
 
 const MatchesOverview = () => {
     const effectRan = useRef(false);
-    const [allmatches, setAllmatches] = useState();
+    const [allmatches, setAllmatches] = useState([]);
     const [matchesids, setMatchesids] = useState([]);
     //const [matcheslist, setMatcheslist] = useState([[],[]]);
     const [accordionnumber, setAccordionnumber] = useState(0);
-
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
     //REACT 18 breakews useaffect runs it twice
-
+    
     function addAccordionnumber(){
         setAccordionnumber(accordionnumber+1);
     }
@@ -40,7 +39,7 @@ const MatchesOverview = () => {
                         if(i===0){
                             funnelidliste[i] = data[i].funnelid;
                         }else{
-                            let inthere = false;
+                            let inthere = true;
                             for (let j = 0; j < funnelidliste.length; j++) {
                                 if(data[i].funnelid===funnelidliste[j]){
                                     inthere = true;
@@ -79,13 +78,27 @@ const MatchesOverview = () => {
         }
     }, [])
 
+    /*
+    function getTitle(id){
+        let title = "null";
+        console.log("id: "+id);
+        allmatches.map((item) => {
+            console.log("item: "+item._id+"   id: "+id);
+            if(item._id === id){
+                console.log("-------------------------------------->>>>>");
+                title=JSON.stringify(item.funnelname);
+            }
+        });
+        return title;
+    }
+    */
 
     return (
         <Container>
             <br/>
             <Accordion defaultActiveKey="0">
                 {matchesids.map((id, index) => (
-                    <MatchAccordionItem id={id} index={index} allmatches={allmatches}/>
+                    <MatchAccordionItem id={id} index={index} allmatches={allmatches} />
                 ))}
             </Accordion>
         </Container>

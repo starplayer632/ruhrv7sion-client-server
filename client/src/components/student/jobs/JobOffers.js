@@ -1,12 +1,16 @@
 import {Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import axi from '../../../api/axios';
 import React, { useRef, useState, useEffect } from 'react';
+import ShowFunnel from '../../funnels/ShowFunnel';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 const JobOffers = () => {
     const [rawList, setRawList] = useState([]);
+    const [funnelid, setFunnelid] = useState();
     const ref = useRef(null);
-    
+    const navigate = useNavigate();
+    const [URL, setURL] = useState();
 
     let firstload = true;
     useEffect(() => {
@@ -14,7 +18,6 @@ const JobOffers = () => {
             console.log("useEffect []: ");
             axi.get('/joboffers').then(response => {
                 const d = response.data;
-                //console.log(d);
                 setRawList(d);
             }); 
         }else{
@@ -28,7 +31,6 @@ const JobOffers = () => {
         document.getElementById("jobBigContainer").style.visibility = "visible";
         for (let i = 0; i < rawList.length; i++) {
             if (rawList[i]._id === id){
-                //console.log("showBig: i: "+i);
                 document.getElementById("jobsBigTitle").innerHTML = rawList[i].title;
                 document.getElementById("jobsBigTextworktogether").innerHTML = rawList[i].textworktogether;
                 document.getElementById("jobsBigTextexpectations").innerHTML = rawList[i].textexpectations;
@@ -36,10 +38,18 @@ const JobOffers = () => {
                 document.getElementById("jobsBigMoney").innerHTML = rawList[i].money;
                 document.getElementById("jobsBigCompanyname").innerHTML = rawList[i].companyname;
                 document.getElementById("jobsBigCity").innerHTML = rawList[i].city;
+                setFunnelid(rawList[i].funnelstodisplay);
+                setURL("/funnels/"+rawList[i].funnelstodisplay);
             }
         }
     }
-   
+    
+    function gotoFunnel(){
+        const URL = "/funnels/"+funnelid;
+        //navigate(URL);
+        console.log(URL);
+    }
+
     return (
         <Container style={{
             width:'100%',
@@ -119,7 +129,7 @@ const JobOffers = () => {
                         <br/>
                         <Row>
                             <Col>
-                                <Button>Lets Match!</Button>
+                                <Button id="funnelmatch" href={URL}>Lets Match!</Button>
                             </Col>
                             <Col>
                                 <Button>More from the company</Button>

@@ -1,8 +1,9 @@
 const Joboffer = require('../model/Joboffer');
 const User = require('../model/User');
+var moment = require('moment-timezone');
 
 const getAllJoboffers = async (req, res) => {
-    const jobs = await Joboffer.find();
+    const jobs = await Joboffer.find({ active: true });
     if (!jobs) return res.status(204).json({ 'message': 'No jobs found' });
     res.json(jobs);
 }
@@ -90,6 +91,74 @@ const createJoboffer = async (req, res) => {
     }
 }
 
+//safe route
+const safegetJoboffer = async (req, res) => {
+    const cookies = req.cookies;
+
+    const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
+    const companyuser = user.username;
+    
+    if(companyuser===cookies.username){
+        try {
+            if (!req?.params?.id) return res.status(400).json({ "message": ' joboffer id required' });
+
+            const job = await Joboffer.findById(req.params.id).exec();
+            if (!job) {
+                return res.status(204).json({ 'message': `joboffer with id ${req.params.id} not found` });
+            }
+            res.json(job);
+        } catch (err) {
+            console.error(err);
+        }
+    }else{
+        res.status(400).json({ 'status': 'NO ACCESS to this funnel' });
+    }
+    
+}
+
+
+
+//safe route
+const safeupdateJobOffer = async (req, res) => {
+    const cookies = req.cookies;
+
+    const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
+    const companyuser = user.username;
+
+    if(companyuser===cookies.username){
+        if (!req?.params?.id) return res.status(400).json({ "message": ' joboffer id required' });
+        try {
+            const oldOffer = await Joboffer.findOne({"_id": req.params.id});
+            if(!oldOffer){
+                res.status(400).json({ "message": 'joboffer id required' })
+            }else{
+                
+                oldOffer.title = req.body.title;
+                oldOffer.active =  req.body.active;
+                oldOffer.companyname = req.body.companyname;
+                oldOffer.type = req.body.type;
+                oldOffer.city = req.body.city;
+                oldOffer.timeweekly = req.body.timeweekly;
+                oldOffer.money = req.body.money;
+                oldOffer.textworktogether = req.body.textworktogether;
+                oldOffer.textexpectations = req.body.textexpectations;
+                oldOffer.funnelstodisplay = req.body.funnelstodisplay;
+                oldOffer.updatedat = moment().tz("Europe/Berlin").format();
+
+                const joboffer = await Joboffer.findOneAndUpdate({"_id": req.body._id}, oldOffer);
+                res.status(201).json({"status": "ok"});
+            }
+
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({"status": "ERROR"});
+        }
+    }else{
+        res.status(400).json({ 'status': 'NO ACCESS to this job offer' });
+    }
+}
+
+
 module.exports = {
     getAllJoboffers,
     createJoboffer,
@@ -97,5 +166,7 @@ module.exports = {
     deleteJoboffer,
     getExist,
     getJobOfferByCompanyuser,
-    getAllJobOfferByCompanyuser
+    getAllJobOfferByCompanyuser,
+    safeupdateJobOffer,
+    safegetJoboffer
 }

@@ -10,6 +10,7 @@ const LoginStudent = () => {
 			<Header_Student/>
 			<br />
 			<br />
+			<h3 style={{textAlign: "center"}}>Are you a company user? Click <a href="/business/login">here</a></h3>
 			<br />
 			<br />
 			<Logi />

@@ -1,10 +1,13 @@
 import React from 'react';
 import Header_Company_Login from '../../../components/headers/Header_Company_Login';
 import Footer from '../../../components/Footer';
-import {Container, Form, Button} from 'react-bootstrap';
+import JobOffersEditor from "../../../components/company/JobOffersEditor";
+import {Container} from "react-bootstrap";
 
-const EditorJobs = () => {
-	
+const CompanyJobsEditor = () => {
+
+
+
 	return (
 		<div style={{
 			backgroundColor:'#f5f5f5',
@@ -12,9 +15,9 @@ const EditorJobs = () => {
 			<Header_Company_Login />
 			<br/>
 			<Container>
+				<h1>JobOffers</h1>
 				<br/>
-				<h1>EditorJobs</h1>
-				<br/>
+				<JobOffersEditor/>
 			</Container>
 			<br/>
 			<div style={{
@@ -27,4 +30,4 @@ const EditorJobs = () => {
 	)
 }
 
-export default EditorJobs
+export default CompanyJobsEditor

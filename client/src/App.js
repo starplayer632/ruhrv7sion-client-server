@@ -35,7 +35,6 @@ import Error404 from "./pages/errorpages/Error404";
 import Register from "./pages/auth/Register";
 import StudentMatches from "./pages/studentpage/login/StudentMatches.js";
 import Dashboard from "./pages/companypage/login/Dashboard.js";
-import EditorJobs from "./pages/companypage/login/EditorJobs.js";
 import MatchesCompany from "./pages/companypage/login/Matches.js";
 import ProfileCompany from "./pages/companypage/login/Profile.js";
 import SeeAllFunnelConfigs from "./pages/companypage/login/SeeAllFunnelConfigs.js";
@@ -52,6 +51,7 @@ import FunnelDashboard from "./pages/companypage/login/FunnelDashboard.js";
 import EditorFunnel from "./pages/companypage/login/EditorFunnel.js";
 import ViewFunnel from "./pages/companypage/login/ViewFunnel.js";
 import ViewFunnelPublic from "./pages/studentpage/ViewFunnelPublic";
+import CompanyJobsEditor from "./pages/companypage/login/CompanyJobsEditor";
 //TUT
 import LinkPage from "./pages/TUT/LinkPage";
 import RequireAuth from "./pages/TUT/RequireAuth";
@@ -99,38 +99,25 @@ const App = () => {
          */}
         <Route element={<PersistLogin />}>
           {/** You need to logged in as STUDENT or ADMIN in order ro access*/}
-          <Route
-            element={
-              <RequireAuth allowedRoles={[ROLES.StudentUser, ROLES.Admin]} />
-            }
-          >
+          <Route element={<RequireAuth allowedRoles={[ROLES.StudentUser, ROLES.Admin]} />}>
             <Route path="login/home" element={<LandingStudentLogin />} />
             <Route path="login/matches" element={<StudentMatches />} />
             <Route path="login/jobs" element={<JobsLogin />} />
             <Route path="login/matches/:fullmatch" element={<ComingSoon />} />
             <Route path="login/impressum" element={<ComingSoon />} />
-            <Route
-              path="login/zukunftsregister"
-              element={<ZukunftsregisterLogin />}
-            />
-            <Route
-              path="login/zukunftsregister/:companyuser" element={<ComingSoon />}
-            />
+            <Route path="login/zukunftsregister" element={<ZukunftsregisterLogin />} />
+            <Route path="login/zukunftsregister/:companyuser" element={<ComingSoon />} />
             <Route path="login/profile" element={<ProfilStudent />} />
           </Route>
           {/** You need to logged in as COMPANY or ADMIN in order ro access*/}
-          <Route
-            element={
-              <RequireAuth allowedRoles={[ROLES.CompanyUser, ROLES.Admin]} />
-            }
-          >
+          <Route element={ <RequireAuth allowedRoles={[ROLES.CompanyUser, ROLES.Admin]} /> }>
             <Route path="business/profile" element={<ProfileCompany />} />
             <Route path="business/matches" element={<MatchesCompany />} />
             <Route path="business/matches/newestmatch" element={<MatchesCompany />} />
             <Route path="business/dashboard" element={<Dashboard />} />
             <Route path="business/editor/newfunnel" element={<CreateNewFunnel />} />
             <Route path="business/jobs" element={<CompanyJobs />} />
-            <Route path="business/jobs/editor/:jobsid" element={<EditorJobs />} />
+            <Route path="business/jobs/editor/:jobsid" element={<CompanyJobsEditor />} />
             <Route path="business/jobs/createnewoffer" element={<CompanyJobs />} />
             <Route path="business/funnels" element={<FunnelDashboard />} />
             <Route path="business/funnels/editor/:funnelid" element={<EditorFunnel />} />

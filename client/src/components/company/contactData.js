@@ -9,7 +9,7 @@ export default function () {
         width: "40%",
         margin: "0",
         margin: "auto",
-        //justifyContent: "space-around",
+        marginLeft: "38%",
         position: "relative",
         height: "160px",
         marginTop: "30px",

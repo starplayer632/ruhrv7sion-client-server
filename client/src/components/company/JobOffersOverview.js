@@ -6,7 +6,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
 
 
-const ShowFunnel = () => {
+const JobOffersOverview = () => {
     const [q, setQ]=  useState([]);
     const [active, setActive]=  useState([]);
     const [offline, setOffline]=  useState([]);
@@ -29,12 +29,6 @@ const ShowFunnel = () => {
                       signal: controller.signal
                   });
                   offerlist = response.data;
-                  console.log("offerlist: "+JSON.stringify(offerlist));
-                  /*hilfe = funnel;
-                  console.log("funnel: "+JSON.stringify(funnel));*/
-                  //setFunnel1(funnel);
-                  //setQ(funnel.questions);
-                  //companyuser = funnel.companyuser;
                   for (let i = 0; i < offerlist.length; i++) {
                     if(offerlist[i].active===true){
                         setActive((active) => [...active, offerlist[i]]);
@@ -45,7 +39,7 @@ const ShowFunnel = () => {
                   
                 }catch (err) {
                   console.error(err);
-                  //navigate('/business/login', { state: { from: location }, replace: true });
+                  navigate('/business/login', { state: { from: location }, replace: true });
                 }
             }
             
@@ -60,10 +54,60 @@ const ShowFunnel = () => {
     }, [])
     
     function turnOffline(id){
+        let data;
+        active.map((activelist, i) => {
+            if(activelist?._id===id){
+                data = activelist;
+            }
+        });
 
+        const updateJoboffer = async () => {
+            try {
+                data.active=false;
+                const URL = '/safe/joboffers/offer/'+id;
+                const response = await axiosPrivate.put(URL, 
+                    JSON.stringify(data),{
+
+                });
+                if(response?.data?.status==="ok"){
+                    window.location.reload(false);
+                }
+            } catch (err) {
+                console.error(err);
+                navigate('/login', { state: { from: location }, replace: true });
+            }
+        }
+
+        
+
+        updateJoboffer();
     }
     function turnActive(id){
+        let data;
+        offline.map((offlinelist, i) => {
+            if(offlinelist?._id===id){
+                data = offlinelist;
+            }
+        });
 
+        const updateJoboffer = async () => {
+            try {
+                data.active=true;
+                const URL = '/safe/joboffers/offer/'+id;
+                const response = await axiosPrivate.put(URL, 
+                    JSON.stringify(data),{
+
+                });
+                if(response?.data?.status==="ok"){
+                    window.location.reload(false);
+                }
+            } catch (err) {
+                console.error(err);
+                navigate('/business/login', { state: { from: location }, replace: true });
+            }
+        }
+
+        updateJoboffer();
     }
     function turnSafeView(id){
 
@@ -72,84 +116,12 @@ const ShowFunnel = () => {
         
     }
     function turnEdit(id){
-
+        const URL = "/business/jobs/editor/"+id;
+        navigate(URL);
     }
     function turnDelete(id){
 
     }
-
-
-    /**
-     * <Form.Check 
-                    type="checkbox"
-                    id="legalterms"
-                    label="This field is required. Maybe for legal terms?"
-                    required
-                />
-     */
-
-/*
-<h2>{funnel1.funnelname}</h2>
-            <br/>
-            <ListGroup>
-            <Form style={{fontSize:"20px"}}>
-                <ListGroup.Item>
-                    <br/>
-                    <Form.Group className="mb-3" style={{fontSize:"20px"}}>
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control id="email" type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                        </Form.Text>
-                        <br/>
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control style={{fontSize:"20px"}} id="name" type="text" placeholder="Enter name" />
-                        <Form.Text className="text-muted">
-                        Please enter your name.
-                        </Form.Text>
-                    </Form.Group>
-                    <br/>
-                </ListGroup.Item>
-                {q.map((question, i) => 
-                    question.type == "YesNo" ? (
-                        <>
-                            <ListGroup.Item>
-                                <br/>
-                                <ShowYesNo question={question.question} id={i} />
-                                <br/>
-                            </ListGroup.Item>
-                        </>
-                    ) : question.type == "open" ? (
-                        <>
-                            <ListGroup.Item>
-                                <br/>
-                                <ShowOpen question={question.question} id={i} />
-                                <br/>
-                            </ListGroup.Item>
-                        </>
-                    ) : question.type == "slider" ? (
-                        <>
-                            <ListGroup.Item>
-                                <br/>
-                                <ShowSlider question={question.question} id={i} min={question.min} max={question.max} />
-                                <br/>
-                            </ListGroup.Item>
-                        </>
-                    ) : (
-                        <>ERROR Loading this question</>
-                    )
-                )}
-                
-                
-            </Form>
-            <ListGroup.Item>
-                <Button style={{width:"100%"}} variant="primary" onClick={submitHandler}>
-                        Submit
-                </Button>
-            </ListGroup.Item>
-            </ListGroup>
-
-*/
 
 
 
@@ -220,4 +192,4 @@ const ShowFunnel = () => {
     );
 };
 
-export default ShowFunnel;
+export default JobOffersOverview;

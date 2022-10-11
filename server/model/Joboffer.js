@@ -52,7 +52,10 @@ const cardSchema = new Schema({
         type: String,
         required: true
     },
-    funnelstodisplay: []
+    funnelstodisplay: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Joboffer', cardSchema);

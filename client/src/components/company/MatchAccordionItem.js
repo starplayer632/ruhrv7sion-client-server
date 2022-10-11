@@ -6,7 +6,7 @@ export default function MatchAccordionItem({id, index, allmatches}) {
         <>
             <br/>
             <Accordion.Item eventKey={index}>
-                <Accordion.Header>Funnel: {id}</Accordion.Header>
+                <Accordion.Header> Funnel: {id} </Accordion.Header>
                 <Accordion.Body> 
                     <Accordion defaultActiveKey="1000">
                         {allmatches.map((match, indi) => (

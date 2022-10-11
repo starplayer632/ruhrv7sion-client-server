@@ -5,7 +5,7 @@ import pictureLandingStartup from "../../assets/img/pictureLandingStartup.png";
 function LandingBanner() {
     return (
         <Container style={{
-            backgroundColor:'#f5f5f5',
+            backgroundColor:'white',
             height:'700px',
 
         }}>

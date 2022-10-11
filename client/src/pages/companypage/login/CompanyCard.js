@@ -37,9 +37,6 @@ const CompanyCard = () => {
                 setProducts(d.products);
                 setVisionstatement(d.visionstatement);
                 setSize(d.size);
-                //console.log("------------");
-                //console.log(d);
-                //console.log("------------");
             }); 
         }else{
             firstload=false;

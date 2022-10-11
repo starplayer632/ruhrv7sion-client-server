@@ -40,7 +40,9 @@ const cardSchema = new Schema({
         type: String,
         required: true
     },
-    funnelstodisplay: []
+    funnelstodisplay: {
+        type: String
+    }
 });
 
 module.exports = mongoose.model('Companycard', cardSchema);
