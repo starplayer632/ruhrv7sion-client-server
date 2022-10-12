@@ -1,4 +1,7 @@
 # ruhrv7sion-client-server - structure
+
+## .env file is temporarily synchronised
+
 * Famous TechStack: MERN = MongoDB + Express + React + NodeJS
 * Development = Backend Node.js server + Frontend React server
 * Production = Backend Node.js server + static react files on a webserver
@@ -43,8 +46,8 @@ If you don't want to work with the repository and "just" want to run it, you can
 2. Enter the following code: ``` npm run dev ```
 
 ## .env file 
-1. create .env file in folder named "server"
-2. ask the onwer for the data to insert here
+1. Create .env file in folder named "server"
+2. For the backend to work at all, the fields must be filled in. Please contact Nils Pautzke in SLACK.
 Sampledata:
 ```
     PORT=XXX
