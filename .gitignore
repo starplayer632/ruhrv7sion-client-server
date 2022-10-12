@@ -7,4 +7,3 @@ temp/
 # ignore local dev files (node_modules)
 client/node_modules
 server/node_modules
-server/.env
