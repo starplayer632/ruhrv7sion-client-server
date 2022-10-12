@@ -31,7 +31,7 @@ const deletefunnelconfig = async (req, res) => {
 
     if(companyuser===req?.body?.companyuser){
         try {
-            const oldFunnel = await FunnelConfig.findOneAndRemove({"_id": req.body._id});
+            const oldFunnel = await FunnelConfig.findOneAndUpdate({"_id": req.body._id});
             res.status(201).json({"status": "deleted"});
         } catch (err) {
             console.error(err);
