@@ -56,5 +56,9 @@ Sampledata:
     DATABASE_URI=XXX
 ```
 
-
-
+# Using the website
+You can create an account or use the following company account. The data for this account has already been filled in.
+```
+Username: Company1
+Password: Company1!
+```
