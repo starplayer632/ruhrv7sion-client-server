@@ -1,5 +1,7 @@
 const User = require('../model/User');
+const CompanyCard = require('../model/Companycard');
 const bcrypt = require('bcrypt');
+
 
 const handleNewUser = async (req, res) => {
     const { user, pwd, typeOfUser } = req.body;
@@ -25,7 +27,20 @@ const handleNewUser = async (req, res) => {
                 "password": hashedPwd,
                 "roles": {User: 2001, CompanyUser: 3109}
             });
+
+            const result2 = await CompanyCard.create({
+                companyuser: user,
+                companyname: "",
+                adress: "",
+                size: 0,
+                products: "",
+                branch: "",
+                visionstatement: "",
+                infotext: ""
+            });   
         }
+
+        
         res.status(201).json({ 'success': `New user ${user} created!` })
         console.log(result);
     } catch (err) {
