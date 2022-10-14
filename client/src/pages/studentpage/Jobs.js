@@ -16,12 +16,10 @@ function Jobs() {
 		}}>
 			<Header_Student/>
 			<Container style={{
-                backgroundColor:'#f5f5f5',
+                backgroundColor:'white',
                 minHeight:'1015px'
             }}>        
-                <Row style={{
-                    marginTop:'50px',
-                }}>
+                <Row>
                     <br/>
                     {/*<JobsSearchBar />*/}
                     <div style={{

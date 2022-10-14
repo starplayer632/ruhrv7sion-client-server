@@ -3,6 +3,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
 import {Container, Accordion , Button} from "react-bootstrap";
 import MatchAccordionItem from "./MatchAccordionItem";
+import MatchesNewest from "./MatchesNewest";
 
 
 
@@ -25,12 +26,26 @@ const MatchesOverview = () => {
         let isMounted = true;
         const controller = new AbortController();
         if(effectRan.current === true){
+            
+            const getNewest = async () => {
+                try {
+                    const response = await axiosPrivate.get('/matches/newest', {
+                        signal: controller.signal
+                    });
+                    console.log("newest: "+JSON.stringify(response.data));
+                }catch (err) {
+                    console.error(err);
+                    //navigate('/business/login', { state: { from: location }, replace: true });
+                }
+            }
+            
+            
             const getAllMatches = async () => {
                 try {
                     const response = await axiosPrivate.get('/matches', {
                         signal: controller.signal
                     });
-                    console.log("RESPONSE:"+JSON.stringify(response.data));
+                    //console.log("RESPONSE:"+JSON.stringify(response.data));
                     setAllmatches(response.data);
                     const data = response.data;
                     console.log("data.length: "+data.length);
@@ -68,7 +83,7 @@ const MatchesOverview = () => {
                     navigate('/business/login', { state: { from: location }, replace: true });
                 }
             }
-
+            getNewest();
             getAllMatches();
         }
         return () => {
@@ -95,6 +110,7 @@ const MatchesOverview = () => {
 
     return (
         <Container>
+            <MatchesNewest />
             <br/>
             <Accordion defaultActiveKey="0">
                 {matchesids.map((id, index) => (

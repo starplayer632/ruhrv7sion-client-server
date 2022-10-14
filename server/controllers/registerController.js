@@ -13,7 +13,6 @@ const handleNewUser = async (req, res) => {
         //encrypt the password
         const hashedPwd = await bcrypt.hash(pwd, 10);
         //create and store the new user depending on Student or Company
-        console.log("typeOfUser: "+typeOfUser)
         let result;
         if(typeOfUser==="student"){
             result = await User.create({

@@ -7,5 +7,7 @@ const verifyRoles = require('../../middleware/verifyRoles');
 
 router.route('/')
     .get(verifyRoles(ROLES_LIST.CompanyUser), matchesController.getAllMatches);
-
+router.route('/newest')
+    .get(verifyRoles(ROLES_LIST.CompanyUser), matchesController.getNewestMatchTotal);
 module.exports = router;
+

@@ -3,6 +3,9 @@ import axi from '../../../api/axios';
 import React, { useRef, useState, useEffect } from 'react';
 import ShowFunnel from '../../funnels/ShowFunnel';
 import { Navigate, useNavigate } from 'react-router-dom';
+//Import icons from fontawesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faEuroSign, faCity, faPaperPlane, faIndustry  } from '@fortawesome/free-solid-svg-icons'
 
 
 const JobOffers = () => {
@@ -34,8 +37,8 @@ const JobOffers = () => {
                 document.getElementById("jobsBigTitle").innerHTML = rawList[i].title;
                 document.getElementById("jobsBigTextworktogether").innerHTML = rawList[i].textworktogether;
                 document.getElementById("jobsBigTextexpectations").innerHTML = rawList[i].textexpectations;
-                document.getElementById("jobsBigTimeweekly").innerHTML = rawList[i].timeweekly;
-                document.getElementById("jobsBigMoney").innerHTML = rawList[i].money;
+                document.getElementById("jobsBigTimeweekly").innerHTML = rawList[i].timeweekly+" h a week";
+                document.getElementById("jobsBigMoney").innerHTML = rawList[i].money+" € a hour";
                 document.getElementById("jobsBigCompanyname").innerHTML = rawList[i].companyname;
                 document.getElementById("jobsBigCity").innerHTML = rawList[i].city;
                 setFunnelid(rawList[i].funnelstodisplay);
@@ -53,14 +56,18 @@ const JobOffers = () => {
     return (
         <Container style={{
             width:'100%',
-            maxHeight: '1100px'
+            maxHeight: '1200px'
         }}>
+            <h3 style={{
+                textAlign:"center"
+            }}>The SearchBar is temporarily disabled!</h3>
+            <br/>
             <Row style={{
                 width:'100%',
             }}>
-                <Col xs={6} style={{
-                    borderRight:'3px solid gray',
-                    overflow: 'scroll',
+                <Col xs={5} style={{
+                    
+                    overflowY: 'scroll',
                     maxHeight: '1000px',
                 }}>
                     {rawList.map(job => (
@@ -70,23 +77,58 @@ const JobOffers = () => {
                             <h5><Button onClick={() => showBig(job._id)}>{job.title}</Button></h5>
                             </Row>
                             <Row>
-                                <h6>{job.companyname}</h6>
+                                <h6>
+                                    <FontAwesomeIcon icon={faIndustry} style={{
+                                        margin:"0px",
+                                        marginRight:"10px",
+                                        width:"20px"
+                                    }}/>
+                                    {job.companyname}
+                                </h6>
                             </Row>
                             <Row>
                                 <Col>
                                     <Row>
-                                        Time: {job.timeweekly}h a week
+                                        <Col>
+                                            <FontAwesomeIcon icon={faClock} style={{
+                                                margin:"0px",
+                                                marginRight:"10px",
+                                                width:"20px"
+                                            }}/>
+                                            {job.timeweekly}h a week
+                                        </Col>
                                     </Row>
                                     <Row>
-                                        Money: {job.money}€ a hour
+                                        <Col>
+                                            <FontAwesomeIcon icon={faEuroSign} style={{
+                                                margin:"0px",
+                                                marginRight:"10px",
+                                                width:"20px"
+                                            }}/>
+                                            {job.money}€ a hour
+                                        </Col>
                                     </Row>
                                 </Col>
                                 <Col>
                                     <Row>
-                                        City: {job.city}
+                                        <Col>
+                                            <FontAwesomeIcon icon={faCity} style={{
+                                                margin:"0px",
+                                                marginRight:"10px",
+                                                width:"20px"
+                                            }}/>
+                                            {job.city}
+                                        </Col>
                                     </Row>
                                     <Row>
-                                        Type: {job.type}
+                                        <Col>
+                                            <FontAwesomeIcon icon={faPaperPlane} style={{
+                                                margin:"0px",
+                                                marginRight:"10px",
+                                                width:"20px"
+                                            }}/>
+                                            {job.type}
+                                        </Col>
                                     </Row>
                                 </Col>
                             </Row>
@@ -119,10 +161,62 @@ const JobOffers = () => {
                         <br/>
                         <Row>
                             <ListGroup>
-                                <ListGroup.Item><div id="jobsBigTimeweekly">Null</div> h a week</ListGroup.Item>
-                                <ListGroup.Item><div id="jobsBigMoney">Null</div> € a hour</ListGroup.Item>
-                                <ListGroup.Item>Companyname: <div id="jobsBigCompanyname">Null</div></ListGroup.Item>
-                                <ListGroup.Item>City: <div id="jobsBigCity">Null</div></ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col xs lg="1">
+                                            <FontAwesomeIcon icon={faClock} style={{
+                                                margin:"0px",
+                                                marginRight:"10px",
+                                                width:"20px"
+                                            }}/>
+                                        </Col>
+                                        <Col md="auto">
+                                            <div id="jobsBigTimeweekly">Null h a week</div> 
+                                        </Col>                                        
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col xs lg="1">
+                                            <FontAwesomeIcon icon={faEuroSign} style={{
+                                                margin:"0px",
+                                                marginRight:"10px",
+                                                width:"20px"
+                                            }}/>
+                                        </Col>
+                                        <Col md="auto">
+                                            <div id="jobsBigMoney">Null € a hour</div> 
+                                        </Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col xs lg="1">
+                                            <FontAwesomeIcon icon={faIndustry} style={{
+                                                margin:"0px",
+                                                marginRight:"10px",
+                                                width:"20px"
+                                            }}/>
+                                        </Col>
+                                        <Col md="auto">
+                                            <div id="jobsBigCompanyname">Null</div> 
+                                        </Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col xs lg="1">
+                                            <FontAwesomeIcon icon={faCity} style={{
+                                                margin:"0px",
+                                                marginRight:"10px",
+                                                width:"20px"
+                                            }}/>
+                                        </Col>
+                                        <Col md="auto">
+                                            <div id="jobsBigCity">Null</div> 
+                                        </Col>
+                                    </Row>
+                                </ListGroup.Item>
 
                             </ListGroup>
                         </Row>
