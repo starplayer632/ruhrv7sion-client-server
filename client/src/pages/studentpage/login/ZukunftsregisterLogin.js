@@ -2,6 +2,8 @@ import React from 'react'
 import LandingBanner from '../../../components/student/LandingBanner';
 import Header_Student_Login from '../../../components/headers/Header_Student_Login';
 import Footer from '../../../components/Footer';
+import Cards from '../../../components/student/Cards.js';
+import { Container } from 'react-bootstrap';
 
 
 const ZukunftsregisterLogin = () => {
@@ -11,12 +13,15 @@ const ZukunftsregisterLogin = () => {
 		}}>
 			<Header_Student_Login/>
             <br/>
-			<h2>Zukunftsregister: login version</h2>
-			<div style={{
-				backgroundColor:'#f5f5f5',
-				height:'700px',
-			}}>
-			</div>
+			<Container>
+				<h2>Zukunftsregister</h2>
+				<br/>
+				<Cards />
+				<br/>
+			</Container>
+			<br/>
+			<br/>
+			<br/>
 			<Footer/>
 		</div>
 	)

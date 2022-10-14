@@ -1,7 +1,7 @@
 import {Container, Button} from 'react-bootstrap';
 import logoWhite from "../assets/img/logo.png";
 import SkylineCut from "../assets/img/skylinecut.png";
-import {Row} from "react-bootstrap";
+import {Row, Col} from "react-bootstrap";
 
 function Footer() {
     return (
@@ -53,7 +53,7 @@ function Footer() {
                         <p>
                             Wartet auf Dich. Und dank <br/>Ruhrv7sion-Matching kannst Du dir die  <br/> Bewerbung sparen.
                         </p>
-                        <Button type="button" className="btn btn-outline-light">Leg Los!</Button>
+                        <Button href="/events/techlabs" type="button" className="btn btn-outline-light">Leg Los!</Button>
                     </div>
                     <div className="col-sm" style={{
                         backgroundColor:'',
@@ -67,19 +67,33 @@ function Footer() {
                         </p>
                     </div>
                 </div>
-                <Row>
-                    <div className="col-sm" style={{
-                            backgroundColor:'',
-                            padding:'10px',
-                    }}> 
-                        <h5><a href="/impressum">Datenschutz</a></h5>
-                    </div>
-                    <div className="col-sm" style={{
-                            backgroundColor:'',
-                            padding:'10px',
-                    }}> 
-                        <h5><a href="/impressum">Impressum</a></h5>
-                    </div>
+                <Row style={{
+                    width: "100%"
+                }}>
+                        <Col style={{
+                                backgroundColor:'',
+                                padding:'10px',
+                                textAlign: "center"
+                        }}>
+                            <a href="/impressum" style ={{
+                                textDecoration: "none",
+                                color: "white"
+                            }}>
+                                <h5>Datenschutz</h5>
+                            </a>
+                        </Col>
+                        <Col style={{
+                                backgroundColor:'',
+                                padding:'10px',
+                                textAlign: "center"
+                        }}>
+                            <a href="/impressum" style ={{
+                                textDecoration: "none",
+                                color: "white"
+                            }}>
+                                <h5>Impressum</h5>
+                            </a>
+                        </Col>
                 </Row>
                 <div style={{
                     marginLeft:'0px',
