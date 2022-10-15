@@ -11,8 +11,9 @@ className="mb-3"
                 {question}
             </h3>
             <Form.Control
-                type="text"
+                as="textarea"
                 id={id}
+                style={{ height: '100px' }}
             />
         </Form.Group>
     );

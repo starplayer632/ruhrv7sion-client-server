@@ -160,65 +160,139 @@ const ShowFunnel = () => {
 
     return (
         <Container>
-            <h2>{funnel1.funnelname}</h2>
+            <h1 style={{
+                textAlign:"center",
+                color:"#ff5b2b"
+            }}>{funnel1.funnelname}</h1>
             <br/>
-            <ListGroup>
-            <Form style={{fontSize:"20px"}}>
-                <ListGroup.Item>
-                    <br/>
-                    <Form.Group className="mb-3" style={{fontSize:"20px"}}>
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control id="email" type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                        </Form.Text>
-                        <br/>
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control style={{fontSize:"20px"}} id="name" type="text" placeholder="Enter name" />
-                        <Form.Text className="text-muted">
-                        Please enter your name.
-                        </Form.Text>
-                    </Form.Group>
-                    <br/>
-                </ListGroup.Item>
+            <div style={{
+                padding:"20px",
+                borderRadius: "15px",
+                backgroundColor:"white",
+                boxShadow: "rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px"
+            }}>
+            <Form style={{
+                fontSize:"20px", 
+                width: "100%"
+            }}>
                 {q.map((question, i) => 
                     question.type == "YesNo" ? (
                         <>
-                            <ListGroup.Item>
-                                <br/>
-                                <ShowYesNo question={question.question} id={i} />
-                                <br/>
-                            </ListGroup.Item>
+                            <br/>
+                            <h6 sytle={{
+                                width:"100%",
+                                textAlign: "right",
+                                marginBottom: "0px"
+                            }}>
+                                Yes-No-Question
+                            </h6>
+                            <div style={{
+                                width:"300px",
+                            }}>
+                                <hr/>
+                            </div>
+                            <ShowYesNo question={question.question} id={i} />
                         </>
                     ) : question.type == "open" ? (
                         <>
-                            <ListGroup.Item>
-                                <br/>
-                                <ShowOpen question={question.question} id={i} />
-                                <br/>
-                            </ListGroup.Item>
+                            <br/>
+                            <h6 sytle={{
+                                width:"100%",
+                                textAlign: "right",
+                                marginBottom: "0px"
+                            }}>
+                                Open-Question
+                            </h6>
+                            <div style={{
+                                width:"300px",
+                            }}>
+                                <hr/>
+                            </div>
+                            <ShowOpen question={question.question} id={i} />
                         </>
                     ) : question.type == "slider" ? (
                         <>
-                            <ListGroup.Item>
-                                <br/>
-                                <ShowSlider question={question.question} id={i} min={question.min} max={question.max} />
-                                <br/>
-                            </ListGroup.Item>
+                            <br/>
+                            <h6 sytle={{
+                                width:"100%",
+                                textAlign: "right",
+                                marginBottom: "0px"
+                            }}>
+                                Slider-Question
+                            </h6>
+                            <div style={{
+                                width:"300px",
+                            }}>
+                                <hr/>
+                            </div>
+                            <ShowSlider question={question.question} id={i} min={question.min} max={question.max} />
                         </>
                     ) : (
                         <>ERROR Loading this question</>
                     )
                 )}
-                
-                
             </Form>
-            <ListGroup.Item>
-                <Button style={{width:"100%"}} variant="primary" onClick={submitHandler}>
-                        Submit
-                </Button>
-            </ListGroup.Item>
-            </ListGroup>
+                
+            <br/>
+            <br/>
+            <br/>
+            <Container>
+                <h6>
+                    Personal info
+                </h6>
+                <div style={{
+                    width:"300px"
+                }}>
+                    <hr/>
+                </div>
+                <h4 style={{
+                    width: "100%",
+                    textAlign: "center"
+                }}>
+                    Do you already have an account?
+                </h4>
+                <br/>
+                <Row>
+                    <Col>
+                        <Button>Yes! I have an account</Button>
+                    </Col>
+                    <Col>
+                        <Form.Control id="username" type="text" placeholder="Enter your username" />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Button>Yes! I have an account</Button>
+                    </Col>
+                    <Col>
+                        <Button style={{
+                            left:"10px"
+                        }}>No! I just want to do the funnel</Button>
+                    </Col>
+                </Row>
+                        
+                    
+                <br/>
+                <Form.Group className="mb-3" style={{fontSize:"20px"}}>
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control id="email" type="email" placeholder="Enter email" />
+                    <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                    </Form.Text>
+                    <br/>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control style={{fontSize:"20px"}} id="name" type="text" placeholder="Enter name" />
+                    <Form.Text className="text-muted">
+                    Please enter your name.
+                    </Form.Text>
+                </Form.Group>
+            </Container>
+            <br/>
+            <Button style={{width:"100%"}} variant="primary" onClick={submitHandler}>
+                    Submit
+            </Button>
+            
+            </div>
         </Container>
     );
 

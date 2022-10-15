@@ -39,6 +39,7 @@ import CompanyJobsEditor from "./pages/companypage/login/CompanyJobsEditor";
 import RequireAuth from "./context/RequireAuth";
 import PersistLogin from "./context/PersistLogin";
 import Layout from "./context/Layout";
+import Events from "./pages/events/Events";
 
 //App as const -> as a function
 const App = () => {
@@ -57,6 +58,8 @@ const App = () => {
         <Route path="impressum" element={<LegalTerms />} />
         <Route path="zukunftsregister" element={<Zukunftsregister />} />
         <Route path="zukunftsregister/:companyuser" element={<ComingSoon />} />
+        <Route path="events/techlabs" element={<Events eventid="techlabs"/>} />
+        
 
         {/* Layer 0: public student auth */}
         <Route path="login" element={<LoginStudent />} />
