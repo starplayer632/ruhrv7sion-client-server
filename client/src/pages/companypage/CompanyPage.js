@@ -7,8 +7,10 @@ import FunnelEditor from "../../components/funnels/CreateFunnel";
 import img from "../../images/zeche.JPG";
 import { TiStopwatch } from "react-icons/ti";
 import { borderRight } from "@mui/system";
+import { Container } from "react-bootstrap";
 import Header_Company from "../../components/headers/Header_Company";
 import Footer from "../../components/Footer";
+import ruhrarea from "../../assets/img/ruhr-area.jpg";
 
 export default function Main() {
   const navigate = useNavigate();
@@ -20,6 +22,52 @@ export default function Main() {
       <Header_Company />
       <div
         style={{
+          width: "100%",
+          height: "950px",
+          position: "relative",
+        }}
+      >
+        <img
+          src={ruhrarea}
+          width="100%"
+          height="100%"
+          style={{
+            objectFit: "cover",
+            objectPosition: "0 80%",
+          }}
+          alt="Landing image"
+        />
+        <Container
+          style={{
+            marginLeft: "55%",
+            position: "absolute",
+            marginTop: "-500px",
+            color: "white",
+          }}
+        >
+          <h1
+            style={{
+              textShadow: "0 0 10px black",
+            }}
+          >
+            Nutze das innovative matching <br />
+            system zu deinem Vorteil! <br />
+            <Button
+              size="lg"
+              style={{
+                backgroundColor: "#010837",
+                border: "none",
+                marginTop: "20px",
+              }}
+              href="/register"
+            >
+              Jetz registrieren
+            </Button>
+          </h1>
+        </Container>
+      </div>
+      <div
+        style={{
           width: "70%",
           justifyContent: "center",
           position: "center",
@@ -28,23 +76,6 @@ export default function Main() {
           minHeight: "180vh",
         }}
       >
-        <div
-          style={{
-            borderStyle: "solid",
-            borderWidth: "5px",
-            borderColor: "black",
-            marginLeft: "6%",
-            width: "35%",
-            height: "250px",
-            backgroundColor: "white",
-            borderRadius: "25px",
-            marginRight: "80px",
-            marginTop: "100px",
-          }}
-        >
-          <p> Value Proposition </p>
-          <p> Product Benefit description</p>
-        </div>
         <br />
         <br />
         <br />

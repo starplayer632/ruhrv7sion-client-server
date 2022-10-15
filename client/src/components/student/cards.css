@@ -1,0 +1,22 @@
+.header:hover {
+  color: "white";
+  text-decoration: "none";
+}
+
+a:hover {
+  color: "white";
+  text-decoration: "none";
+}
+
+li {
+  list-style-type: none;
+}
+
+* {
+  word-wrap: break-word;
+}
+
+ul li {
+  margin: 0;
+  padding: 0;
+}
