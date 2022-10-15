@@ -1,22 +1,22 @@
-import {Button, Container, Row, Col, Form, ListGroup} from "react-bootstrap";
-import "../../index.css";
-import Cookies from "js-cookie";
+import React from 'react'
 import { useState, useEffect, useRef } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
-import ShowYesNo from "./showfunnel/ShowYesNo";
-import ShowOpen from "./showfunnel/ShowOpen";
-import ShowSlider from "./showfunnel/ShowSlider";
+import ShowYesNo from "../funnels/showfunnel/ShowYesNo";
+import ShowOpen from "../funnels/showfunnel/ShowOpen";
+import ShowSlider from "../funnels/showfunnel/ShowSlider";
+import {Button, Container, Row, Col, Form, ListGroup} from "react-bootstrap";
 
-const ShowFunnel = () => {
+
+function EventsShow(eventid) {
+
     const [funnel1, setFunnel1]=  useState([]);
     const [q, setQ]=  useState([]);
-    //const companyuser = Cookies.get('username');
     const navigate = useNavigate();
     const effectRan = useRef(false);
     const axiosPrivate = useAxiosPrivate();
     const location = useLocation(); 
-    const funnelid = ((document.URL).split("/"))[5];
+    const funnelid = eventid;
 
     let funnel;
     
@@ -130,7 +130,23 @@ const ShowFunnel = () => {
             <br/>
             <ListGroup>
             <Form style={{fontSize:"20px"}}>
-                
+                <ListGroup.Item>
+                    <br/>
+                    <Form.Group className="mb-3" style={{fontSize:"20px"}}>
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control id="email" type="email" placeholder="Enter email" />
+                        <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                        </Form.Text>
+                        <br/>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control style={{fontSize:"20px"}} id="name" type="text" placeholder="Enter name" />
+                        <Form.Text className="text-muted">
+                        Please enter your name.
+                        </Form.Text>
+                    </Form.Group>
+                    <br/>
+                </ListGroup.Item>
                 {q.map((question, i) => 
                     question.type == "YesNo" ? (
                         <>
@@ -164,23 +180,6 @@ const ShowFunnel = () => {
                 
             </Form>
             <ListGroup.Item>
-                <br/>
-                <Form.Group className="mb-3" style={{fontSize:"20px"}}>
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control id="email" type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                    </Form.Text>
-                    <br/>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control style={{fontSize:"20px"}} id="name" type="text" placeholder="Enter name" />
-                    <Form.Text className="text-muted">
-                    Please enter your name.
-                    </Form.Text>
-                </Form.Group>
-                <br/>
-            </ListGroup.Item>
-            <ListGroup.Item>
                 <Button style={{width:"100%"}} variant="primary" onClick={submitHandler}>
                         Submit
                 </Button>
@@ -190,4 +189,4 @@ const ShowFunnel = () => {
     );
 };
 
-export default ShowFunnel;
+export default EventsShow;

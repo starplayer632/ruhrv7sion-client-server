@@ -14,19 +14,24 @@ className="mb-3"
             </h3>
             <Form.Check
                 inline
-                label="Ja"
                 name="group1"
                 type="radio"
                 id={idyes}
             />
+            <label for={idyes} style={{
+                marginRight:"20px"
+            }}>Ja</label>
             <Form.Check
                 inline
-                label="Nein"
                 name="group1"
                 type="radio"
                 id={idno}
                 checked="true"
+                style={{
+                    marginLeft:"20px"
+                }}
             />
+            <label for={idno}>Nein</label>
         </Form.Group>
         
         

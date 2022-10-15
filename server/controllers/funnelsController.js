@@ -80,7 +80,7 @@ const updatefunnelconfig = async (req, res) => {
             //oldFunnel.companyuser = companyuser;
             oldFunnel.updatedat = moment().tz("Europe/Berlin").format();
 
-            const funnel = await FunnelConfig.findOneAndReplace({"_id": req.body._id}, oldFunnel);
+            const funnel = await FunnelConfig.findOneAndUpdate({"_id": req.body._id}, oldFunnel);
 
 
             res.status(201).json({"status": "ok"});
