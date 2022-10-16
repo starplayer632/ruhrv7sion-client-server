@@ -58,7 +58,7 @@ const App = () => {
         <Route path="impressum" element={<LegalTerms />} />
         <Route path="zukunftsregister" element={<Zukunftsregister />} />
         <Route path="zukunftsregister/:companyuser" element={<ComingSoon />} />
-        <Route path="events/techlabs" element={<Events eventid="techlabs"/>} />
+        <Route path="events/techlabs" element={<Events eventid="6341ba8a38462248814fe7e7"/>} />
         
 
         {/* Layer 0: public student auth */}

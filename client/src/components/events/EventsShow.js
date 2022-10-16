@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useRef } from "react";
-import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import axios from "../../api/axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import ShowYesNo from "../funnels/showfunnel/ShowYesNo";
 import ShowOpen from "../funnels/showfunnel/ShowOpen";
@@ -14,7 +14,6 @@ function EventsShow(eventid) {
     const [q, setQ]=  useState([]);
     const navigate = useNavigate();
     const effectRan = useRef(false);
-    const axiosPrivate = useAxiosPrivate();
     const location = useLocation(); 
     const funnelid = eventid;
 
@@ -26,8 +25,8 @@ function EventsShow(eventid) {
         if(effectRan.current === true){
             const getFunnel = async () => {
                 try {
-                  const URL = '/funnels/'+funnelid;
-                  const response = await axiosPrivate.get(URL, {
+                  const URL = '/openfunnels/'+funnelid;
+                  const response = await axios.get(URL, {
                       signal: controller.signal
                   });
                   funnel = response.data;
@@ -95,7 +94,7 @@ function EventsShow(eventid) {
             const questions = q;
             const email =  document.getElementById("email").value;
             const name =  document.getElementById("name").value;
-            const response = await axiosPrivate.post('/funnels/done', 
+            const response = await axios.post('/funnels/done', 
                 JSON.stringify({email, name, funnelid, companyuser, funnelname, answers, questions  }),{
                 signal: controller.signal
             });

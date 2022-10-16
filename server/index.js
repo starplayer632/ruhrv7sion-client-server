@@ -36,7 +36,7 @@ app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
 app.use('/companycards', require('./routes/api/companycards'));
 app.use('/joboffers', require('./routes/api/joboffers'));
-
+app.use('/openfunnels/', require('./routes/api/openfunnels'));
 
 //Test Hello World
 app.get('/hello', (req, res) => {

@@ -27,7 +27,7 @@ const ShowFunnelPublic = () => {
         if(effectRan.current === true){
             const getFunnelActiv = async () => {
                 try {
-                  const URL = '/funnels/active/'+funnelid;
+                  const URL = '/openfunnels/'+funnelid;
                   const response = await axiosPrivate.get(URL, {
                       signal: controller.signal
                   });
@@ -51,8 +51,6 @@ const ShowFunnelPublic = () => {
                       signal: controller.signal
                   });
                   funnel = response.data;
-                  /*hilfe = funnel;
-                  console.log("funnel: "+JSON.stringify(funnel));*/
                   setFunnel1(funnel);
                   setQ(funnel.questions);
                 }catch (err) {
@@ -148,7 +146,7 @@ const ShowFunnelPublic = () => {
             console.log("new response.data.status: "+response.data.status);
             if(response?.data?.status==="ok"){
                 alert("Funnel saved!");
-                //navigate("/");
+                navigate("/");
             }
         } catch (err) {
             console.error(err);
