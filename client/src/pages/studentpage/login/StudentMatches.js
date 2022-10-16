@@ -2,6 +2,7 @@ import React from 'react';
 import Header_Student_Login from '../../../components/headers/Header_Student_Login';
 import Footer from '../../../components/Footer';
 import {Container, Form, Button} from 'react-bootstrap';
+import ShowMatches from '../../../components/student/ShowMatches';
 
 const StudentMatches = () => {
 	
@@ -14,25 +15,7 @@ const StudentMatches = () => {
 			<Container>
 				<h1>Matches:</h1>
 				<br/>
-				<Form>
-					<Form.Group className="mb-3" controlId="formBasicEmail">
-						<Form.Label>Change Email address</Form.Label>
-						<Form.Control type="email" placeholder="Enter email" />
-						<Form.Text className="text-muted">
-						We'll never share your email with anyone else.
-						</Form.Text>
-					</Form.Group>
-
-					<Form.Group className="mb-3" controlId="formBasicPassword">
-						<Form.Label>Change Password</Form.Label>
-						<Form.Control type="password" placeholder="Password" />
-						<Form.Label>Repeat Password</Form.Label>
-						<Form.Control type="password" placeholder="Password" />
-					</Form.Group>
-					<Button variant="primary" type="submit">
-						Submit
-					</Button>
-				</Form>
+				<ShowMatches />
 			</Container>
 			<br/>
 			<div style={{

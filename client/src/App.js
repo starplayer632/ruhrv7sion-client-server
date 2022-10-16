@@ -17,7 +17,6 @@ import LoginCompany from "./pages/authentication/LoginCompany";
 import Unauthorized from "./pages/authentication/Unauthorized";
 import Error404 from "./pages/errorpages/Error404";
 import Register from "./pages/authentication/Register";
-import StudentMatches from "./pages/studentpage/login/StudentMatches.js";
 import Dashboard from "./pages/companypage/login/Dashboard.js";
 import MatchesCompany from "./pages/companypage/login/Matches.js";
 import ProfileCompany from "./pages/companypage/login/Profile.js";
@@ -40,6 +39,7 @@ import RequireAuth from "./context/RequireAuth";
 import PersistLogin from "./context/PersistLogin";
 import Layout from "./context/Layout";
 import Events from "./pages/events/Events";
+import StudentMatches from "./pages/studentpage/login/StudentMatches.js";
 
 //App as const -> as a function
 const App = () => {

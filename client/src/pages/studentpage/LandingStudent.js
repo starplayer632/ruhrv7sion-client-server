@@ -40,9 +40,9 @@ const LandingStudent = () => {
             textShadow: "0 0 10px black"
           }}>
             Ruhrv7sion - <br />
-            Zukunftsregister <br /> 
-            Unternhemen mal anders <br />
-            <Button href="/zukunftsregister">Zum Zukunftsregister</Button>
+            Techlabs Dortmund <br /> 
+            Visit our Event Funnel directly! <br />
+            <Button href="/events/techlabs">Funnel here</Button>
           </h1>
         </Container>
       </div>

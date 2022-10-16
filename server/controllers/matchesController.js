@@ -5,6 +5,25 @@ var moment = require('moment-timezone');
 
 
 
+const getAllMatchesByStudent = async (req, res) => {
+    if(!req?.params?.id) return res.status(400).json({"message":"no id"})
+
+    const cookies = req.cookies;
+
+    const user = await User.findOne({ refreshToken : cookies.jwt }).exec();
+    const studentuser = user.username;
+    if(studentuser===user.username){
+        try {
+            const funneldones = await FunnelDone.find({"email": user.email}).exec();
+            res.json(funneldones);
+        } catch (err) {
+            console.error(err);
+            res.staus(500)
+        }   
+    }
+    
+}
+
 const getAllMatches = async (req, res) => {
     const cookies = req.cookies;
 
@@ -88,5 +107,6 @@ const getNewestMatchTotal = async (req, res) => {
 
 module.exports = {
     getAllMatches,
-    getNewestMatchTotal
+    getNewestMatchTotal,
+    getAllMatchesByStudent
 }

@@ -9,5 +9,7 @@ router.route('/')
     .get(verifyRoles(ROLES_LIST.CompanyUser), matchesController.getAllMatches);
 router.route('/newest')
     .get(verifyRoles(ROLES_LIST.CompanyUser), matchesController.getNewestMatchTotal);
+router.route('/students/:id')
+    .get(verifyRoles(ROLES_LIST.StudentUser), matchesController.getAllMatchesByStudent);
 module.exports = router;
 
