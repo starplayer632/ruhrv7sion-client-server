@@ -5,7 +5,6 @@ import {Container, Form, Button} from 'react-bootstrap';
 import ShowFunnelPublic from "../../components/funnels/ShowFunnelPublic";
 
 const ViewFunnelPublic = () => {
-	const funnelid = ((document.URL).split("/"))[5];
 	return (
 		<div style={{
 			backgroundColor:'#f5f5f5',

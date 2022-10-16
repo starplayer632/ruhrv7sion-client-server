@@ -1,48 +1,31 @@
-import {Button, Container, Row, Col, Form, ListGroup} from "react-bootstrap";
-import "../../index.css";
-import Cookies from "js-cookie";
+import React from 'react'
 import { useState, useEffect, useRef } from "react";
 import axios from "../../api/axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import ShowYesNo from "./showfunnel/ShowYesNo";
-import ShowOpen from "./showfunnel/ShowOpen";
-import ShowSlider from "./showfunnel/ShowSlider";
+import ShowYesNo from "../funnels/showfunnel/ShowYesNo";
+import ShowOpen from "../funnels/showfunnel/ShowOpen";
+import ShowSlider from "../funnels/showfunnel/ShowSlider";
+import {Button, Container, Row, Col, Form, ListGroup} from "react-bootstrap";
 
-const ShowFunnelPublic = () => {
+
+function EventsShow({eventid}) {
+
     const [funnel1, setFunnel1]=  useState([]);
     const [q, setQ]=  useState([]);
-    const [hasAccount, setHasAccount]=  useState(false);
     const navigate = useNavigate();
     const effectRan = useRef(false);
     const location = useLocation(); 
-    const funnelid = ((document.URL).split("/"))[4];
-    const [active2, setActive2]=  useState(false);
+    const funnelid = eventid;
+    const [hasAccount, setHasAccount]=  useState(false);
+
     let funnel;
     
     useEffect(() => {
+        console.log("eventid: "+eventid)
+        navigate("funnels/"+eventid);
         let isMounted = true;
-        let active = false;
         const controller = new AbortController();
         if(effectRan.current === true){
-            const getFunnelActiv = async () => {
-                try {
-                  const URL = '/openfunnels/active/'+funnelid;
-                  const response = await axios.get(URL, {
-                      signal: controller.signal
-                  });
-                  console.log("re: "+response.data.status);
-                  const re = response.data.status;
-                  if(re === "active"){
-                    active = true;
-                    setActive2(true);
-                  }else{
-                    active = false;
-                  }
-                }catch (err) {
-                  console.error(err);
-                }
-            }
-
             const getFunnel = async () => {
                 try {
                   const URL = '/openfunnels/'+funnelid;
@@ -50,30 +33,18 @@ const ShowFunnelPublic = () => {
                       signal: controller.signal
                   });
                   funnel = response.data;
+                  /*hilfe = funnel;
+                  console.log("funnel: "+JSON.stringify(funnel));*/
                   setFunnel1(funnel);
                   setQ(funnel.questions);
+                  //companyuser = funnel.companyuser;
                 }catch (err) {
                   console.error(err);
+                  navigate('/business/login', { state: { from: location }, replace: true });
                 }
             }
-            getFunnelActiv();
-
-            const timer = setTimeout(() => {
-                console.log('This will run after 0.5 second!')
-                console.log("active: "+active);
-                if(active===true){
-                    getFunnel();
-                    console.log("ACTIVE");
-                }else{
-                    navigate("/");
-                    console.log("OFFLINE");
-                }
-              }, 500);
-            return () => clearTimeout(timer);
-
             
-           
-                
+            getFunnel();    
         }
         
         return () => {
@@ -83,7 +54,6 @@ const ShowFunnelPublic = () => {
         }
     }, [])
 
-    
     async function submitHandler(){
         let answers = [];
         for (let i = 0; i < q.length; i++) {
@@ -128,7 +98,6 @@ const ShowFunnelPublic = () => {
                 const questions = q;
                 response = await axios.post('/openfunnels/done', 
                     JSON.stringify({email, name, funnelid, companyuser, funnelname, answers, questions  }),{
-                    headers: { 'Content-Type': 'application/json' },    
                     signal: controller.signal
                 });
             }else if(hasAccount===true){
@@ -138,7 +107,6 @@ const ShowFunnelPublic = () => {
                 const questions = q;
                 response = await axios.post('/openfunnels/doneWithUsername', 
                     JSON.stringify({username, funnelid, companyuser, funnelname, answers, questions  }),{
-                    headers: { 'Content-Type': 'application/json' },
                     signal: controller.signal
                 });
             }
@@ -337,4 +305,4 @@ const ShowFunnelPublic = () => {
     
 };
 
-export default ShowFunnelPublic;
+export default EventsShow;

@@ -6,7 +6,7 @@ import EventsShow from '../../components/events/EventsShow'
 
 
 
-function Events(eventid) {
+function Events({eventid}) {
   
 
 
