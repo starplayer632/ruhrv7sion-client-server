@@ -17,6 +17,7 @@ const ShowFunnel = () => {
     const axiosPrivate = useAxiosPrivate();
     const location = useLocation(); 
     const funnelid = ((document.URL).split("/"))[5];
+    const [hasAccount, setHasAccount]=  useState(false);
 
     let funnel;
     
@@ -53,11 +54,10 @@ const ShowFunnel = () => {
     }, [])
 
     
+    
     async function submitHandler(){
         let answers = [];
-        console.log("q.length: "+q.length);
         for (let i = 0; i < q.length; i++) {
-            //const id= JSON.stringify(funnel1[i].id)+"question";
             if (q[i].type==="YesNo") {
                 let value = null;
                 const idyes = i+"yes";
@@ -90,19 +90,33 @@ const ShowFunnel = () => {
         
         const controller = new AbortController();
         try {
-            const funnelname = funnel1.funnelname;
-            const companyuser = funnel1.companyuser;
-            const questions = q;
-            const email =  document.getElementById("email").value;
-            const name =  document.getElementById("name").value;
-            const response = await axiosPrivate.post('/funnels/done', 
-                JSON.stringify({email, name, funnelid, companyuser, funnelname, answers, questions  }),{
-                signal: controller.signal
-            });
+            let response;
+            if(hasAccount===false){
+                const funnelname = funnel1.funnelname;
+                const companyuser = funnel1.companyuser;
+                const email =  document.getElementById("email").value;
+                const name =  document.getElementById("name").value;
+                const questions = q;
+                response = await axiosPrivate.post('/funnels/done', 
+                    JSON.stringify({email, name, funnelid, companyuser, funnelname, answers, questions  }),{
+                    signal: controller.signal
+                });
+            }else if(hasAccount===true){
+                const funnelname = funnel1.funnelname;
+                const companyuser = funnel1.companyuser;
+                const username =  document.getElementById("username").value;
+                const questions = q;
+                response = await axiosPrivate.post('/funnels/doneWithUsername', 
+                    JSON.stringify({username, funnelid, companyuser, funnelname, answers, questions  }),{
+                    signal: controller.signal
+                });
+            }
+
+            
             console.log("new response.data.status: "+response.data.status);
             if(response?.data?.status==="ok"){
                 alert("Funnel saved!");
-                navigate("/");
+                //navigate("/");
             }
         } catch (err) {
             console.error(err);
@@ -110,6 +124,24 @@ const ShowFunnel = () => {
 
         return () => {
             controller.abort();
+        }
+    }
+
+    function changeAccount(){
+        if(hasAccount === true){
+            document.getElementById("username").disabled = true;
+            document.getElementById("noaccform").disabled = false;
+            document.getElementById("name").disabled = false;
+            document.getElementById("email").disabled = false;
+            document.getElementById("accButton").innerHTML = "Use username instead";
+            setHasAccount(false);
+        }else{
+            document.getElementById("username").disabled = false;
+            document.getElementById("noaccform").disabled = true;
+            document.getElementById("name").disabled = true;
+            document.getElementById("email").disabled = true;
+            document.getElementById("accButton").innerHTML = "Use form instead";
+            setHasAccount(true);
         }
     }
 
@@ -122,50 +154,133 @@ const ShowFunnel = () => {
                 />
      */
 
-
+    
+    
 
     return (
         <Container>
-            <h2>{funnel1.funnelname}</h2>
+            <h1 style={{
+                textAlign:"center",
+                color:"#ff5b2b"
+            }}>{funnel1.funnelname}</h1>
             <br/>
-            <ListGroup>
-            <Form style={{fontSize:"20px"}}>
-                
+            <div style={{
+                padding:"20px",
+                borderRadius: "15px",
+                backgroundColor:"white",
+                boxShadow: "rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px"
+            }}>
+            <Form style={{
+                fontSize:"20px", 
+                width: "100%"
+            }}>
                 {q.map((question, i) => 
                     question.type == "YesNo" ? (
                         <>
-                            <ListGroup.Item>
-                                <br/>
-                                <ShowYesNo question={question.question} id={i} />
-                                <br/>
-                            </ListGroup.Item>
+                            <br/>
+                            <h6 sytle={{
+                                width:"100%",
+                                textAlign: "right",
+                                marginBottom: "0px"
+                            }}>
+                                Yes-No-Question
+                            </h6>
+                            <div style={{
+                                width:"300px",
+                            }}>
+                                <hr/>
+                            </div>
+                            <ShowYesNo question={question.question} id={i} />
                         </>
                     ) : question.type == "open" ? (
                         <>
-                            <ListGroup.Item>
-                                <br/>
-                                <ShowOpen question={question.question} id={i} />
-                                <br/>
-                            </ListGroup.Item>
+                            <br/>
+                            <h6 sytle={{
+                                width:"100%",
+                                textAlign: "right",
+                                marginBottom: "0px"
+                            }}>
+                                Open-Question
+                            </h6>
+                            <div style={{
+                                width:"300px",
+                            }}>
+                                <hr/>
+                            </div>
+                            <ShowOpen question={question.question} id={i} />
                         </>
                     ) : question.type == "slider" ? (
                         <>
-                            <ListGroup.Item>
-                                <br/>
-                                <ShowSlider question={question.question} id={i} min={question.min} max={question.max} />
-                                <br/>
-                            </ListGroup.Item>
+                            <br/>
+                            <h6 sytle={{
+                                width:"100%",
+                                textAlign: "right",
+                                marginBottom: "0px"
+                            }}>
+                                Slider-Question
+                            </h6>
+                            <div style={{
+                                width:"300px",
+                            }}>
+                                <hr/>
+                            </div>
+                            <ShowSlider question={question.question} id={i} min={question.min} max={question.max} />
                         </>
                     ) : (
                         <>ERROR Loading this question</>
                     )
                 )}
-                
-                
             </Form>
-            <ListGroup.Item>
+                
+            <br/>
+            <br/>
+            <br/>
+            <Container>
+                <h6>
+                    Personal info
+                </h6>
+                <div style={{
+                    width:"300px"
+                }}>
+                    <hr/>
+                </div>
+                <h4 style={{
+                    width: "100%",
+                    textAlign: "center"
+                }}>
+                    Do you already have an account?
+                </h4>
                 <br/>
-                <Form.Group className="mb-3" style={{fontSize:"20px"}}>
+                <Row>
+                    <Col>                        
+                   
+                    </Col>
+                    <Col>
+                        <Button id="accButton" onClick={changeAccount} style={{
+                            width: "100%"
+                        }}>Activate Username field</Button>
+                    </Col>
+                    <Col>
+                        <Form.Control id="username" type="text" placeholder="Enter your username" style={{
+                            width:"100%"
+                        }} disabled/>
+                    </Col>
+                    <Col>                        
+                        
+                    </Col>
+                </Row>
+                <br/>
+                <Row style={{
+                    width: "100%",
+                    textAlign: "center"
+                }}>
+                    <h4>Or use the form</h4>
+                </Row>
+
+                        
+                    
+                <br/>
+                <Form.Group id="noaccform" className="mb-3" style={{fontSize:"20px"}}>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control id="email" type="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
@@ -178,16 +293,17 @@ const ShowFunnel = () => {
                     Please enter your name.
                     </Form.Text>
                 </Form.Group>
-                <br/>
-            </ListGroup.Item>
-            <ListGroup.Item>
-                <Button style={{width:"100%"}} variant="primary" onClick={submitHandler}>
-                        Submit
-                </Button>
-            </ListGroup.Item>
-            </ListGroup>
+            </Container>
+            <br/>
+            <Button style={{width:"100%"}} variant="primary" onClick={submitHandler}>
+                    Submit
+            </Button>
+            
+            </div>
         </Container>
     );
+
+    
 };
 
 export default ShowFunnel;

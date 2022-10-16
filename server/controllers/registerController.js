@@ -4,11 +4,13 @@ const bcrypt = require('bcrypt');
 
 
 const handleNewUser = async (req, res) => {
-    const { user, pwd, typeOfUser } = req.body;
-    if (!user || !pwd || !typeOfUser ) return res.status(400).json({ 'message': 'Username and password are required.' });
+    const { user, pwd, typeOfUser, realname, email } = req.body;
+    if (!user || !pwd || !typeOfUser || !realname || !email ) return res.status(400).json({ 'message': 'Username and password are required.' });
     // check for duplicate usernames in the db
-    const duplicate = await User.findOne({ username: user }).exec();
-    if (duplicate) return res.sendStatus(409); //Conflict 
+    const duplicateUser = await User.findOne({ username: user }).exec();
+    if (duplicateUser) return res.sendStatus(409); //Conflict 
+    const duplicateEmail = await User.findOne({ email: email }).exec();
+    if (duplicateEmail) return res.sendStatus(409); //Conflict
     try {
         //encrypt the password
         const hashedPwd = await bcrypt.hash(pwd, 10);
@@ -18,13 +20,17 @@ const handleNewUser = async (req, res) => {
             result = await User.create({
                 "username": user,
                 "password": hashedPwd,
-                "roles": {User: 2001, StudentUser: 2710}
+                "roles": {User: 2001, StudentUser: 2710},
+                "name": realname,
+                "email": email
             });
         }else if(typeOfUser==="company"){
             result = await User.create({
                 "username": user,
                 "password": hashedPwd,
-                "roles": {User: 2001, CompanyUser: 3109}
+                "roles": {User: 2001, CompanyUser: 3109},
+                "name": realname,
+                "email": email
             });
 
             const result2 = await CompanyCard.create({

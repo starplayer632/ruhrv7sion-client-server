@@ -92,6 +92,36 @@ const updatefunnelconfig = async (req, res) => {
     }
 }
 
+const postFunnelDoneWithUsername = async (req, res) => {
+    if (!req?.body?.answers || !req?.body?.funnelname || !req?.body?.companyuser || !req?.body?.username || !req?.body?.funnelid || !req?.body?.questions) {
+        return res.status(400).json({ 'message': 'answers, username, funnelname and companyuser are required' });
+    }
+    console.log("req?.body?.username: "+req.body.username);
+    const finduserr = await User.findOne({username: req.body.username}).exec();
+    if(!finduserr){
+        return res.status(400).json({ 'message': 'username is not valid' });
+    }else{
+       
+        const name = finduserr.name;
+        const email = finduserr.email;
+        try {
+            const result = await FunnelDone.create({
+                funnelname: req.body.funnelname,
+                companyuser: req.body.companyuser,
+                funnelid: req.body.funnelid,
+                answers: req.body.answers,
+                questions: req.body.questions,
+                email: email,
+                name: name
+            });
+            res.status(201).json({"status":"ok"});
+        } catch (err) {
+            console.error(err);
+            res.status(500);
+        } 
+    }
+}
+
 const postFunnelDone = async (req, res) => {
     if (!req?.body?.answers || !req?.body?.funnelname || !req?.body?.companyuser || !req?.body?.email || !req?.body?.name || !req?.body?.funnelid || !req?.body?.questions) {
         return res.status(400).json({ 'message': 'answers, funnelname and companyuser are required' });
@@ -109,6 +139,7 @@ const postFunnelDone = async (req, res) => {
         res.status(201).json({"status":"ok"});
     } catch (err) {
         console.error(err);
+        res.status(500);
     }    
 }
 
@@ -138,5 +169,6 @@ module.exports = {
     getAllfunnelconfigsByCompanyuser,
     updatefunnelconfig,
     postFunnelDone,
-    getFunnelActive
+    getFunnelActive,
+    postFunnelDoneWithUsername
 }

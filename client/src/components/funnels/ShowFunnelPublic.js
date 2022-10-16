@@ -8,9 +8,10 @@ import ShowYesNo from "./showfunnel/ShowYesNo";
 import ShowOpen from "./showfunnel/ShowOpen";
 import ShowSlider from "./showfunnel/ShowSlider";
 
-const ShowFunnel = () => {
+const ShowFunnelPublic = () => {
     const [funnel1, setFunnel1]=  useState([]);
     const [q, setQ]=  useState([]);
+    const [hasAccount, setHasAccount]=  useState(false);
     const navigate = useNavigate();
     const effectRan = useRef(false);
     const axiosPrivate = useAxiosPrivate();
@@ -88,9 +89,7 @@ const ShowFunnel = () => {
     
     async function submitHandler(){
         let answers = [];
-        console.log("q.length: "+q.length);
         for (let i = 0; i < q.length; i++) {
-            //const id= JSON.stringify(funnel1[i].id)+"question";
             if (q[i].type==="YesNo") {
                 let value = null;
                 const idyes = i+"yes";
@@ -123,19 +122,33 @@ const ShowFunnel = () => {
         
         const controller = new AbortController();
         try {
-            const funnelname = funnel1.funnelname;
-            const companyuser = funnel1.companyuser;
-            const email =  document.getElementById("email").value;
-            const name =  document.getElementById("name").value;
-            const questions = q;
-            const response = await axiosPrivate.post('/funnels/done', 
-                JSON.stringify({email, name, funnelid, companyuser, funnelname, answers, questions  }),{
-                signal: controller.signal
-            });
+            let response;
+            if(hasAccount===false){
+                const funnelname = funnel1.funnelname;
+                const companyuser = funnel1.companyuser;
+                const email =  document.getElementById("email").value;
+                const name =  document.getElementById("name").value;
+                const questions = q;
+                response = await axiosPrivate.post('/funnels/done', 
+                    JSON.stringify({email, name, funnelid, companyuser, funnelname, answers, questions  }),{
+                    signal: controller.signal
+                });
+            }else if(hasAccount===true){
+                const funnelname = funnel1.funnelname;
+                const companyuser = funnel1.companyuser;
+                const username =  document.getElementById("username").value;
+                const questions = q;
+                response = await axiosPrivate.post('/funnels/doneWithUsername', 
+                    JSON.stringify({username, funnelid, companyuser, funnelname, answers, questions  }),{
+                    signal: controller.signal
+                });
+            }
+
+            
             console.log("new response.data.status: "+response.data.status);
             if(response?.data?.status==="ok"){
                 alert("Funnel saved!");
-                navigate("/");
+                //navigate("/");
             }
         } catch (err) {
             console.error(err);
@@ -143,6 +156,24 @@ const ShowFunnel = () => {
 
         return () => {
             controller.abort();
+        }
+    }
+
+    function changeAccount(){
+        if(hasAccount === true){
+            document.getElementById("username").disabled = true;
+            document.getElementById("noaccform").disabled = false;
+            document.getElementById("name").disabled = false;
+            document.getElementById("email").disabled = false;
+            document.getElementById("accButton").innerHTML = "Use username instead";
+            setHasAccount(false);
+        }else{
+            document.getElementById("username").disabled = false;
+            document.getElementById("noaccform").disabled = true;
+            document.getElementById("name").disabled = true;
+            document.getElementById("email").disabled = true;
+            document.getElementById("accButton").innerHTML = "Use form instead";
+            setHasAccount(true);
         }
     }
 
@@ -253,27 +284,35 @@ const ShowFunnel = () => {
                 </h4>
                 <br/>
                 <Row>
-                    <Col>
-                        <Button>Yes! I have an account</Button>
+                    <Col>                        
+                   
                     </Col>
                     <Col>
-                        <Form.Control id="username" type="text" placeholder="Enter your username" />
+                        <Button id="accButton" onClick={changeAccount} style={{
+                            width: "100%"
+                        }}>Activate Username field</Button>
+                    </Col>
+                    <Col>
+                        <Form.Control id="username" type="text" placeholder="Enter your username" style={{
+                            width:"100%"
+                        }} disabled/>
+                    </Col>
+                    <Col>                        
+                        
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <Button>Yes! I have an account</Button>
-                    </Col>
-                    <Col>
-                        <Button style={{
-                            left:"10px"
-                        }}>No! I just want to do the funnel</Button>
-                    </Col>
+                <br/>
+                <Row style={{
+                    width: "100%",
+                    textAlign: "center"
+                }}>
+                    <h4>Or use the form</h4>
                 </Row>
+
                         
                     
                 <br/>
-                <Form.Group className="mb-3" style={{fontSize:"20px"}}>
+                <Form.Group id="noaccform" className="mb-3" style={{fontSize:"20px"}}>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control id="email" type="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
@@ -299,4 +338,4 @@ const ShowFunnel = () => {
     
 };
 
-export default ShowFunnel;
+export default ShowFunnelPublic;
