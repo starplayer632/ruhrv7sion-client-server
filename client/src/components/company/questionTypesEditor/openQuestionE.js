@@ -20,7 +20,7 @@ export default function openQuestionE({ question, list, setList }) {
         <div style={format}>
           <div style={{ paddingTop: "15px" }}>
             <TextField
-              id={question.id+"question"}
+              id={question.id + "question"}
               label="Type in the question title"
               variant="outlined"
               multiline
@@ -76,7 +76,7 @@ const format = {
   width: "60%",
   backgroundColor: "lightBlue",
   position: "relative",
-  height: "357px",
+  height: "370px",
   marginTop: "98px",
   textAlign: "center",
   margin: "0",

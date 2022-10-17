@@ -35,7 +35,7 @@ const format = {
   width: "350px",
   backgroundColor: "lightBlue",
   position: "relative",
-  height: "185px",
+  height: "205px",
   marginTop: "98px",
   textAlign: "center",
   margin: "0",
