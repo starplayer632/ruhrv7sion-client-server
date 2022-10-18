@@ -1,6 +1,7 @@
 # ruhrv7sion-client-server - structure
 
 ## .env file is temporarily synchronised
+## App was deployed: https://live.ruhrv7sion.de/
 
 * Famous TechStack: MERN = MongoDB + Express + React + NodeJS
 * Development = Backend Node.js server + Frontend React server
@@ -62,3 +63,10 @@ You can create an account or use the following company account. The data for thi
 Username: Company1
 Password: Company1!
 ```
+
+## Deployment
+The frontend was deployed on a simple web hoster. In this case, all-inkl.com. 
+Fontend as static files with "npm run build". 
+ATTENTION! useEffect is not executed twice but only once. Therefore the code must be adapted with (effectRan.current === false).
+
+Backend was deployed on "Heroku" and only allows requests from certain addresses.
